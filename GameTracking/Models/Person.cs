@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace GameTracking.Models
 {
-	internal class Person
+	public class Person
 	{
+		public int PersonID { get; set; }
+
+		public string FirstName { get; set; }
+
+		public string LastName { get; set; }
+
+		public Person(int pID, string f, string l)
+		{
+			PersonID = pID;
+			FirstName = f;
+			LastName = l;
+		}
 	}
 }

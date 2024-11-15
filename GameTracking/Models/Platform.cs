@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace GameTracking.Models
 {
-	internal class Platform
+	public class Platform
 	{
+		public int PlatformID { get; set; }
+
+		public string Name { get; set; }
+
+		public Platform(int pID, string n)
+		{
+			PlatformID = pID;
+			Name = n;
+		}
 	}
 }
