@@ -52,7 +52,7 @@ BEGIN
    (
       PlatformID
    )
-   REFERENCES GameTrack.Platform
+   REFERENCES GameTrack.[Platform]
    (
       PlatformID
    );

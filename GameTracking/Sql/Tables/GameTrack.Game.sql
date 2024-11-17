@@ -6,8 +6,7 @@ BEGIN
 		PublisherID INT NOT NULL,
 		[Name] NVARCHAR(32) NOT NULL,
 		ReleaseDate DATETIME2 NOT NULL,
-		Genre NVARCHAR(32) NOT NULL,
-		[Platform] NVARCHAR(32) NOT NULL
+        GlobalScore DECIMAL(2,1) NOT NULL
 
 		CONSTRAINT [PK_GameTrack_Game_GameID] PRIMARY KEY CLUSTERED
 		(

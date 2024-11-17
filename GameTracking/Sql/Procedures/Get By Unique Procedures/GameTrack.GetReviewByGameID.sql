@@ -1,8 +1,8 @@
-CREATE OR ALTER PROCEDURE GameTrack.FetchReview
-	@ReviewID INT
+CREATE OR ALTER PROCEDURE GameTrack.GetReviewByGameID
+	@GameID INT
 AS
 
 SELECT R.ReviewID, R.GameID, R.Score, ISNULL(R.Title, N''), ISNULL(R.Body, N''), R.ReviewDate
 FROM GameTrack.Review R
-WHERE R.ReviewID = @ReviewID;
+WHERE R.GameID = @GameID;
 GO

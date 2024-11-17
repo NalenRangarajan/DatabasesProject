@@ -4,7 +4,6 @@ BEGIN
 	(
 		ReviewID INT NOT NULL IDENTITY(1,1),
 		GameID INT NOT NULL,
-		CriticID INT NOT NULL,
 		Score INT NOT NULL,
 		Title NVARCHAR(32),
 		Body NVARCHAR(512),
@@ -38,26 +37,6 @@ BEGIN
    REFERENCES GameTrack.Game
    (
       GameID
-   );
-END;
-
-IF NOT EXISTS
-   (
-      SELECT *
-      FROM sys.foreign_keys fk
-      WHERE fk.parent_object_id = OBJECT_ID(N'GameTrack.Review')
-         AND fk.referenced_object_id = OBJECT_ID(N'GameTrack.Critic')
-         AND fk.[name] = N'FK_GameTrack_Review_GameTrack_Critic'
-   )
-BEGIN
-   ALTER TABLE GameTrack.Review
-   ADD CONSTRAINT [FK_GameTrack_Review_GameTrack_Critic] FOREIGN KEY
-   (
-     CriticID
-   )
-   REFERENCES GameTrack.Critic
-   (
-      CriticID
    );
 END;
 
