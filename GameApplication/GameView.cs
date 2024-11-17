@@ -57,8 +57,9 @@ namespace GameApplication
         {
             InitializeComponent();
             SetGame("Doom", new DateTime(2016, 5, 13), "First-person shooter", "PS4, Windows, Xbox One, Nintendo Switch");
-            reviewControl1.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho. I break mirrors with my face in the united states. I break mirrors with my face in the united states. I break mirrors with my face in the united states.", DateTime.Now);
+            YourReview.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho.", DateTime.Now);
             SetOtherReviews();
+            SetGamesList();
         }
 
         private void SetGame(string t, DateTime rd, string g, string p)
@@ -74,8 +75,80 @@ namespace GameApplication
             for (int i = 0; i < 10; i++)
             {
                 ReviewControl r = new ReviewControl();
-                r.SetReview(5,"Great!","Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho. I break mirrors with my face in the united states. I break mirrors with my face in the united states. I break mirrors with my face in the united states.", DateTime.Now);
+                r.Margin = new Padding(0, 0, 0, 5);
+                r.SetReview(i, "Fantastic!", "When id Software resurrected the DOOM franchise in 2016, it was clear they aimed to recapture the lightning-in-a-bottle that made the original 1993 game a cultural phenomenon. What emerged was a masterclass in modern game design that paid homage to its roots while blazing its own trail—a visceral, chaotic, and relentlessly fun shooter that sets the gold standard for reboots.", DateTime.Now);
                 OtherReviews.Controls.Add(r);
+            }
+        }
+
+        private void SetGamesList()
+        {
+            string[] gameTitles = new string[50]
+            {
+                "The Legend of Zelda: Breath of the Wild",
+                "Elden Ring",
+                "Red Dead Redemption 2",
+                "Cyberpunk 2077",
+                "God of War",
+                "The Witcher 3: Wild Hunt",
+                "Grand Theft Auto V",
+                "Hollow Knight",
+                "Minecraft",
+                "Dark Souls III",
+                "Sekiro: Shadows Die Twice",
+                "Resident Evil Village",
+                "Hades",
+                "Stardew Valley",
+                "Animal Crossing: New Horizons",
+                "Portal 2",
+                "Half-Life: Alyx",
+                "Bloodborne",
+                "Super Mario Odyssey",
+                "Celeste",
+                "Final Fantasy VII Remake",
+                "Mass Effect Legendary Edition",
+                "Disco Elysium",
+                "Outer Wilds",
+                "Death Stranding",
+                "Assassin's Creed Valhalla",
+                "Marvel's Spider-Man",
+                "DOOM Eternal",
+                "Control",
+                "Ori and the Will of the Wisps",
+                "A Plague Tale: Innocence",
+                "Horizon Zero Dawn",
+                "Forza Horizon 5",
+                "The Elder Scrolls V: Skyrim",
+                "Metal Gear Solid V: The Phantom Pain",
+                "Persona 5 Royal",
+                "Divinity: Original Sin 2",
+                "Dead Cells",
+                "Terraria",
+                "Cuphead",
+                "Fallout 4",
+                "Dragon Age: Inquisition",
+                "NieR: Automata",
+                "Firewatch",
+                "Inside",
+                "Limbo",
+                "Journey",
+                "Among Us",
+                "It Takes Two",
+                "Overwatch"
+            };
+            foreach (string title in gameTitles)
+            {
+                var item = new ListViewItem(title);
+                GamesList.Items.Add(item);
+            }
+        }
+
+        private void AddGameButton_Click(object sender, EventArgs e)
+        {
+            AddGameView agv = new AddGameView();
+            if (agv.ShowDialog() == DialogResult.OK)
+            {
+
             }
         }
     }

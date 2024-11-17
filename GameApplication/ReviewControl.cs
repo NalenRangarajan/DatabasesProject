@@ -67,10 +67,10 @@ namespace GameApplication
 
         public void SetReview(int s, string t, string b, DateTime rd)
         {
-            ScoreLabel.Text = $"Score: {s}/10";
-            TitleLabel.Text = t;
-            BodyLabel.Text = b;
-            ReviewDateLabel.Text = rd.ToString("MMM dd, yyyy");
+            Score = $"Score: {s}/10";
+            Title = t;
+            Body = b;
+            ReviewDate = rd.ToString("MMM dd, yyyy");
         }
     }
 }

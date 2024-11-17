@@ -12,10 +12,12 @@ namespace GameApplication
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
 			LoginView lv = new LoginView();
-			if (lv.ShowDialog() == DialogResult.OK)
+			
+			while (lv.ShowDialog() != DialogResult.OK)
 			{
-				Application.Run(new GameView());
+				
 			}
+            Application.Run(new GameView());
         }
 	}
 }

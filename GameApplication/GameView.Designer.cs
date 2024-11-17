@@ -28,33 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GamesList = new FlowLayoutPanel();
             GameTitleLabel = new Label();
             ReleaseDateLabel = new Label();
             GenreLabel = new Label();
             PlatformLabel = new Label();
             ReviewLabel = new Label();
-            reviewControl1 = new ReviewControl();
+            YourReview = new ReviewControl();
             label1 = new Label();
             OtherReviews = new FlowLayoutPanel();
+            GamesList = new ListView();
+            PlayedGamesLabel = new Label();
+            AddGameButton = new Button();
             SuspendLayout();
-            // 
-            // GamesList
-            // 
-            GamesList.AutoSize = true;
-            GamesList.FlowDirection = FlowDirection.TopDown;
-            GamesList.Location = new Point(11, 11);
-            GamesList.Margin = new Padding(2);
-            GamesList.Name = "GamesList";
-            GamesList.Size = new Size(245, 276);
-            GamesList.TabIndex = 0;
-            GamesList.WrapContents = false;
             // 
             // GameTitleLabel
             // 
             GameTitleLabel.AutoSize = true;
+            GameTitleLabel.BackColor = SystemColors.Control;
             GameTitleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            GameTitleLabel.Location = new Point(368, 23);
+            GameTitleLabel.Location = new Point(368, 45);
             GameTitleLabel.Margin = new Padding(2, 0, 2, 0);
             GameTitleLabel.Name = "GameTitleLabel";
             GameTitleLabel.Size = new Size(85, 20);
@@ -64,7 +56,8 @@
             // ReleaseDateLabel
             // 
             ReleaseDateLabel.AutoSize = true;
-            ReleaseDateLabel.Location = new Point(261, 46);
+            ReleaseDateLabel.BackColor = SystemColors.Control;
+            ReleaseDateLabel.Location = new Point(261, 71);
             ReleaseDateLabel.Margin = new Padding(2, 0, 2, 0);
             ReleaseDateLabel.Name = "ReleaseDateLabel";
             ReleaseDateLabel.Size = new Size(59, 15);
@@ -74,7 +67,8 @@
             // GenreLabel
             // 
             GenreLabel.AutoSize = true;
-            GenreLabel.Location = new Point(261, 61);
+            GenreLabel.BackColor = SystemColors.Control;
+            GenreLabel.Location = new Point(261, 86);
             GenreLabel.Margin = new Padding(2, 0, 2, 0);
             GenreLabel.Name = "GenreLabel";
             GenreLabel.Size = new Size(44, 15);
@@ -84,7 +78,8 @@
             // PlatformLabel
             // 
             PlatformLabel.AutoSize = true;
-            PlatformLabel.Location = new Point(261, 76);
+            PlatformLabel.BackColor = SystemColors.Control;
+            PlatformLabel.Location = new Point(261, 101);
             PlatformLabel.Name = "PlatformLabel";
             PlatformLabel.Size = new Size(56, 15);
             PlatformLabel.TabIndex = 4;
@@ -93,34 +88,37 @@
             // ReviewLabel
             // 
             ReviewLabel.AutoSize = true;
+            ReviewLabel.BackColor = SystemColors.Control;
             ReviewLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            ReviewLabel.Location = new Point(368, 91);
+            ReviewLabel.Location = new Point(368, 118);
             ReviewLabel.Margin = new Padding(2, 0, 2, 0);
             ReviewLabel.Name = "ReviewLabel";
             ReviewLabel.Size = new Size(95, 20);
             ReviewLabel.TabIndex = 5;
             ReviewLabel.Text = "Your Review";
             // 
-            // reviewControl1
+            // YourReview
             // 
-            reviewControl1.AutoScroll = true;
-            reviewControl1.AutoSize = true;
-            reviewControl1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            reviewControl1.Body = "Body";
-            reviewControl1.ForeColor = SystemColors.ControlText;
-            reviewControl1.Location = new Point(261, 111);
-            reviewControl1.Margin = new Padding(0);
-            reviewControl1.MaximumSize = new Size(300, 96);
-            reviewControl1.Name = "reviewControl1";
-            reviewControl1.ReviewDate = "Date";
-            reviewControl1.Score = "#/10";
-            reviewControl1.Size = new Size(300, 80);
-            reviewControl1.TabIndex = 7;
-            reviewControl1.Title = "TItle";
+            YourReview.AutoScroll = true;
+            YourReview.AutoSize = true;
+            YourReview.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            YourReview.BackColor = SystemColors.Control;
+            YourReview.Body = "Body";
+            YourReview.ForeColor = SystemColors.ControlText;
+            YourReview.Location = new Point(261, 138);
+            YourReview.Margin = new Padding(0);
+            YourReview.MaximumSize = new Size(300, 96);
+            YourReview.Name = "YourReview";
+            YourReview.ReviewDate = "Date";
+            YourReview.Score = "#/10";
+            YourReview.Size = new Size(300, 70);
+            YourReview.TabIndex = 7;
+            YourReview.Title = "TItle";
             // 
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(368, 208);
             label1.Margin = new Padding(2, 0, 2, 0);
@@ -132,26 +130,68 @@
             // OtherReviews
             // 
             OtherReviews.AutoScroll = true;
+            OtherReviews.BackColor = SystemColors.Control;
             OtherReviews.Location = new Point(261, 231);
+            OtherReviews.Margin = new Padding(0);
             OtherReviews.Name = "OtherReviews";
             OtherReviews.Size = new Size(300, 138);
             OtherReviews.TabIndex = 10;
+            // 
+            // GamesList
+            // 
+            GamesList.Activation = ItemActivation.OneClick;
+            GamesList.Location = new Point(12, 68);
+            GamesList.MultiSelect = false;
+            GamesList.Name = "GamesList";
+            GamesList.Size = new Size(230, 301);
+            GamesList.TabIndex = 11;
+            GamesList.TileSize = new Size(500, 30);
+            GamesList.UseCompatibleStateImageBehavior = false;
+            GamesList.View = View.Tile;
+            // 
+            // PlayedGamesLabel
+            // 
+            PlayedGamesLabel.AutoSize = true;
+            PlayedGamesLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            PlayedGamesLabel.Location = new Point(77, 45);
+            PlayedGamesLabel.Margin = new Padding(2, 0, 2, 0);
+            PlayedGamesLabel.Name = "PlayedGamesLabel";
+            PlayedGamesLabel.Size = new Size(93, 20);
+            PlayedGamesLabel.TabIndex = 12;
+            PlayedGamesLabel.Text = "Your Games";
+            // 
+            // AddGameButton
+            // 
+            AddGameButton.Anchor = AnchorStyles.Right;
+            AddGameButton.AutoSize = true;
+            AddGameButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            AddGameButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            AddGameButton.Location = new Point(165, 45);
+            AddGameButton.Margin = new Padding(0);
+            AddGameButton.Name = "AddGameButton";
+            AddGameButton.Size = new Size(77, 23);
+            AddGameButton.TabIndex = 13;
+            AddGameButton.Text = "Add Review";
+            AddGameButton.UseVisualStyleBackColor = true;
+            AddGameButton.Click += AddGameButton_Click;
             // 
             // GameView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(568, 381);
+            ClientSize = new Size(572, 384);
+            Controls.Add(AddGameButton);
+            Controls.Add(PlayedGamesLabel);
+            Controls.Add(GamesList);
             Controls.Add(OtherReviews);
             Controls.Add(label1);
-            Controls.Add(reviewControl1);
+            Controls.Add(YourReview);
             Controls.Add(ReviewLabel);
             Controls.Add(PlatformLabel);
             Controls.Add(GenreLabel);
             Controls.Add(ReleaseDateLabel);
             Controls.Add(GameTitleLabel);
-            Controls.Add(GamesList);
             Margin = new Padding(2);
             Name = "GameView";
             Text = "GameTrack";
@@ -160,14 +200,12 @@
         }
 
         #endregion
-
-        private FlowLayoutPanel GamesList;
         private Label GameTitleLabel;
         private Label ReleaseDateLabel;
         private Label GenreLabel;
         private Label PlatformLabel;
         private Label ReviewLabel;
-        private ReviewControl reviewControl1;
+        private ReviewControl YourReview;
         private Label label1;
         private ReviewControl reviewControl2;
         private FlowLayoutPanel OtherReviews;
@@ -175,5 +213,8 @@
         private ReviewControl reviewControl4;
         private ReviewControl reviewControl5;
         private ReviewControl reviewControl6;
+        private ListView GamesList;
+        private Label PlayedGamesLabel;
+        private Button AddGameButton;
     }
 }

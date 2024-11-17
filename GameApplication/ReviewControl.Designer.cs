@@ -90,7 +90,7 @@
             ReviewStack.Location = new Point(0, 0);
             ReviewStack.Margin = new Padding(0);
             ReviewStack.Name = "ReviewStack";
-            ReviewStack.Size = new Size(300, 80);
+            ReviewStack.Size = new Size(300, 70);
             ReviewStack.TabIndex = 5;
             // 
             // ScoreAndTitle
@@ -114,7 +114,7 @@
             Controls.Add(ReviewStack);
             Margin = new Padding(0);
             Name = "ReviewControl";
-            Size = new Size(300, 80);
+            Size = new Size(300, 70);
             ReviewStack.ResumeLayout(false);
             ReviewStack.PerformLayout();
             ScoreAndTitle.ResumeLayout(false);
