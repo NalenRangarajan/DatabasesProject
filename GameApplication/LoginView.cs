@@ -19,7 +19,9 @@ namespace GameApplication
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(UsernameTextBox.Text + " , " + PasswordTextBox.Text);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
+        
     }
 }

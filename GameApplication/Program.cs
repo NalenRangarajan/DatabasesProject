@@ -11,7 +11,11 @@ namespace GameApplication
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
-			Application.Run(new LoginView());
-		}
+			LoginView lv = new LoginView();
+			if (lv.ShowDialog() == DialogResult.OK)
+			{
+				Application.Run(new GameView());
+			}
+        }
 	}
 }
