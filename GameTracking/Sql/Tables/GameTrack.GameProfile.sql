@@ -1,14 +1,15 @@
-﻿IF OBJECT_ID(N'GameTrack.ProfileGame') IS NULL
+﻿IF OBJECT_ID(N'GameTrack.GameProfile') IS NULL
 BEGIN
-	CREATE TABLE GameTrack.ProfileGame
+	CREATE TABLE GameTrack.GameProfile
 	(
-		ProfileID INT NOT NULL IDENTITY(1,1),
-		GameID INT NOT NULL IDENTITY(1,1)
+		
+		GameID INT NOT NULL IDENTITY(1,1),
+        ProfileID INT NOT NULL IDENTITY(1,1)
 
-		CONSTRAINT [PK_GameTrack_ProfileGame_ProfileID_GameID] PRIMARY KEY CLUSTERED
+		CONSTRAINT [PK_GameTrack_ProfileGame_GameID_ProfileID] PRIMARY KEY CLUSTERED
 		(
-			ProfileID ASC,
-            GameID ASC
+            GameID ASC,
+			ProfileID ASC
 		)
 	);
 END;

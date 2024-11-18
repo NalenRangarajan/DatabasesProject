@@ -12,7 +12,7 @@ namespace GameTracking.Models
 
 		public string Username { get; set; }
 
-		public string Password { get; set; }
+		public string HashedPassword { get; set; }
 
 		public DateTime CreatedOn { get; set; }
 
@@ -20,7 +20,7 @@ namespace GameTracking.Models
 		{
 			ProfileID = pID;
 			Username = u;
-			Password = p;
+			HashedPassword = p;
 			CreatedOn = co;
 		}
 	}
