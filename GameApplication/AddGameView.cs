@@ -15,6 +15,29 @@ namespace GameApplication
         public AddGameView()
         {
             InitializeComponent();
+            SetGenres();
+
+        }
+
+        private void SetGenres()
+        {
+            string[] gameGenres = new string[]
+            {
+                "Action",
+                "Adventure",
+                "Role-Playing Games (RPG)",
+                "Shooter",
+                "Simulation",
+                "Strategy",
+                "Sports",
+                "Puzzle",
+                "Survival Horror",
+                "Platformer"
+            };
+            foreach (string genre in gameGenres)
+            {
+                GenreListView.Items.Add(genre);
+            }
         }
     }
 }
