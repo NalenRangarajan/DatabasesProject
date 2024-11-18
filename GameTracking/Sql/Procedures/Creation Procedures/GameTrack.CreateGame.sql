@@ -5,15 +5,7 @@
    @GameID INT OUTPUT
 AS
 
-IF NOT EXISTS(
-	SELECT * 
-	FROM GameTrack.Publisher P 
-	WHERE P.[Name] = @PublisherName
-	)
-BEGIN
-	INSERT Publisher([Name])
-	VALUES (@PublisherName)
-END
+EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;
 
 DECLARE @PublisherID INT;
 SELECT @PublisherID = P.PublisherID
