@@ -151,5 +151,11 @@ namespace GameApplication
 
             }
         }
+
+        private void SignOutButton_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Retry;
+            Close();
+        }
     }
 }

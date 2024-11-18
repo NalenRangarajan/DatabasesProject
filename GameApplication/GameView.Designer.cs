@@ -39,6 +39,7 @@
             GamesList = new ListView();
             PlayedGamesLabel = new Label();
             AddGameButton = new Button();
+            SignOutButton = new Button();
             SuspendLayout();
             // 
             // GameTitleLabel
@@ -46,7 +47,7 @@
             GameTitleLabel.AutoSize = true;
             GameTitleLabel.BackColor = SystemColors.Control;
             GameTitleLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            GameTitleLabel.Location = new Point(368, 45);
+            GameTitleLabel.Location = new Point(368, 9);
             GameTitleLabel.Margin = new Padding(2, 0, 2, 0);
             GameTitleLabel.Name = "GameTitleLabel";
             GameTitleLabel.Size = new Size(85, 20);
@@ -57,7 +58,7 @@
             // 
             ReleaseDateLabel.AutoSize = true;
             ReleaseDateLabel.BackColor = SystemColors.Control;
-            ReleaseDateLabel.Location = new Point(261, 71);
+            ReleaseDateLabel.Location = new Point(261, 35);
             ReleaseDateLabel.Margin = new Padding(2, 0, 2, 0);
             ReleaseDateLabel.Name = "ReleaseDateLabel";
             ReleaseDateLabel.Size = new Size(59, 15);
@@ -68,7 +69,7 @@
             // 
             GenreLabel.AutoSize = true;
             GenreLabel.BackColor = SystemColors.Control;
-            GenreLabel.Location = new Point(261, 86);
+            GenreLabel.Location = new Point(261, 50);
             GenreLabel.Margin = new Padding(2, 0, 2, 0);
             GenreLabel.Name = "GenreLabel";
             GenreLabel.Size = new Size(44, 15);
@@ -79,7 +80,7 @@
             // 
             PlatformLabel.AutoSize = true;
             PlatformLabel.BackColor = SystemColors.Control;
-            PlatformLabel.Location = new Point(261, 101);
+            PlatformLabel.Location = new Point(261, 65);
             PlatformLabel.Name = "PlatformLabel";
             PlatformLabel.Size = new Size(56, 15);
             PlatformLabel.TabIndex = 4;
@@ -90,7 +91,7 @@
             ReviewLabel.AutoSize = true;
             ReviewLabel.BackColor = SystemColors.Control;
             ReviewLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            ReviewLabel.Location = new Point(368, 118);
+            ReviewLabel.Location = new Point(368, 82);
             ReviewLabel.Margin = new Padding(2, 0, 2, 0);
             ReviewLabel.Name = "ReviewLabel";
             ReviewLabel.Size = new Size(95, 20);
@@ -105,7 +106,7 @@
             YourReview.BackColor = SystemColors.Control;
             YourReview.Body = "Body";
             YourReview.ForeColor = SystemColors.ControlText;
-            YourReview.Location = new Point(261, 138);
+            YourReview.Location = new Point(261, 102);
             YourReview.Margin = new Padding(0);
             YourReview.MaximumSize = new Size(300, 96);
             YourReview.Name = "YourReview";
@@ -120,7 +121,7 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(368, 208);
+            label1.Location = new Point(368, 172);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(110, 20);
@@ -131,7 +132,7 @@
             // 
             OtherReviews.AutoScroll = true;
             OtherReviews.BackColor = SystemColors.Control;
-            OtherReviews.Location = new Point(261, 231);
+            OtherReviews.Location = new Point(261, 195);
             OtherReviews.Margin = new Padding(0);
             OtherReviews.Name = "OtherReviews";
             OtherReviews.Size = new Size(300, 138);
@@ -140,7 +141,7 @@
             // GamesList
             // 
             GamesList.Activation = ItemActivation.OneClick;
-            GamesList.Location = new Point(12, 68);
+            GamesList.Location = new Point(12, 32);
             GamesList.MultiSelect = false;
             GamesList.Name = "GamesList";
             GamesList.Size = new Size(230, 301);
@@ -153,7 +154,7 @@
             // 
             PlayedGamesLabel.AutoSize = true;
             PlayedGamesLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            PlayedGamesLabel.Location = new Point(77, 45);
+            PlayedGamesLabel.Location = new Point(77, 9);
             PlayedGamesLabel.Margin = new Padding(2, 0, 2, 0);
             PlayedGamesLabel.Name = "PlayedGamesLabel";
             PlayedGamesLabel.Size = new Size(93, 20);
@@ -166,7 +167,7 @@
             AddGameButton.AutoSize = true;
             AddGameButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AddGameButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            AddGameButton.Location = new Point(165, 45);
+            AddGameButton.Location = new Point(165, 9);
             AddGameButton.Margin = new Padding(0);
             AddGameButton.Name = "AddGameButton";
             AddGameButton.Size = new Size(77, 23);
@@ -175,12 +176,28 @@
             AddGameButton.UseVisualStyleBackColor = true;
             AddGameButton.Click += AddGameButton_Click;
             // 
+            // SignOutButton
+            // 
+            SignOutButton.Anchor = AnchorStyles.Right;
+            SignOutButton.AutoSize = true;
+            SignOutButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            SignOutButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            SignOutButton.Location = new Point(498, 9);
+            SignOutButton.Margin = new Padding(0);
+            SignOutButton.Name = "SignOutButton";
+            SignOutButton.Size = new Size(63, 23);
+            SignOutButton.TabIndex = 14;
+            SignOutButton.Text = "Sign Out";
+            SignOutButton.UseVisualStyleBackColor = true;
+            SignOutButton.Click += SignOutButton_Click;
+            // 
             // GameView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(572, 384);
+            ClientSize = new Size(572, 345);
+            Controls.Add(SignOutButton);
             Controls.Add(AddGameButton);
             Controls.Add(PlayedGamesLabel);
             Controls.Add(GamesList);
@@ -216,5 +233,6 @@
         private ListView GamesList;
         private Label PlayedGamesLabel;
         private Button AddGameButton;
+        private Button SignOutButton;
     }
 }
