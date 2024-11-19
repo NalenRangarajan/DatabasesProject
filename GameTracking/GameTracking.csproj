@@ -9,7 +9,11 @@
 
   <ItemGroup>
     <Folder Include="Sql\Data\" />
-    <Folder Include="Sql\Procedures\" />
+    <Folder Include="Sql\Database Creation Procedures\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
 </Project>
