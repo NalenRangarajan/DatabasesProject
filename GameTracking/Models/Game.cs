@@ -16,18 +16,12 @@ namespace GameTracking.Models
 
 		public DateTime ReleaseDate { get; set; }
 
-		public string Genre { get; set; }
-
-		public string Platform { get; set; }
-
-		public Game(int gID, int pID, string n, DateTime rd, string g, string p)
+		public Game(int gID, int pID, string n, DateTime rd)
 		{
 			GameID = gID;
 			PublisherID = pID;
 			Name = n;
 			ReleaseDate = rd;
-			Genre = g;
-			Platform = p;
 		}
 	}
 }

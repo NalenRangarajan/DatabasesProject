@@ -10,47 +10,47 @@ using System.Transactions;
 
 namespace GameTracking
 {
-	public class SqlPlatformRepository : IPlatformRepository
+	public class SqlGenreRepository : IGenreRepository
 	{
 		public readonly string connectionString;
 
-		public SqlPlatformRepository(string c)
+		public SqlGenreRepository(string c)
 		{
 			connectionString = c;
 		}
 
-		public Platform FetchPlatform(int platformID)
+		public Genre FetchGenre(int genreID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
-				using (var command = new SqlCommand("GameTrack.FetchPlatform", connection))
+				using (var command = new SqlCommand("GameTrack.FetchGenre", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 
-					command.Parameters.AddWithValue("PlatformID", platformID);
+					command.Parameters.AddWithValue("GenreID", genreID);
 
 					connection.Open();
 
 					using (SqlDataReader reader = command.ExecuteReader())
 					{
-						Platform? platform = TranslatePlatform(reader);
+						Genre? genre = TranslateGenre(reader);
 
-						if (platform == null)
+						if (genre == null)
 						{
-							throw new RecordNotFoundException(platformID.ToString());
+							throw new RecordNotFoundException(genreID.ToString());
 						}
 
-						return platform;
+						return genre;
 					}
 				}
 			}
 		}
 
-		public Platform GetPlatform(string name)
+		public Genre GetGenre(string name)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
-				using (var command = new SqlCommand("GameTrack.GetPlatformByName", connection))
+				using (var command = new SqlCommand("GameTrack.GetGenreByName", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 
@@ -60,17 +60,17 @@ namespace GameTracking
 
 					using (SqlDataReader reader = command.ExecuteReader())
 					{
-						Platform platform = TranslatePlatform(reader)!;
+						Genre genre = TranslateGenre(reader)!;
 
-						return platform;
+						return genre;
 					}
 				}
 			}
 		}
 
-		private Platform? TranslatePlatform(SqlDataReader reader)
+		private Genre? TranslateGenre(SqlDataReader reader)
 		{
-			int platformIDOrdinal = reader.GetOrdinal("PlatformID");
+			int genreIDOrdinal = reader.GetOrdinal("GenreID");
 			int nameOrdinal = reader.GetOrdinal("Name");
 
 			if (!reader.Read())
@@ -78,7 +78,8 @@ namespace GameTracking
 				return null;
 			}
 
-			return new Platform(reader.GetInt32(platformIDOrdinal), reader.GetString(nameOrdinal));
+			return new Genre(reader.GetInt32(genreIDOrdinal), reader.GetString(nameOrdinal));
 		}
 	}
 }
+

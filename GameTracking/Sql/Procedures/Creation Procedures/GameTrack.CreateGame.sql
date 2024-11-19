@@ -2,7 +2,8 @@
    @Name NVARCHAR(32),
    @ReleaseDate DATETIME2,
    @PublisherName NVARCHAR(32),
-   @GameID INT OUTPUT
+   @GameID INT OUTPUT,
+   @PublisherID INT OUTPUT
 AS
 
 EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;

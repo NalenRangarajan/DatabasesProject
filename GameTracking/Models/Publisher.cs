@@ -12,13 +12,13 @@ namespace GameTracking.Models
 
 		public string Name { get; set; }
 
-		public DateTime FoundedDate { get; set; }
+		public DateTime? FoundedDate { get; set; }
 
-		public string Location { get; set; }
+		public string? Location { get; set; }
 
-		public string Website { get; set; }	
+		public string? Website { get; set; }	
 
-		public int EmployeeCount { get; set; }
+		public int? EmployeeCount { get; set; }
 
 		public Publisher(int pID, string n, DateTime fd, string l, string w, int ec)
 		{

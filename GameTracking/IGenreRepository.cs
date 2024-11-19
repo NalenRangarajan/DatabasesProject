@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace GameTracking
 {
-	public interface IReviewRepository
+	public interface IGenreRepository
 	{
-		Review CreateReview(int gameID, int score, string? body);
+		Genre FetchGenre(int genreID);
 
-		Review FetchGame(int reviewID);
-
-		Review GetReview(int gameID);
+		Genre GetGenre(string name);
 	}
 }
