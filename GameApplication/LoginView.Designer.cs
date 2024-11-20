@@ -33,6 +33,7 @@
             UsernameTextBox = new TextBox();
             PasswordTextBox = new TextBox();
             LoginButton = new Button();
+            RegisterButton = new Button();
             SuspendLayout();
             // 
             // UsernameLabel
@@ -69,7 +70,7 @@
             // 
             // LoginButton
             // 
-            LoginButton.Location = new Point(72, 93);
+            LoginButton.Location = new Point(151, 99);
             LoginButton.Name = "LoginButton";
             LoginButton.Size = new Size(112, 34);
             LoginButton.TabIndex = 4;
@@ -77,11 +78,22 @@
             LoginButton.UseVisualStyleBackColor = true;
             LoginButton.Click += LoginButton_Click;
             // 
+            // RegisterButton
+            // 
+            RegisterButton.Location = new Point(12, 99);
+            RegisterButton.Name = "RegisterButton";
+            RegisterButton.Size = new Size(112, 34);
+            RegisterButton.TabIndex = 5;
+            RegisterButton.Text = "Register";
+            RegisterButton.UseVisualStyleBackColor = true;
+            RegisterButton.Click += RegisterButton_Click;
+            // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(277, 145);
+            Controls.Add(RegisterButton);
             Controls.Add(LoginButton);
             Controls.Add(PasswordTextBox);
             Controls.Add(UsernameTextBox);
@@ -100,5 +112,6 @@
         private TextBox UsernameTextBox;
         private TextBox PasswordTextBox;
         private Button LoginButton;
+        private Button RegisterButton;
     }
 }

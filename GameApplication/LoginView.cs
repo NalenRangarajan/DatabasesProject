@@ -22,6 +22,11 @@ namespace GameApplication
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            string user = UsernameTextBox.Text;
+            string pass = PasswordTextBox.Text;
+        }
     }
 }

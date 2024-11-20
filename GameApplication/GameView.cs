@@ -60,6 +60,13 @@ namespace GameApplication
             YourReview.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho.", DateTime.Now);
             SetOtherReviews();
             SetGamesList();
+            SetWelcome();
+        }
+
+        private void SetWelcome()
+        {
+            string username = "Calamander";
+            WelcomLabel.Text = $"Welcome {username}!";
         }
 
         private void SetGame(string t, DateTime rd, string g, string p)
@@ -145,10 +152,14 @@ namespace GameApplication
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            AddGameView agv = new AddGameView();
+            AddReviewView agv = new AddReviewView();
             if (agv.ShowDialog() == DialogResult.OK)
             {
+                WriteReview wr = new WriteReview();
+                if (wr.ShowDialog() == DialogResult.OK)
+                {
 
+                }
             }
         }
 
@@ -156,6 +167,15 @@ namespace GameApplication
         {
             DialogResult = DialogResult.Retry;
             Close();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            WriteReview wr = new WriteReview();
+            if (wr.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

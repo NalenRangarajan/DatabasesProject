@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GameApplication
 {
-    public partial class AddGameView : Form
+    public partial class WriteReview : Form
     {
-        public AddGameView()
+        public WriteReview()
         {
             InitializeComponent();
         }

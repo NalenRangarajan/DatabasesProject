@@ -28,252 +28,235 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GenreListView = new ListView();
-            GenreLabel = new Label();
-            MInDatePicker = new DateTimePicker();
-            MaxDatePicker = new DateTimePicker();
+            SubmitButton = new Button();
+            TitleLabel = new Label();
             ReleaseDateLabel = new Label();
-            FromLabel = new Label();
-            ToLabel = new Label();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            MinLabel = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            SearchLabel = new Label();
-            TitleRadioButton = new RadioButton();
-            PublisherRadioButton = new RadioButton();
-            DeveloperRadioButton = new RadioButton();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            GenreLabel = new Label();
+            DeveloperLabel = new Label();
+            PublisherLabel = new Label();
+            dateTimePicker1 = new DateTimePicker();
             textBox1 = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            flowLayoutPanel6 = new FlowLayoutPanel();
+            flowLayoutPanel3 = new FlowLayoutPanel();
             flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
-            // GenreListView
+            // SubmitButton
             // 
-            GenreListView.BackColor = SystemColors.Control;
-            GenreListView.BorderStyle = BorderStyle.None;
-            GenreListView.CheckBoxes = true;
-            GenreListView.Location = new Point(182, 32);
-            GenreListView.Name = "GenreListView";
-            GenreListView.Size = new Size(161, 270);
-            GenreListView.TabIndex = 0;
-            GenreListView.UseCompatibleStateImageBehavior = false;
-            GenreListView.View = View.List;
+            SubmitButton.Location = new Point(86, 233);
+            SubmitButton.Name = "SubmitButton";
+            SubmitButton.Size = new Size(112, 34);
+            SubmitButton.TabIndex = 0;
+            SubmitButton.Text = "Submit";
+            SubmitButton.UseVisualStyleBackColor = true;
+            SubmitButton.Click += SubmitButton_Click;
             // 
-            // GenreLabel
+            // TitleLabel
             // 
-            GenreLabel.AutoSize = true;
-            GenreLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            GenreLabel.Location = new Point(182, 9);
-            GenreLabel.Name = "GenreLabel";
-            GenreLabel.Size = new Size(58, 20);
-            GenreLabel.TabIndex = 1;
-            GenreLabel.Text = "Genres";
-            // 
-            // MInDatePicker
-            // 
-            MInDatePicker.Format = DateTimePickerFormat.Short;
-            MInDatePicker.Location = new Point(49, 169);
-            MInDatePicker.Name = "MInDatePicker";
-            MInDatePicker.ShowUpDown = true;
-            MInDatePicker.Size = new Size(82, 23);
-            MInDatePicker.TabIndex = 2;
-            // 
-            // MaxDatePicker
-            // 
-            MaxDatePicker.Format = DateTimePickerFormat.Short;
-            MaxDatePicker.Location = new Point(49, 195);
-            MaxDatePicker.Name = "MaxDatePicker";
-            MaxDatePicker.ShowUpDown = true;
-            MaxDatePicker.Size = new Size(82, 23);
-            MaxDatePicker.TabIndex = 3;
+            TitleLabel.AutoSize = true;
+            TitleLabel.Location = new Point(3, 0);
+            TitleLabel.Name = "TitleLabel";
+            TitleLabel.Size = new Size(98, 25);
+            TitleLabel.TabIndex = 1;
+            TitleLabel.Text = "Title:          ";
             // 
             // ReleaseDateLabel
             // 
             ReleaseDateLabel.AutoSize = true;
-            ReleaseDateLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            ReleaseDateLabel.Location = new Point(8, 146);
+            ReleaseDateLabel.Location = new Point(3, 0);
             ReleaseDateLabel.Name = "ReleaseDateLabel";
-            ReleaseDateLabel.Size = new Size(99, 20);
-            ReleaseDateLabel.TabIndex = 4;
-            ReleaseDateLabel.Text = "Release Date";
+            ReleaseDateLabel.Size = new Size(116, 25);
+            ReleaseDateLabel.TabIndex = 2;
+            ReleaseDateLabel.Text = "Release Date:";
             // 
-            // FromLabel
+            // GenreLabel
             // 
-            FromLabel.AutoSize = true;
-            FromLabel.Location = new Point(8, 169);
-            FromLabel.Name = "FromLabel";
-            FromLabel.Size = new Size(35, 15);
-            FromLabel.TabIndex = 5;
-            FromLabel.Text = "From";
+            GenreLabel.AutoSize = true;
+            GenreLabel.Location = new Point(3, 0);
+            GenreLabel.Name = "GenreLabel";
+            GenreLabel.Size = new Size(97, 25);
+            GenreLabel.TabIndex = 3;
+            GenreLabel.Text = "Genre:       ";
             // 
-            // ToLabel
+            // DeveloperLabel
             // 
-            ToLabel.AutoSize = true;
-            ToLabel.Location = new Point(11, 195);
-            ToLabel.Name = "ToLabel";
-            ToLabel.Size = new Size(19, 15);
-            ToLabel.TabIndex = 6;
-            ToLabel.Text = "To";
+            DeveloperLabel.AutoSize = true;
+            DeveloperLabel.Location = new Point(3, 0);
+            DeveloperLabel.Name = "DeveloperLabel";
+            DeveloperLabel.Size = new Size(97, 25);
+            DeveloperLabel.TabIndex = 4;
+            DeveloperLabel.Text = "Developer:";
             // 
-            // numericUpDown1
+            // PublisherLabel
             // 
-            numericUpDown1.Location = new Point(55, 279);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(52, 23);
-            numericUpDown1.TabIndex = 7;
-            numericUpDown1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            PublisherLabel.AutoSize = true;
+            PublisherLabel.Location = new Point(3, 0);
+            PublisherLabel.Name = "PublisherLabel";
+            PublisherLabel.Size = new Size(98, 25);
+            PublisherLabel.TabIndex = 5;
+            PublisherLabel.Text = "Publisher:  ";
             // 
-            // numericUpDown2
+            // dateTimePicker1
             // 
-            numericUpDown2.Location = new Point(55, 253);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(52, 23);
-            numericUpDown2.TabIndex = 8;
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(125, 3);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(130, 31);
+            dateTimePicker1.TabIndex = 6;
             // 
-            // MinLabel
+            // textBox1
             // 
-            MinLabel.AutoSize = true;
-            MinLabel.Location = new Point(8, 255);
-            MinLabel.Name = "MinLabel";
-            MinLabel.Size = new Size(28, 15);
-            MinLabel.TabIndex = 9;
-            MinLabel.Text = "Min";
+            textBox1.Location = new Point(107, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(150, 31);
+            textBox1.TabIndex = 7;
             // 
-            // label2
+            // textBox2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(8, 281);
-            label2.Name = "label2";
-            label2.Size = new Size(30, 15);
-            label2.TabIndex = 10;
-            label2.Text = "Max";
+            textBox2.Location = new Point(106, 3);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(150, 31);
+            textBox2.TabIndex = 8;
             // 
-            // label3
+            // textBox3
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(8, 230);
-            label3.Name = "label3";
-            label3.Size = new Size(115, 20);
-            label3.TabIndex = 11;
-            label3.Text = "Avg User Score";
+            textBox3.Location = new Point(106, 3);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(150, 31);
+            textBox3.TabIndex = 9;
             // 
-            // SearchLabel
+            // textBox4
             // 
-            SearchLabel.AutoSize = true;
-            SearchLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            SearchLabel.Location = new Point(8, 9);
-            SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(55, 20);
-            SearchLabel.TabIndex = 12;
-            SearchLabel.Text = "Search";
-            // 
-            // TitleRadioButton
-            // 
-            TitleRadioButton.AutoSize = true;
-            TitleRadioButton.Location = new Point(3, 3);
-            TitleRadioButton.Name = "TitleRadioButton";
-            TitleRadioButton.Size = new Size(47, 19);
-            TitleRadioButton.TabIndex = 13;
-            TitleRadioButton.TabStop = true;
-            TitleRadioButton.Text = "Title";
-            TitleRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // PublisherRadioButton
-            // 
-            PublisherRadioButton.AutoSize = true;
-            PublisherRadioButton.Location = new Point(3, 28);
-            PublisherRadioButton.Name = "PublisherRadioButton";
-            PublisherRadioButton.Size = new Size(74, 19);
-            PublisherRadioButton.TabIndex = 14;
-            PublisherRadioButton.TabStop = true;
-            PublisherRadioButton.Text = "Publisher";
-            PublisherRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // DeveloperRadioButton
-            // 
-            DeveloperRadioButton.AutoSize = true;
-            DeveloperRadioButton.Location = new Point(3, 53);
-            DeveloperRadioButton.Name = "DeveloperRadioButton";
-            DeveloperRadioButton.Size = new Size(78, 19);
-            DeveloperRadioButton.TabIndex = 15;
-            DeveloperRadioButton.TabStop = true;
-            DeveloperRadioButton.Text = "Developer";
-            DeveloperRadioButton.UseVisualStyleBackColor = true;
+            textBox4.Location = new Point(107, 3);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(150, 31);
+            textBox4.TabIndex = 10;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel1.Controls.Add(TitleRadioButton);
-            flowLayoutPanel1.Controls.Add(PublisherRadioButton);
-            flowLayoutPanel1.Controls.Add(DeveloperRadioButton);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(8, 58);
+            flowLayoutPanel1.Location = new Point(12, 12);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(84, 75);
-            flowLayoutPanel1.TabIndex = 16;
+            flowLayoutPanel1.Size = new Size(266, 215);
+            flowLayoutPanel1.TabIndex = 11;
             // 
-            // textBox1
+            // flowLayoutPanel2
             // 
-            textBox1.Location = new Point(8, 32);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(169, 23);
-            textBox1.TabIndex = 17;
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel2.Controls.Add(TitleLabel);
+            flowLayoutPanel2.Controls.Add(textBox4);
+            flowLayoutPanel2.Location = new Point(3, 3);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new Size(260, 37);
+            flowLayoutPanel2.TabIndex = 12;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.AutoSize = true;
+            flowLayoutPanel4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel4.Controls.Add(GenreLabel);
+            flowLayoutPanel4.Controls.Add(textBox3);
+            flowLayoutPanel4.Location = new Point(3, 46);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new Size(259, 37);
+            flowLayoutPanel4.TabIndex = 14;
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel5.Controls.Add(PublisherLabel);
+            flowLayoutPanel5.Controls.Add(textBox1);
+            flowLayoutPanel5.Location = new Point(3, 89);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new Size(260, 37);
+            flowLayoutPanel5.TabIndex = 14;
+            // 
+            // flowLayoutPanel6
+            // 
+            flowLayoutPanel6.AutoSize = true;
+            flowLayoutPanel6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel6.Controls.Add(DeveloperLabel);
+            flowLayoutPanel6.Controls.Add(textBox2);
+            flowLayoutPanel6.Location = new Point(3, 132);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            flowLayoutPanel6.Size = new Size(259, 37);
+            flowLayoutPanel6.TabIndex = 15;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.AutoSize = true;
+            flowLayoutPanel3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel3.Controls.Add(ReleaseDateLabel);
+            flowLayoutPanel3.Controls.Add(dateTimePicker1);
+            flowLayoutPanel3.Location = new Point(3, 175);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(258, 37);
+            flowLayoutPanel3.TabIndex = 13;
             // 
             // AddGameView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(352, 311);
-            Controls.Add(textBox1);
+            ClientSize = new Size(290, 277);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(SearchLabel);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(MinLabel);
-            Controls.Add(numericUpDown2);
-            Controls.Add(numericUpDown1);
-            Controls.Add(ToLabel);
-            Controls.Add(FromLabel);
-            Controls.Add(ReleaseDateLabel);
-            Controls.Add(MaxDatePicker);
-            Controls.Add(MInDatePicker);
-            Controls.Add(GenreLabel);
-            Controls.Add(GenreListView);
+            Controls.Add(SubmitButton);
             Name = "AddGameView";
-            Text = "Add Review";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            Text = "AddGameView";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private ListView GenreListView;
-        private Label GenreLabel;
-        private DateTimePicker MInDatePicker;
-        private DateTimePicker MaxDatePicker;
+        private Button SubmitButton;
+        private Label TitleLabel;
         private Label ReleaseDateLabel;
-        private Label FromLabel;
-        private Label ToLabel;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private Label MinLabel;
-        private Label label2;
-        private Label label3;
-        private Label SearchLabel;
-        private RadioButton TitleRadioButton;
-        private RadioButton PublisherRadioButton;
-        private RadioButton DeveloperRadioButton;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Label GenreLabel;
+        private Label DeveloperLabel;
+        private Label PublisherLabel;
+        private DateTimePicker dateTimePicker1;
         private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private TextBox textBox4;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private FlowLayoutPanel flowLayoutPanel5;
+        private FlowLayoutPanel flowLayoutPanel6;
     }
 }
