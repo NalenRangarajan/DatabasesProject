@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Sql\Data\" />
-    <Folder Include="Sql\Database Creation Procedures\" />
   </ItemGroup>
 
   <ItemGroup>
