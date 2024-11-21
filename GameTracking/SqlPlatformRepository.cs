@@ -68,6 +68,41 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Platform> GetPlatformsForGame(int gameID)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetPlatformsForGame", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("GameID", gameID);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslatePlatforms(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Platform> TranslatePlatforms(SqlDataReader reader)
+		{
+			List<Platform> platforms = new List<Platform>();
+
+			int platformIDOrdinal = reader.GetOrdinal("PlatformID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+
+			while (reader.Read())
+			{
+				platforms.Add(new Platform(reader.GetInt32(platformIDOrdinal), reader.GetString(nameOrdinal)));
+			}
+
+			return platforms;
+		}
+
 		private Platform? TranslatePlatform(SqlDataReader reader)
 		{
 			int platformIDOrdinal = reader.GetOrdinal("PlatformID");
