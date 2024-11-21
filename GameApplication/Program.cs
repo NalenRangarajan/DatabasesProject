@@ -1,3 +1,5 @@
+using GameTracking.Models;
+
 namespace GameApplication
 {
 	internal static class Program
@@ -11,20 +13,8 @@ namespace GameApplication
 			// To customize application configuration such as set high DPI settings or default font,
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
-			bool relog = true;
-            while (relog)
-            {
-				relog = false;
-                LoginView lv = new LoginView();
-                if (lv.ShowDialog() == DialogResult.OK)
-				{
-					GameView gv = new GameView();
-					if (gv.ShowDialog() == DialogResult.Retry)
-					{
-						relog = true;
-					}
-				}
-			}
-        }
+			GameView gv = new GameView();
+			gv.ShowDialog();
+		}
 	}
 }
