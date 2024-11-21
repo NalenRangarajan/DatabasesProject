@@ -14,5 +14,7 @@ namespace GameTracking
 		Developer GetDeveloperByName(string name);
 
 		Developer GetDeveloperByEmail(string email);
+
+		IReadOnlyList<Developer> GetDevelopersForGame(int gameID);
 	}
 }

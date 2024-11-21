@@ -91,6 +91,44 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Game> GetGamesForProfile(string username)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGamesForProfile", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("Username", username);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Game> TranslateGames(SqlDataReader reader)
+		{
+			List<Game> games = new List<Game>();
+
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int publisherIDOrdinal = reader.GetOrdinal("PublisherID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
+
+			while (reader.Read())
+			{
+				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
+				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)));
+			}
+
+			return games;
+		}
+
 		private Game? TranslateGame(SqlDataReader reader)
 		{
 			int gameIDOrdinal = reader.GetOrdinal("GameID");

@@ -68,6 +68,41 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Genre> GetGenresForGame(int gameID)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGenresForGame", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("GameID", gameID);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGenres(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Genre> TranslateGenres(SqlDataReader reader)
+		{
+			List<Genre> genres = new List<Genre>();
+
+			int genreIDOrdinal = reader.GetOrdinal("GenreID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+
+			while (reader.Read())
+			{
+				genres.Add(new Genre(reader.GetInt32(genreIDOrdinal), reader.GetString(nameOrdinal)));
+			}
+
+			return genres;
+		}
+
 		private Genre? TranslateGenre(SqlDataReader reader)
 		{
 			int genreIDOrdinal = reader.GetOrdinal("GenreID");

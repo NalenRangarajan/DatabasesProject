@@ -90,6 +90,46 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Developer> GetDevelopersForGame(int gameID)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetDevelopersForGame", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("GameID", gameID);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateDevelopers(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Developer> TranslateDevelopers(SqlDataReader reader)
+		{
+			List<Developer> developers = new List<Developer>();
+
+			int developerIDOrdinal = reader.GetOrdinal("DeveloperID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int emailOrdinal = reader.GetOrdinal("Email");
+			int foundedDateOrdinal = reader.GetOrdinal("FoundedDate");
+			int locationOrdinal = reader.GetOrdinal("Location");
+			int teamCountOrdinal = reader.GetOrdinal("TeamCount");
+
+			while (reader.Read())
+			{
+				developers.Add(new Developer(reader.GetInt32(developerIDOrdinal), reader.GetString(nameOrdinal), reader.GetString(emailOrdinal),
+				reader.GetDateTime(foundedDateOrdinal), reader.GetString(locationOrdinal), reader.GetInt32(teamCountOrdinal)));
+			}
+
+			return developers;
+		}
+
 		private Developer? TranslateDeveloper(SqlDataReader reader)
 		{
 			int developerIDOrdinal = reader.GetOrdinal("DeveloperID");
