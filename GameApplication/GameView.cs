@@ -1,3 +1,5 @@
+using GameTracking;
+using GameTracking.Models;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
@@ -5,6 +7,17 @@ namespace GameApplication
 {
     public partial class GameView : Form
     {
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
+
+        private LoginView lv = new LoginView();
+
+        private Profile profile;
+
+        private Game game;
+
+        private SqlGameRepository sgr = new SqlGameRepository(connectionString);
+
+        private SqlPlatformRepository spr = new SqlPlatformRepository(connectionString);
         public string GameTitle
         {
             get
@@ -56,16 +69,57 @@ namespace GameApplication
         public GameView()
         {
             InitializeComponent();
+            Deactivate();
+            LoginAttempt();
+            /*
             SetGame("Doom", new DateTime(2016, 5, 13), "First-person shooter", "PS4, Windows, Xbox One, Nintendo Switch");
             YourReview.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho.", DateTime.Now);
             SetOtherReviews();
             SetGamesList();
             SetWelcome();
+            */
+        }
+
+        private void LoginAttempt()
+        {
+            if (lv.ShowDialog() != DialogResult.Cancel)
+            {
+                profile = lv.profile;
+                Activate();
+            }
+        }
+
+        private void Deactivate()
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Enabled = false;
+            }
+            SignOutButton.Enabled = true;
+        }
+
+        private void Activate()
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Enabled = true;
+            }
+        }
+
+        private void UpdateGUIProfile()
+        {
+            SetWelcome();
+            SetGamesList();
+        }
+
+        private void UpdateGUIGame()
+        {
+            SetGame(game.Name, game.ReleaseDate, "Null", "Null");
         }
 
         private void SetWelcome()
         {
-            string username = "Calamander";
+            string username = profile.Username;
             WelcomLabel.Text = $"Welcome {username}!";
         }
 
@@ -83,9 +137,17 @@ namespace GameApplication
             {
                 ReviewControl r = new ReviewControl();
                 r.Margin = new Padding(0, 0, 0, 5);
-                r.SetReview(i, "Fantastic!", "When id Software resurrected the DOOM franchise in 2016, it was clear they aimed to recapture the lightning-in-a-bottle that made the original 1993 game a cultural phenomenon. What emerged was a masterclass in modern game design that paid homage to its roots while blazing its own trail—a visceral, chaotic, and relentlessly fun shooter that sets the gold standard for reboots.", DateTime.Now);
+                r.SetReview(i, "When id Software resurrected the DOOM franchise in 2016, it was clear they aimed to recapture the lightning-in-a-bottle that made the original 1993 game a cultural phenomenon. What emerged was a masterclass in modern game design that paid homage to its roots while blazing its own trail—a visceral, chaotic, and relentlessly fun shooter that sets the gold standard for reboots.", DateTime.Now);
                 OtherReviews.Controls.Add(r);
             }
+        }
+
+        private void SetReview(int score, string body, DateTime dt)
+        {
+            ReviewControl r = new ReviewControl();
+            r.Margin = new Padding(0, 0, 0, 5);
+            r.SetReview(score, body, dt);
+            OtherReviews.Controls.Add(r);
         }
 
         private void SetGamesList()
@@ -165,8 +227,7 @@ namespace GameApplication
 
         private void SignOutButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Retry;
-            Close();
+            LoginAttempt();
         }
 
         private void EditButton_Click(object sender, EventArgs e)
