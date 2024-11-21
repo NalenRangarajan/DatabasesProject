@@ -127,7 +127,7 @@ namespace GameApplication
             }
         }
 
-        private void GamesList_Click(object sender, EventArgs e)
+        private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             Close();

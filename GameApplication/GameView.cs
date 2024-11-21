@@ -177,5 +177,10 @@ namespace GameApplication
 
             }
         }
+
+        private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

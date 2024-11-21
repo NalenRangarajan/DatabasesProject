@@ -259,7 +259,7 @@
             GamesList.TileSize = new Size(500, 30);
             GamesList.UseCompatibleStateImageBehavior = false;
             GamesList.View = View.Tile;
-            GamesList.Click += GamesList_Click;
+            GamesList.SelectedIndexChanged += GamesList_SelectedIndexChanged;
             // 
             // GamesLabel
             // 
@@ -282,7 +282,7 @@
             AddGameButton.UseVisualStyleBackColor = true;
             AddGameButton.Click += AddGameButton_Click;
             // 
-            // AddGameView
+            // AddReviewView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -306,7 +306,7 @@
             Controls.Add(GenreLabel);
             Controls.Add(GenreListView);
             Margin = new Padding(4, 5, 4, 5);
-            Name = "AddGameView";
+            Name = "AddReviewView";
             Text = "Add Review";
             ((System.ComponentModel.ISupportInitialize)MaxUpDown).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinUpDown).EndInit();
