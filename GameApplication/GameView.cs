@@ -11,9 +11,13 @@ namespace GameApplication
 
         private LoginView lv = new LoginView();
 
-        private Profile profile;
+        private WriteReview wr = new WriteReview();
 
-        private Game game;
+        AddReviewView agv = new AddReviewView();
+
+        private Profile? profile;
+
+        private Game? game;
 
         private SqlGameRepository sgr = new SqlGameRepository(connectionString);
 
@@ -69,7 +73,7 @@ namespace GameApplication
         public GameView()
         {
             InitializeComponent();
-            Deactivate();
+            DeactivateControls();
             LoginAttempt();
             /*
             SetGame("Doom", new DateTime(2016, 5, 13), "First-person shooter", "PS4, Windows, Xbox One, Nintendo Switch");
@@ -85,11 +89,27 @@ namespace GameApplication
             if (lv.ShowDialog() != DialogResult.Cancel)
             {
                 profile = lv.profile;
-                Activate();
+                ActivateControls();
             }
         }
 
-        private void Deactivate()
+        private void WriteReviewAttempt()
+        {
+            if (wr.ShowDialog() != DialogResult.Cancel)
+            {
+
+            }
+        }
+
+        private void AddReviewAttempt()
+        {
+            if (agv.ShowDialog() != DialogResult.Cancel)
+            {
+                WriteReviewAttempt();
+            }
+        }
+
+        private void DeactivateControls()
         {
             foreach (Control c in this.Controls)
             {
@@ -98,7 +118,7 @@ namespace GameApplication
             SignOutButton.Enabled = true;
         }
 
-        private void Activate()
+        private void ActivateControls()
         {
             foreach (Control c in this.Controls)
             {
@@ -114,13 +134,20 @@ namespace GameApplication
 
         private void UpdateGUIGame()
         {
-            SetGame(game.Name, game.ReleaseDate, "Null", "Null");
+            if (game != null)
+            {
+                SetGame(game.Name, game.ReleaseDate, "Null", "Null");
+            }
+            
         }
 
         private void SetWelcome()
         {
-            string username = profile.Username;
-            WelcomLabel.Text = $"Welcome {username}!";
+            if (profile != null)
+            {
+                string username = profile.Username;
+                WelcomLabel.Text = $"Welcome {username}!";
+            }
         }
 
         private void SetGame(string t, DateTime rd, string g, string p)
@@ -214,15 +241,7 @@ namespace GameApplication
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            AddReviewView agv = new AddReviewView();
-            if (agv.ShowDialog() == DialogResult.OK)
-            {
-                WriteReview wr = new WriteReview();
-                if (wr.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
+            AddReviewAttempt();
         }
 
         private void SignOutButton_Click(object sender, EventArgs e)
@@ -232,11 +251,7 @@ namespace GameApplication
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            WriteReview wr = new WriteReview();
-            if (wr.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            WriteReviewAttempt();
         }
 
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)

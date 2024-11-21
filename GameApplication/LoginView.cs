@@ -49,6 +49,10 @@ namespace GameApplication
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            UsernameTextBox.Text = "";
+            PasswordTextBox.Text = "";
+            
             string user = UsernameTextBox.Text;
             string pass = PasswordTextBox.Text;
 
@@ -66,6 +70,7 @@ namespace GameApplication
                     MessageBox.Show("Incorrect username or passowrd.");
                 }
             }
+            
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
