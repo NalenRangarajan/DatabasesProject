@@ -1,4 +1,5 @@
 ﻿using GameTracking;
+using GameTracking.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,10 @@ namespace GameApplication
         SqlReviewRepository srr = new SqlReviewRepository(connectionString);
 
         private AddGameView agv = new AddGameView();
+
+        public Game? game;
+
+        public Review? review;
 
         public AddReviewView()
         {
@@ -127,9 +132,9 @@ namespace GameApplication
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            if (agv.ShowDialog() == DialogResult.OK)
+            if (agv.ShowDialog() != DialogResult.Cancel)
             {
-
+                
             }
         }
 
