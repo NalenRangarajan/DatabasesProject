@@ -19,7 +19,7 @@ namespace GameTracking
 			connectionString = c;
 		}
 
-		public Game CreateGame(string name, DateTime releaseDate, string publisherName)
+		public Game CreateGame(string name, DateTime releaseDate, string developerName, string publisherName)
 		{
 			if (string.IsNullOrWhiteSpace(name))
 				throw new ArgumentException("The parameter cannot be null or empty.", nameof(name));
@@ -29,6 +29,9 @@ namespace GameTracking
 
 			if (string.IsNullOrWhiteSpace(publisherName))
 				throw new ArgumentException("The parameter cannot be null or empty.", nameof(publisherName));
+
+			if (string.IsNullOrWhiteSpace(developerName))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(developerName));
 
 			using (var transaction = new TransactionScope())
 			{
@@ -40,6 +43,7 @@ namespace GameTracking
 
 						command.Parameters.AddWithValue("Name", name);
 						command.Parameters.AddWithValue("ReleaseDate", releaseDate);
+						command.Parameters.AddWithValue("DeveloperName", developerName);
 						command.Parameters.AddWithValue("PublisherName", publisherName);
 
 						var p = command.Parameters.Add("GameID", SqlDbType.Int);
