@@ -7,7 +7,7 @@ AS
     );
 
 
-    INSERT INTO @GenreStaging (GenreID, [Name])
+    INSERT INTO @GenreStaging ([Name])
     VALUES
         (N'Adventure'),
 (N'RPG'),

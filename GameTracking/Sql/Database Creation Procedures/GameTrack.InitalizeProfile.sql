@@ -8,7 +8,7 @@
 
 /***************************** Modify values here *****************************/
 
-INSERT @ProfileStaging(ReviewID,Username,HashedPassword) 
+INSERT @ProfileStaging(Username,HashedPassword) 
 VALUES
 	(N'ipsum.dolor.sit@yahoo.ca', N'EPU36NMX5LK'),
 (N'fusce.dolor.quam@google.com', N'CZK72GKC2AE'),

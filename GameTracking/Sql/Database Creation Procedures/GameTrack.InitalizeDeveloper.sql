@@ -10,7 +10,7 @@
 
 /***************************** Modify values here *****************************/
 
-INSERT @DeveloperStaging(DeveloperID, [Name],FoundedDate, [Location],Email,TeamCount) /************************* CHANGED WEBSITE TO EMAIL */
+INSERT @DeveloperStaging( [Name],FoundedDate, [Location],Email,TeamCount) /************************* CHANGED WEBSITE TO EMAIL */
 VALUES
 	(N'FromSoftware', N'2025-05-22',N'Ap #637-496 At, Avenue',N'in.consequat@hotmail.com',141),
 (N'Unknown Developer', N'2025-07-27',N'994-5880 Non, Rd.',N'gravida.aliquam@outlook.ca',30),
@@ -842,7 +842,7 @@ VALUES
 (N'CD Projekt RED', N'2025-05-04',N'Ap #599-4014 In Av.',N'diam.dictum@hotmail.edu',72),
 (N'Atlus USA', N'2025-05-22',N'Ap #268-5120 Sit Street',N'pharetra.ut@google.edu',79),
 (N'id Software', N'2024-03-07',N'Ap #778-2193 Imperdiet St.',N'eu@aol.net',34);
-INSERT @DeveloperStaging(DeveloperID, [Name],FoundedDate, [Location],Email,TeamCount) /************************* CHANGED WEBSITE TO EMAIL */
+INSERT @DeveloperStaging( [Name],FoundedDate, [Location],Email,TeamCount) /************************* CHANGED WEBSITE TO EMAIL */
 VALUES
 (N'Bethesda Softworks', N'2025-02-28',N'353-8716 Vitae Rd.',N'sed.hendrerit.a@google.couk',59),
 (N'Annapurna Interactive', N'2024-12-17',N'P.O. Box 714, 7038 Cras St.',N'aenean.massa@outlook.ca',136),

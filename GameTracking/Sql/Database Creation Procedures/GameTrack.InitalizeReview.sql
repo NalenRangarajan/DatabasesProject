@@ -9,7 +9,7 @@
 
 /***************************** Modify values here *****************************/
 
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 	(1, 2,N'The first playthrough of elden ring is one of the best eperiences gaming can offer you but after youve explored everything in the open world and youve experienced all of the surprises you lose motivation to go exploring on repeat playthroughs which takes a lot away from the replayability which is a very important thing for from games imo.',N'2025-08-28'),
 (1, 3,N'a replay solidified my love for elden ring. so easily my favorite game of all time. actually beating malenia this time was also an amazing feeling. i just love being in this world man its the greatest of all time',N'2025-03-05'),
@@ -509,7 +509,7 @@ VALUES
 (83, 4,N'When i played this game, was when it where in the most boring meta ever existed: Barriers go pam!',N'2024-01-26'),
 (83, 10,N'For the sake of my sanity we will not be discussing all that this game did to and for me.',N'2024-03-30'),
 (83, 0,N'has winton 5/5',N'2023-12-01');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (84, 4,N'video game',N'2025-04-16'),
 (84, 8,N'başyapıt.',N'2025-04-28'),
@@ -1019,7 +1019,7 @@ VALUES
 (168, 5,N'Has nothing on Playdeads other game, Inside, but a fun couple hours through an amazingly atmospheric game. The No Point In Dying achievement was also a great challenge that made the game so much more stressful.',N'2025-05-06'),
 (168, 0,N'Sad about the spiders fate ðŸ˜”\n                     \n                     Really enjoyed the aesthetic of this, only played this because I remember this game was covered by every YouTuber way back when. Ultimately, I probably wont remember this game much.',N'2025-09-24'),
 (168, 5,N'Forgettable.',N'2023-12-17');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (168, 6,N'I dont have the brain big enough to get the underlying lore, but as Inside, its compelling both visually and in the platform puzzles, although I liked more Inside for the latter.',N'2025-02-14'),
 (168, 6,N'BALON hhahahahaha',N'2025-09-07'),
@@ -1479,7 +1479,7 @@ VALUES
 (244, 0,N'This game ruined my life',N'2024-12-24'),
 (244, 0,N'This is the scariest game Ive ever played... the jumpscares had me jumping in fear... the freddy fazbear is so scary',N'2024-07-04'),
 (244, 8,N'puta merda',N'2024-06-25');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (245, 0,N'Near perfect sequel to DKC. Music is fantastic, the level themes of pirate ships and spooky forests are fun, and the secret world is lots of fun!',N'2025-04-23'),
 (245, 0,N'This sequel holds up but with the novelty gone it took a solid level design to keep people interested, and that game delivers.',N'2025-03-13'),
@@ -2253,7 +2253,7 @@ VALUES
 (373, 0,N'Like Pokémon but funner',N'2025-02-26'),
 (373, 0,N'After having played several entries in the SMT franchise, I was incredibly hyped for this game. Overall, it didnt meet my expectations set by prior entries.',N'2024-09-24'),
 (373, 5,N'Delicia',N'2024-07-18');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (373, 9,N'I love the gameplay , character designs , and music but the story of this game was distractingly awful even though the narrative isn’t ever really the forefront of smt. When dazai took off his hat and slicked back his hair after I lost my mind . He is truly the law rep ever',N'2024-05-14'),
 (373, 9,N'This was the first Atlus game I decided to try out and I had a pretty good time! It’s a really fun monster collector with some fantastic music, an incredibly fun combat system with tons of expression, and some pretty great presentation. Theres just a level of quality here that I appreciate\n                     \n                      sooo\n                     \n                     much, you can really tell they polished the 𝗦𝗛𝗜𝗧 out of this game… imma big fan.',N'2024-10-23'),
@@ -3137,7 +3137,7 @@ VALUES
 (520, 6,N'it had a fucking bee',N'2025-07-19'),
 (520, 3,N'I racked up 80+ hours in this one despite it having no bikes, a really shitty roster, and bland tracks. I was also a middle schooler.',N'2024-05-01'),
 (520, 4,N'I forgot about this one',N'2025-07-11');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (520, 8,N'Mario Kart 7 is a game that I have such fond memories of. Playing the courses with friends at camp using download play really was an experience you couldnt get anywhere else. Looking past my nostalgia, the tracks are gorgeous. Wuhu Loop, Maka Wuhu, Daisy Cruiser, and Neo Bowser City are some of my personal favorites. There isnt really a reason to go back and play it now due to the existance of Mario Kart 8 Deluxe, but I still love this game',N'2024-05-07'),
 (520, 7,N'Kind of a bland safe mario kart game. I didnt really play this much with friends as when it came out not a lot of other people had 3DSes, and I didnt play this much online. Ive been meaning to get people around to play this with as I do remember it having a good selection of retro tracks, but nobody seems to have their 3DSes around with them anymore these days.',N'2025-05-10'),
@@ -4109,7 +4109,7 @@ VALUES
 (683, 10,N'É muito divertido investigar e tentar entender o que caralhos tá acontecendo nesse jogo, pro primeiro capítulo eu precisei desenhar um mapa num caderno e amo interagir assim com jogos. A história também é um terror religioso muito foda e uma interpretação ambígua e assustadora de demônios que genuinamente assusta.',N'2025-02-15'),
 (683, 2,N'JOHN THAT IS NOT AMY JOHN GET AWAY JOOOOOOOHN GARY DOESNT LOVE YOU JOOOOOOOOOHN',N'2024-11-13'),
 (683, 5,N'GARY LOVES YOU',N'2025-06-08');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (684, 4,N'A neat lil RPG with some fun characters, yet I feel like i dont remember the plot as well as I should have for a game of this length. Its cool that the gamecube gets to have some RPG fun of its own, and while this game probably isnt going to be my absolute most favorite RPG, it really doesnt have to be since its just an overall chill lil time hanging out with your bros stoppin the big bad with some angel shenanigans or whatnot. Starting to think that tales games arent really cool for the plot and its really rather the characters and party that steals the show, because thats pretty much all I can remember out of the ones Ive played.',N'2024-05-08'),
 (684, 9,N'Mitada',N'2024-09-04'),
@@ -5047,7 +5047,7 @@ VALUES
 (842, 5,N'Indie goty 2022',N'2024-10-07'),
 (843, 2,N'A shooter with awful shooting mechanics.',N'2023-12-29'),
 (843, 5,N'mimar sinan simulator',N'2024-02-28');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (843, 6,N'tem muito tryhard mas é muito bom.',N'2024-02-13'),
 (843, 2,N'I am dead serious about this rating',N'2025-08-12'),
@@ -6041,7 +6041,7 @@ VALUES
 (1009, 6,N'I can still hear the voices in my head.',N'2023-11-29'),
 (1009, 9,N'people who think this game is some kind of quality product are nostalgia goggled up',N'2025-09-12'),
 (1009, 1,N'A masterpiece',N'2025-09-28');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (1009, 9,N'The greatest game ever made according to my friends in elementary school who’d never played\n                     \n                      Morrowind\n                     \n                     or\n                     \n                      Daggerfall\n                     \n                     .',N'2024-03-24'),
 (1009, 0,N'is it true what theyre saying? is old baenlin really dead?',N'2025-07-21'),
@@ -7028,7 +7028,7 @@ VALUES
 (1174, 9,N'Just not for me. Glad others are enjoying it',N'2024-08-15'),
 (1175, 4,N'put the phone down and play this game you zoomer bitch',N'2025-02-10'),
 (1175, 7,N'Mid',N'2024-06-15');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (1175, 5,N'Such a great game. I loved the games atmosphere, its music, characters, gameplay, and mini-games. The game is just the right length too and didnt overstay its welcome.',N'2025-06-14'),
 (1175, 9,N'my first thought after finishing this was wow they should really make a sequel with a swearing monkey with guns, maybe joesph gordon-levitt should do help too',N'2024-12-05'),
@@ -8023,7 +8023,7 @@ VALUES
 (1344, 10,N'Playing with friends is so fun',N'2024-12-12'),
 (1344, 7,N'Peak Monster Hunter. Perfect blend of old world combat with some new world style mechanics, and has an amazing amount of content. Truly the whole package.',N'2025-10-30'),
 (1344, 4,N'En iyi Monster Hunter oyunu.',N'2024-08-29');
-INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+INSERT @ReviewStaging(GameID,Score,Body,ReviewDate) 
 VALUES
 (1344, 5,N'Holy, Shit that ahtal ka fight was best fight in the monster hunter series',N'2025-08-01'),
 (1344, 8,N'Best monster hunter in my opinion, this is basically the franchise\s Everyone is Here! moment',N'2024-01-08'),
@@ -9022,7 +9022,7 @@ VALUES
 (1512, 8,N'pog lego game',N'2025-04-18'),
 (1512, 4,N'Pretty decent lego game! Loved the attention to detail all around! 4,5/5',N'2024-12-19'),
 (1512, 3,N'Class',N'2025-11-06'),
-(1512, 5,N'TT Games got crunch time for this.',N'2025-05-23'),
+(1512, 5,N'TT Games got crunch time for this.',N'2025-05-23');
 
 
 

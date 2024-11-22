@@ -8,7 +8,7 @@
 
 /***************************** Modify values here *****************************/
 
-INSERT @GameStaging( GameID,PublisherID,[Name], ReleaseDate)
+INSERT @GameStaging(PublisherID,[Name], ReleaseDate)
 VALUES
    (1, N'Elden Ring','2022-02-25'),
 (2, N'Hades','2019-12-10'),
@@ -782,7 +782,7 @@ VALUES
 (278, N'Agar.io','2015-04-28'),
 (279, N'Fatal Frame II: Crimson Butterfly','2003-11-27'),
 (47, N'World of Warcraft','2004-11-23');
-INSERT @GameStaging( GameID,PublisherID,[Name], ReleaseDate)
+INSERT @GameStaging(PublisherID,[Name], ReleaseDate)
 VALUES
 (30, N'The Legend of Heroes: Trails of Cold Steel II','2014-09-25'),
 (280, N'Gang Beasts','2017-12-12'),
