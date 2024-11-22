@@ -46,7 +46,7 @@ namespace GameTracking
 
 						int profileID = (int)command.Parameters["ProfileID"].Value;
 
-						return new Profile(profileID, username, hashedPassword, DateTime.Now);
+						return new Profile(profileID, username, hashedPassword);
 					}
 				}
 			}
