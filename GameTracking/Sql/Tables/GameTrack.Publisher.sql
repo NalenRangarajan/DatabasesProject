@@ -31,7 +31,7 @@ BEGIN
    ALTER TABLE GameTrack.Publisher
    ADD CONSTRAINT [UK_GameTrack_Publisher_Name] UNIQUE NONCLUSTERED
    (
-      Publisher ASC
+      [Name] ASC
    )
 END;
 
