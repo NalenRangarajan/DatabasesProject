@@ -158,7 +158,7 @@ namespace GameApplication
                 {
                     genreString.Append(genre.Name + ", ");
                 }
-                genreString.Remove(genreString.Length - 2, 2);
+                genreString.Remove(genreString.Length - 2, 2); //crash if only 1 genre
 
                 StringBuilder platformString = new StringBuilder();
                 foreach (Platform platform in spr.GetPlatformsForGame(game.GameID))

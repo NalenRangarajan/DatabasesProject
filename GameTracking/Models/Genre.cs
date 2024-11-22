@@ -17,5 +17,10 @@ namespace GameTracking.Models
 			GenreID = gID;
 			Name = n;
 		}
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 }

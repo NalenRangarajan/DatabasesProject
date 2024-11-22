@@ -9,8 +9,10 @@ IF NOT EXISTS(
 	WHERE D.[Name] = @DeveloperName
 	)
 BEGIN	
-	INSERT GameTrack.Developer([Name])
-	VALUES (@DeveloperName)
+	DECLARE @NewDevEmail NVARCHAR(128) = @DeveloperName + N'@gmail.com';
+
+	INSERT GameTrack.Developer([Name], Email)
+	VALUES (@DeveloperName, @NewDevEmail)
 	SET @DeveloperID = SCOPE_IDENTITY();
 END;
 GO
