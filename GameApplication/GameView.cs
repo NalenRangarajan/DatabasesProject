@@ -73,6 +73,7 @@ namespace GameApplication
         public GameView()
         {
             InitializeComponent();
+            //GamesList.
             DeactivateControls();
             LoginAttempt();
             /*

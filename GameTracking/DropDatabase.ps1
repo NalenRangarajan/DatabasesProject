@@ -22,4 +22,4 @@ END;
 
 Write-Host "Dropping $Database database"
 
-Invoke-Sqlcmd -ServerInstance $Server -Database "master" -Query $Sql -Variable "DatabaseName=$Database"
+Invoke-SqlCmd -ServerInstance $Server -Database "master" -Query $Sql -Variable "DatabaseName=$Database"
