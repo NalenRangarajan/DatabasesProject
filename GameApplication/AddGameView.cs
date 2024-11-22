@@ -32,6 +32,7 @@ namespace GameApplication
             if (title != ""  && genre != "" && developer != "" && publisher != "")
             {
                 sgr.CreateGame(title, releaseDate, developer, publisher);
+                this.Close();
                 this.Hide();
                 TitleTextBox.Text = "";
                 GenreTextBox.Text = "";

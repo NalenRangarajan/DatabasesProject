@@ -1,7 +1,9 @@
 using GameTracking;
 using GameTracking.Models;
+using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.Pkcs;
 
 namespace GameApplication
 {
@@ -18,6 +20,8 @@ namespace GameApplication
         private Profile? profile;
 
         private Game? game;
+
+        private IReadOnlyList<Game>? games;
 
         private SqlGameRepository sgr = new SqlGameRepository(connectionString);
 
@@ -73,7 +77,6 @@ namespace GameApplication
         public GameView()
         {
             InitializeComponent();
-            //GamesList.
             DeactivateControls();
             LoginAttempt();
             /*
@@ -87,10 +90,11 @@ namespace GameApplication
 
         private void LoginAttempt()
         {
-            if (lv.ShowDialog() != DialogResult.Cancel)
+            if (lv.ShowDialog() == DialogResult.OK)
             {
                 profile = lv.profile;
                 ActivateControls();
+                UpdateGUIProfile();
             }
         }
 
@@ -130,7 +134,6 @@ namespace GameApplication
         private void UpdateGUIProfile()
         {
             SetWelcome();
-            SetGamesList();
         }
 
         private void UpdateGUIGame()
@@ -180,63 +183,13 @@ namespace GameApplication
 
         private void SetGamesList()
         {
-            string[] gameTitles = new string[50]
-            {
-                "The Legend of Zelda: Breath of the Wild",
-                "Elden Ring",
-                "Red Dead Redemption 2",
-                "Cyberpunk 2077",
-                "God of War",
-                "The Witcher 3: Wild Hunt",
-                "Grand Theft Auto V",
-                "Hollow Knight",
-                "Minecraft",
-                "Dark Souls III",
-                "Sekiro: Shadows Die Twice",
-                "Resident Evil Village",
-                "Hades",
-                "Stardew Valley",
-                "Animal Crossing: New Horizons",
-                "Portal 2",
-                "Half-Life: Alyx",
-                "Bloodborne",
-                "Super Mario Odyssey",
-                "Celeste",
-                "Final Fantasy VII Remake",
-                "Mass Effect Legendary Edition",
-                "Disco Elysium",
-                "Outer Wilds",
-                "Death Stranding",
-                "Assassin's Creed Valhalla",
-                "Marvel's Spider-Man",
-                "DOOM Eternal",
-                "Control",
-                "Ori and the Will of the Wisps",
-                "A Plague Tale: Innocence",
-                "Horizon Zero Dawn",
-                "Forza Horizon 5",
-                "The Elder Scrolls V: Skyrim",
-                "Metal Gear Solid V: The Phantom Pain",
-                "Persona 5 Royal",
-                "Divinity: Original Sin 2",
-                "Dead Cells",
-                "Terraria",
-                "Cuphead",
-                "Fallout 4",
-                "Dragon Age: Inquisition",
-                "NieR: Automata",
-                "Firewatch",
-                "Inside",
-                "Limbo",
-                "Journey",
-                "Among Us",
-                "It Takes Two",
-                "Overwatch"
-            };
-            foreach (string title in gameTitles)
-            {
-                var item = new ListViewItem(title);
-                GamesList.Items.Add(item);
+            if (profile != null) {
+                games = sgr.GetGamesForProfile(profile.Username);
+                foreach (Game game in games)
+                {
+                    var item = new ListViewItem(game.Name);
+                    GamesList.Items.Add(item);
+                }
             }
         }
 
@@ -247,6 +200,7 @@ namespace GameApplication
 
         private void SignOutButton_Click(object sender, EventArgs e)
         {
+            DeactivateControls();
             LoginAttempt();
         }
 
