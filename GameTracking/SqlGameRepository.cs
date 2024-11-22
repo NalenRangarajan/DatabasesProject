@@ -114,7 +114,6 @@ namespace GameTracking
 				}
 			}
 		}
-		*/
 
 		public Game FetchGame(int gameID)
 		{
