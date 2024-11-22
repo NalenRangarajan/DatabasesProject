@@ -19,6 +19,24 @@ namespace GameApplication
 
         private int gameID;
 
+        public int Score
+        {
+            get => (int)ScoreUpDown.Value;
+            set
+            {
+                ScoreUpDown.Value = value;
+            }
+        }
+
+        public string Body
+        {
+            get => BodyTextBox.Text;
+            set
+            {
+                BodyTextBox.Text = value;
+            }
+        }
+
         public WriteReview(int gameID)
         {
             this.gameID = gameID;
@@ -27,7 +45,7 @@ namespace GameApplication
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            reviewRepo.CreateReview(gameID, Convert.ToInt32(ScoreUpDown.Value), BodyTextBox.Text);
+            reviewRepo.CreateReview(gameID, (int)ScoreUpDown.Value, BodyTextBox.Text);
             DialogResult = DialogResult.OK;
             Close();
         }

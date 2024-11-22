@@ -48,7 +48,7 @@ namespace GameApplication
 
 
         private void LoginButton_Click(object sender, EventArgs e)
-        {   
+        {
             string user = UsernameTextBox.Text;
             string pass = PasswordTextBox.Text;
 
@@ -69,7 +69,7 @@ namespace GameApplication
             {
                 MessageBox.Show("Incorrect username or passowrd.");
             }
-            
+
         }
 
         private void RegisterButton_Click(object sender, EventArgs e)
@@ -79,9 +79,12 @@ namespace GameApplication
             if (user != "" && pass != "")
             {
                 profile = spr.CreateProfile(user, Rot13(pass));
-                this.Hide();
-                UsernameTextBox.Text = "";
-                PasswordTextBox.Text = "";
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You must populate both fields.");
             }
         }
     }

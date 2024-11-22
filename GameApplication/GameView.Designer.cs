@@ -179,12 +179,12 @@
             SignOutButton.AutoSize = true;
             SignOutButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             SignOutButton.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            SignOutButton.Location = new Point(727, 19);
+            SignOutButton.Location = new Point(708, 19);
             SignOutButton.Margin = new Padding(0);
             SignOutButton.Name = "SignOutButton";
-            SignOutButton.Size = new Size(81, 31);
+            SignOutButton.Size = new Size(100, 31);
             SignOutButton.TabIndex = 14;
-            SignOutButton.Text = "Sign Out";
+            SignOutButton.Text = "Sign In/Out";
             SignOutButton.UseVisualStyleBackColor = true;
             SignOutButton.Click += SignOutButton_Click;
             // 

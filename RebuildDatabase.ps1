@@ -62,6 +62,9 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Creation Procedures\GameTrack.CreateProfile.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Creation Procedures\GameTrack.CreatePublisher.sql"
 
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Entire Procedures\GameTrack.GetAllGames.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Entire Procedures\GameTrack.GetAllGenres.sql"
+
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Fetch Procedures\GameTrack.FetchDeveloper.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Fetch Procedures\GameTrack.FetchGame.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Fetch Procedures\GameTrack.FetchGenre.sql"
@@ -77,6 +80,7 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetProfileByUsername.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetPublisherByName.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetReviewByGameID.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetReviewByUsernameAndGameID.sql"
 
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetDevelopersForGame.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetGamesForProfile.sql"

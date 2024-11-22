@@ -11,18 +11,21 @@ namespace GameApplication
     {
         private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
 
-
-        AddReviewView agv = new AddReviewView();
-
         private Profile? profile;
 
         private Game? game;
+
+        private Review? review;
 
         private IReadOnlyList<Game>? games;
 
         private SqlGameRepository sgr = new SqlGameRepository(connectionString);
 
+        private SqlGenreRepository sgrr = new SqlGenreRepository(connectionString);
+
         private SqlPlatformRepository spr = new SqlPlatformRepository(connectionString);
+
+        private SqlReviewRepository srr = new SqlReviewRepository(connectionString);
         public string GameTitle
         {
             get
@@ -76,13 +79,6 @@ namespace GameApplication
             InitializeComponent();
             DeactivateControls();
             LoginAttempt();
-            /*
-            SetGame("Doom", new DateTime(2016, 5, 13), "First-person shooter", "PS4, Windows, Xbox One, Nintendo Switch");
-            YourReview.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho.", DateTime.Now);
-            SetOtherReviews();
-            SetGamesList();
-            SetWelcome();
-            */
         }
 
         private void LoginAttempt()
@@ -93,25 +89,31 @@ namespace GameApplication
                 {
                     profile = lv.profile;
                     ActivateControls();
+                    EditButton.Enabled = false;
                     UpdateGUIProfile();
                 }
             }
         }
 
-        private void WriteReviewAttempt()
+        private void WriteReviewAttempt(int gameID)
         {
-            using (WriteReview wr = new WriteReview())
-            if (wr.ShowDialog() != DialogResult.Cancel)
+            using (WriteReview wr = new WriteReview(gameID))
             {
-
+                if (wr.ShowDialog() == DialogResult.OK)
+                {
+                    review = srr.CreateReview(gameID, wr.Score, wr.Body);
+                }
             }
         }
 
         private void AddReviewAttempt()
         {
-            if (agv.ShowDialog() != DialogResult.Cancel)
+            using (AddReviewView arv = new AddReviewView())
             {
-                WriteReviewAttempt();
+                if (arv.ShowDialog() == DialogResult.OK)
+                {
+                    WriteReviewAttempt(arv.game.GameID);
+                }
             }
         }
 
@@ -135,15 +137,20 @@ namespace GameApplication
         private void UpdateGUIProfile()
         {
             SetWelcome();
+            SetGamesList();
         }
 
         private void UpdateGUIGame()
         {
             if (game != null)
             {
-                SetGame(game.Name, game.ReleaseDate, "Null", "Null");
+                EditButton.Enabled = true;
+                SetGame(game.Name, game.ReleaseDate, sgrr.GetGenresForGame(game.GameID).ToString(), spr.GetPlatformsForGame(game.GameID).ToString()); ;
+                Review r = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
+                SetReview(r.Score, r.Body, r.ReviewDate);
+                SetOtherReviews();
             }
-            
+
         }
 
         private void SetWelcome()
@@ -165,26 +172,28 @@ namespace GameApplication
 
         private void SetOtherReviews()
         {
-            for (int i = 0; i < 10; i++)
+            IReadOnlyList<Review> reviews = srr.GetReview(game.GameID);
+            foreach (Review review in reviews)
             {
                 ReviewControl r = new ReviewControl();
                 r.Margin = new Padding(0, 0, 0, 5);
-                r.SetReview(i, "When id Software resurrected the DOOM franchise in 2016, it was clear they aimed to recapture the lightning-in-a-bottle that made the original 1993 game a cultural phenomenon. What emerged was a masterclass in modern game design that paid homage to its roots while blazing its own trail—a visceral, chaotic, and relentlessly fun shooter that sets the gold standard for reboots.", DateTime.Now);
+                r.SetReview(review.Score, review.Body, DateTime.Now);
                 OtherReviews.Controls.Add(r);
             }
         }
 
-        private void SetReview(int score, string body, DateTime dt)
+        private void SetReview(int score, string? body, DateTime dt)
         {
             ReviewControl r = new ReviewControl();
             r.Margin = new Padding(0, 0, 0, 5);
             r.SetReview(score, body, dt);
-            OtherReviews.Controls.Add(r);
+            //OtherReviews.Controls.Add(r);
         }
 
         private void SetGamesList()
         {
-            if (profile != null) {
+            if (profile != null)
+            {
                 games = sgr.GetGamesForProfile(profile.Username);
                 foreach (Game game in games)
                 {
@@ -208,12 +217,14 @@ namespace GameApplication
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            WriteReviewAttempt();
+            WriteReviewAttempt(game.GameID);
         }
 
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            ListViewItem selectedItem = (ListViewItem)GamesList.SelectedItems[0];
+            game = (Game)selectedItem.Tag;
+            UpdateGUIGame();
         }
     }
 }

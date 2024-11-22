@@ -18,9 +18,13 @@ namespace GameApplication
 
         SqlReviewRepository srr = new SqlReviewRepository(connectionString);
 
+        SqlGameRepository sgr = new SqlGameRepository(connectionString);
+
+        SqlGenreRepository sgrr = new SqlGenreRepository(connectionString);
+
         private AddGameView agv = new AddGameView();
 
-        private Game? game;
+        public Game? game;
 
         public Review? review;
 
@@ -32,7 +36,7 @@ namespace GameApplication
             MaxDatePicker.ValueChanged += UpdateDatePicker;
             MinDatePicker.ValueChanged += UpdateDatePicker;
             MinUpDown.ValueChanged += UpdateUpDown;
-            MaxUpDown.ValueChanged += UpdateUpDown;
+            MaxUpDown.ValueChanged += UpdateUpDown; ;
         }
 
         private void UpdateUpDown(object? sender, EventArgs e)
@@ -49,83 +53,25 @@ namespace GameApplication
 
         private void SetGenres()
         {
-            string[] gameGenres = new string[]
+            IReadOnlyList<Genre> genres = sgrr.GetAllGenres();
+            foreach (Genre genre in genres)
             {
-                "Action",
-                "Adventure",
-                "Role-Playing Games (RPG)",
-                "Shooter",
-                "Simulation",
-                "Strategy",
-                "Sports",
-                "Puzzle",
-                "Survival Horror",
-                "Platformer"
-            };
-            foreach (string genre in gameGenres)
-            {
-                GenreListView.Items.Add(genre);
+                var item = new ListViewItem();
+                item.Text = genre.Name;
+                item.Tag = genre;
+                GenreListView.Items.Add(item);
             }
         }
 
         private void SetGamesList()
         {
-            string[] gameTitles = new string[50]
+
+            IReadOnlyList<Game> games = sgr.GetAllGames();
+            foreach (Game ggame in games)
             {
-                "The Legend of Zelda: Breath of the Wild",
-                "Elden Ring",
-                "Red Dead Redemption 2",
-                "Cyberpunk 2077",
-                "God of War",
-                "The Witcher 3: Wild Hunt",
-                "Grand Theft Auto V",
-                "Hollow Knight",
-                "Minecraft",
-                "Dark Souls III",
-                "Sekiro: Shadows Die Twice",
-                "Resident Evil Village",
-                "Hades",
-                "Stardew Valley",
-                "Animal Crossing: New Horizons",
-                "Portal 2",
-                "Half-Life: Alyx",
-                "Bloodborne",
-                "Super Mario Odyssey",
-                "Celeste",
-                "Final Fantasy VII Remake",
-                "Mass Effect Legendary Edition",
-                "Disco Elysium",
-                "Outer Wilds",
-                "Death Stranding",
-                "Assassin's Creed Valhalla",
-                "Marvel's Spider-Man",
-                "DOOM Eternal",
-                "Control",
-                "Ori and the Will of the Wisps",
-                "A Plague Tale: Innocence",
-                "Horizon Zero Dawn",
-                "Forza Horizon 5",
-                "The Elder Scrolls V: Skyrim",
-                "Metal Gear Solid V: The Phantom Pain",
-                "Persona 5 Royal",
-                "Divinity: Original Sin 2",
-                "Dead Cells",
-                "Terraria",
-                "Cuphead",
-                "Fallout 4",
-                "Dragon Age: Inquisition",
-                "NieR: Automata",
-                "Firewatch",
-                "Inside",
-                "Limbo",
-                "Journey",
-                "Among Us",
-                "It Takes Two",
-                "Overwatch"
-            };
-            foreach (string title in gameTitles)
-            {
-                var item = new ListViewItem(title);
+                var item = new ListViewItem(ggame.Name);
+                item.Text = ggame.Name;
+                item.Tag = ggame;
                 GamesList.Items.Add(item);
             }
         }
@@ -134,24 +80,15 @@ namespace GameApplication
         {
             if (agv.ShowDialog() == DialogResult.OK)
             {
-                
+                MessageBox.Show("Game Successfully Added.");
             }
         }
 
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ListViewItem selectedItem = (ListViewItem)GamesList.SelectedItems[0];
+            game = (Game)selectedItem.Tag;
             DialogResult = DialogResult.OK;
-
-			ListViewItem selectedItem = (ListViewItem)GamesList.SelectedItems[0];
-			Game game = (Game)selectedItem.Tag;
-
-			using (WriteReview wr = new WriteReview(game.GameID))
-            {
-                if(wr.ShowDialog() == DialogResult.OK)
-                {
-
-                }
-            }
             Close();
         }
     }
