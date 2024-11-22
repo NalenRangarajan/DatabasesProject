@@ -64,6 +64,7 @@ namespace GameTracking
 				}
 			}
 		}
+		/*
 		 //STILL FIX
 		public Game CreateGameDeveloper(int gameID, string developerName)
 		{
@@ -110,6 +111,7 @@ namespace GameTracking
 				}
 			}
 		}
+		*/
 
 		public Game FetchGame(int gameID)
 		{
