@@ -77,7 +77,7 @@ namespace GameTracking
 			}
 		}
 
-		public Review GetReview(int gameID)
+		public IReadOnlyList<Review> GetReview(int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
@@ -91,12 +91,29 @@ namespace GameTracking
 
 					using (SqlDataReader reader = command.ExecuteReader())
 					{
-						Review review = TranslateReview(reader)!;
-
-						return review;
+						return TranslateReviews(reader);
 					}
 				}
 			}
+		}
+
+		private IReadOnlyList<Review> TranslateReviews(SqlDataReader reader)
+		{
+			List<Review> review = new List<Review>();
+
+			int reviewIDOrdinal = reader.GetOrdinal("ReviewID");
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int scoreOrdinal = reader.GetOrdinal("Score");
+			int bodyOrdinal = reader.GetOrdinal("Body");
+			int reviewDateOrdinal = reader.GetOrdinal("ReviewDate");
+
+			while (reader.Read())
+			{
+				review.Add(new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetInt32(scoreOrdinal),
+				reader.GetString(bodyOrdinal), reader.GetDateTime(reviewDateOrdinal)));
+			}
+
+			return review;
 		}
 
 		private Review? TranslateReview(SqlDataReader reader)
