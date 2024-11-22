@@ -1,10 +1,13 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateGame
    @Name NVARCHAR(32),
    @ReleaseDate DATETIME2,
+   @DeveloperName NVARCHAR(32),
    @PublisherName NVARCHAR(32),
    @GameID INT OUTPUT,
    @PublisherID INT OUTPUT
 AS
+
+EXEC GameTrack.CreateDeveloper @DeveloperName = @DeveloperName;
 
 EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;
 
