@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE GameTrack.GetGenresThroughGame
+﻿CREATE OR ALTER PROCEDURE GameTrack.GetGenresForGame
 	@GameID INT
 AS
 
