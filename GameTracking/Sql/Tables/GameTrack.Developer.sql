@@ -3,11 +3,11 @@ BEGIN
 	CREATE TABLE GameTrack.Developer
 	(
 		DeveloperID INT NOT NULL IDENTITY(1,1),
-		[Name] NVARCHAR(32) NOT NULL,
-		Website NVARCHAR(128) NOT NULL,
-		FoundedDate DATETIME2 NOT NULL,
-		[Location] NVARCHAR(128) NOT NULL,
-		TeamCount INT NOT NULL
+		[Name] NVARCHAR(64) NOT NULL,
+		Email NVARCHAR(128),
+		FoundedDate DATETIME2,
+		[Location] NVARCHAR(256),
+		TeamCount INT
 
 		CONSTRAINT [PK_GameTrack_Developer_DeveloperID] PRIMARY KEY CLUSTERED
 		(

@@ -1,7 +1,8 @@
-﻿DECLARE @PlatformStaging TABLE
+﻿
+DECLARE @PlatformStaging TABLE
 (
-   PlatformID TINYINT NOT NULL PRIMARY KEY,
-   [Name] VARCHAR(8) NOT NULL UNIQUE
+	PlatformID INT NOT NULL IDENTITY(1,1),
+		[Name] NVARCHAR(32) NOT NULL
 );
 
 /***************************** Modify values here *****************************/
@@ -48,5 +49,5 @@ WHEN MATCHED AND S.[Name] <> T.[Name] THEN
    UPDATE
    SET [Name] = S.[Name]
 WHEN NOT MATCHED THEN
-   INSERT(PlatformID, [Name])
-   VALUES(S.PlatformID, S.[Name]);
+   INSERT([Name])
+   VALUES(S.[Name]);

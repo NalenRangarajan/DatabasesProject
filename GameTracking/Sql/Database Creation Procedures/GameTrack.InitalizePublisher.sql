@@ -1,9 +1,12 @@
-﻿DECLARE @PublisherStaging TABLE
+﻿
+AS
+AS
+DECLARE @PublisherStaging TABLE
 (
 	PublisherID INT NOT NULL IDENTITY(1,1),
-	[Name] NVARCHAR(32) NOT NULL,
+	[Name] NVARCHAR(64) NOT NULL,
 	FoundedDate DATETIME2 NOT NULL,
-	[Location] NVARCHAR(32) NOT NULL,
+	[Location] NVARCHAR(256) NOT NULL,
 	Email NVARCHAR(128) NOT NULL,
 	EmployeeCount INT NOT NULL
 );
@@ -497,5 +500,5 @@ WHEN MATCHED AND S.[Name] <> T.[Name] THEN
    EmployeeCount = S.EmployeeCount
 
 WHEN NOT MATCHED THEN
-   INSERT(PublisherID, [Name],FoundedDate, [Location],Email,EmployeeCount)
-   VALUES(S.PublisherID, S.[Name],S.FoundedDate, S.[Location],S.Email,S.EmployeeCount);
+   INSERT([Name],FoundedDate, [Location],Email,EmployeeCount)
+   VALUES(S.[Name],S.FoundedDate, S.[Location],S.Email,S.EmployeeCount);
