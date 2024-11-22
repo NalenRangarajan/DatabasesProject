@@ -163,7 +163,10 @@ namespace GameApplication
                 {
                     platformString.Append(platform.Name + ", ");
                 }
-                platformString.Remove(platformString.Length - 2, 2);
+                if(platformString.Length != 0)
+                {
+					platformString.Remove(platformString.Length - 2, 2);
+				}
 
                 SetGame(game.Name, game.ReleaseDate, genreString.ToString(), platformString.ToString()); ;
                 review = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
