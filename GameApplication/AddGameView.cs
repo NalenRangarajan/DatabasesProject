@@ -1,4 +1,5 @@
-﻿using GameTracking;
+﻿using GameTracking.Models;
+using GameTracking;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace GameApplication
 
         private SqlGameRepository sgr = new SqlGameRepository(connectionString);
 
+        public Game CreatedGame;
+
         public AddGameView()
         {
             InitializeComponent();
@@ -31,7 +34,11 @@ namespace GameApplication
             DateTime releaseDate = ReleaseDatePicker.Value;
             if (title != ""  && genre != "" && developer != "" && publisher != "")
             {
-                Game created = sgr.CreateGame(title, releaseDate, developer, publisher);
+                CreatedGame= sgr.CreateGame(title, releaseDate, developer, publisher);
+                if(CreatedGame == null)
+                {
+                    MessageBox.Show("Null game");
+                }
 
                 DialogResult = DialogResult.OK;
                 this.Close();

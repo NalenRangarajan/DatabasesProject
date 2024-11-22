@@ -1,5 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateDeveloper
-	@DeveloperName NVARCHAR(32)
+	@DeveloperName NVARCHAR(32),
+	@DeveloperID INT OUTPUT
 AS
 
 IF NOT EXISTS(
@@ -7,8 +8,9 @@ IF NOT EXISTS(
 	FROM GameTrack.Developer D 
 	WHERE D.[Name] = @DeveloperName
 	)
-BEGIN
+BEGIN	
 	INSERT GameTrack.Developer([Name])
 	VALUES (@DeveloperName)
+	SET @DeveloperID = SCOPE_IDENTITY();
 END;
 GO

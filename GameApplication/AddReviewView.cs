@@ -85,6 +85,9 @@ namespace GameApplication
             if (agv.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Game Successfully Added.");
+
+				IReadOnlyList<Game> games = sgr.GetAllGames();
+				SetGamesList(games);
 			}
         }
 
