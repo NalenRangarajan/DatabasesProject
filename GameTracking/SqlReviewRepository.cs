@@ -34,6 +34,7 @@ namespace GameTracking
 						command.Parameters.AddWithValue("Body", body);
 
 						var p = command.Parameters.Add("ReviewID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
 

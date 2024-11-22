@@ -36,6 +36,7 @@ namespace GameTracking
 						command.Parameters.AddWithValue("HashedPassword", hashedPassword);
 
 						var p = command.Parameters.Add("ProfileID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
 
@@ -105,7 +106,6 @@ namespace GameTracking
 			int profileIDOrdinal = reader.GetOrdinal("ProfileID");
 			int usernameOrdinal = reader.GetOrdinal("Username");
 			int hashedPasswordOrdinal = reader.GetOrdinal("HashedPassword");
-			int createdOnOrdinal = reader.GetOrdinal("CreatedOn");
 
 			if(!reader.Read())
 			{
@@ -113,7 +113,7 @@ namespace GameTracking
 			}
 
 			return new Profile(reader.GetInt32(profileIDOrdinal), reader.GetString(usernameOrdinal), 
-				reader.GetString(hashedPasswordOrdinal), reader.GetDateTime(createdOnOrdinal));
+				reader.GetString(hashedPasswordOrdinal));
 		}
 	}
 }

@@ -47,6 +47,7 @@ namespace GameTracking
 						command.Parameters.AddWithValue("PublisherName", publisherName);
 
 						var p = command.Parameters.Add("GameID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
 

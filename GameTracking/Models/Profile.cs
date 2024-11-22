@@ -14,14 +14,11 @@ namespace GameTracking.Models
 
 		public string HashedPassword { get; set; }
 
-		public DateTime CreatedOn { get; set; }
-
-		public Profile(int pID, string u, string p, DateTime co)
+		public Profile(int pID, string u, string p)
 		{
 			ProfileID = pID;
 			Username = u;
 			HashedPassword = p;
-			CreatedOn = co;
 		}
 	}
 }
