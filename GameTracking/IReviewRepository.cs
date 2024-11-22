@@ -11,7 +11,7 @@ namespace GameTracking
 	{
 		Review CreateReview(int gameID, int score, string? body);
 
-		Review FetchReviews(int reviewID);
+		Review FetchReview(int reviewID);
 
 		IReadOnlyList<Review> GetReviews(int gameID);
 
