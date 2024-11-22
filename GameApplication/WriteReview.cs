@@ -17,8 +17,6 @@ namespace GameApplication
 
         private SqlReviewRepository reviewRepo = new SqlReviewRepository(connectionString);
 
-        private int gameID;
-
         public int Score
         {
             get => (int)ScoreUpDown.Value;
@@ -37,9 +35,8 @@ namespace GameApplication
             }
         }
 
-        public WriteReview(int gameID)
+        public WriteReview()
         {
-            this.gameID = gameID;
             InitializeComponent();
         }
 

@@ -97,10 +97,11 @@ namespace GameApplication
 
         private void WriteReviewAttempt(int gameID)
         {
-            using (WriteReview wr = new WriteReview(gameID))
+            using (WriteReview wr = new WriteReview())
             {
                 if (wr.ShowDialog() == DialogResult.OK)
                 {
+                    sgr.AddGameProfile(gameID, profile.Username);
                     review = srr.CreateReview(gameID, wr.Score, wr.Body);
                     UpdateGUIGame();
                 }
@@ -143,6 +144,7 @@ namespace GameApplication
 
         private void UpdateGUIGame()
         {
+            SetGamesList();
             if (game != null)
             {
                 EditButton.Enabled = true;
@@ -199,6 +201,7 @@ namespace GameApplication
                 foreach (Game game in games)
                 {
                     var item = new ListViewItem();
+                    item.Text = game.Name;
                     item.Tag = game;
                     GamesList.Items.Add(item);
                 }
