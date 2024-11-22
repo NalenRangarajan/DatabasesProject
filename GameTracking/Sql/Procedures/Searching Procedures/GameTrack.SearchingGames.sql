@@ -4,7 +4,7 @@
 	@EndDate DATETIME2,
 	@MinScore INT,
 	@MaxScore INT,
-	@Genrse NVARCHAR(128)
+	@Genres NVARCHAR(128)
 AS
 
 SELECT G.GameID, G.PublisherID, G.[Name], G.ReleaseDate, AVG(R.Score) AS AverageScore
