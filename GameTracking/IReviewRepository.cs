@@ -14,5 +14,7 @@ namespace GameTracking
 		Review FetchGame(int reviewID);
 
 		IReadOnlyList<Review> GetReview(int gameID);
+
+		Review GetGameByProfileAndGame(string username, int gameID);
 	}
 }

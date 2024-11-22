@@ -77,6 +77,34 @@ namespace GameTracking
 			}
 		}
 
+		public Review GetGameByProfileAndGame(string username, int gameID)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetReviewByUsernameAndGameID", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("Username", username);
+					command.Parameters.AddWithValue("GameID", gameID);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						Review? review = TranslateReview(reader);
+
+						if (review == null)
+						{
+							throw new RecordNotFoundException(username.ToString() + gameID.ToString());
+						}
+
+						return review;
+					}
+				}
+			}
+		}
+
 		public IReadOnlyList<Review> GetReview(int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))
@@ -96,6 +124,7 @@ namespace GameTracking
 				}
 			}
 		}
+
 
 		private IReadOnlyList<Review> TranslateReviews(SqlDataReader reader)
 		{
