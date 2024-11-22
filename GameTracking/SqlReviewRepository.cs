@@ -50,7 +50,7 @@ namespace GameTracking
 			}
 		}
 
-		public Review FetchReviews(int reviewID)
+		public Review FetchReview(int reviewID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{

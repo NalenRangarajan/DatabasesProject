@@ -156,14 +156,14 @@ namespace GameApplication
                 {
                     genreString.Append(genre.Name + ", ");
                 }
-                genreString.Remove(genreString.Length - 1, 2);
+                genreString.Remove(genreString.Length - 2, 2);
 
                 StringBuilder platformString = new StringBuilder();
                 foreach (Platform platform in spr.GetPlatformsForGame(game.GameID))
                 {
                     platformString.Append(platform.Name + ", ");
                 }
-                platformString.Remove(platformString.Length - 1, 2);
+                platformString.Remove(platformString.Length - 2, 2);
 
                 SetGame(game.Name, game.ReleaseDate, genreString.ToString(), platformString.ToString()); ;
                 review = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
@@ -192,7 +192,7 @@ namespace GameApplication
 
         private void SetOtherReviews()
         {
-            IReadOnlyList<Review> reviews = srr.GetReview(game.GameID);
+            IReadOnlyList<Review> reviews = srr.GetReviews(game.GameID);
             OtherReviews.Controls.Clear();
             foreach (Review review in reviews)
             {
