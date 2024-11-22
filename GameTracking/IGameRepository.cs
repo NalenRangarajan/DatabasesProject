@@ -22,5 +22,9 @@ namespace GameTracking
 		IReadOnlyList<Game> SearchGamesByName(string partName, DateTime start, DateTime end, int min, int max, string genres);
 
 		IReadOnlyList<Game> SearchGamesByDeveloper(string partName, DateTime start, DateTime end, int min, int max, string genres);
+
+		void AddGameDeveloper(int gameID, string developerName);
+
+		void AddGameGenre(int gameID, string genreName);
 	}
 }

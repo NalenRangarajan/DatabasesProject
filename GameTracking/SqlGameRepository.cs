@@ -64,18 +64,11 @@ namespace GameTracking
 				}
 			}
 		}
-		/*
-		 //STILL FIX
-		public Game CreateGameDeveloper(int gameID, string developerName)
+		
+		public void AddGameDeveloper(int gameID, string developerName)
 		{
 			if (gameID == 0)
-				throw new ArgumentException("The parameter cannot be null or empty.", nameof(name));
-
-			if (releaseDate == default)
-				throw new ArgumentException("The parameter cannot be null or empty.", nameof(releaseDate));
-
-			if (string.IsNullOrWhiteSpace(publisherName))
-				throw new ArgumentException("The parameter cannot be null or empty.", nameof(publisherName));
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(gameID));
 
 			if (string.IsNullOrWhiteSpace(developerName))
 				throw new ArgumentException("The parameter cannot be null or empty.", nameof(developerName));
@@ -84,29 +77,39 @@ namespace GameTracking
 			{
 				using (var connection = new SqlConnection(connectionString))
 				{
-					using (var command = new SqlCommand("GameTrack.CreateGame", connection))
+					using (var command = new SqlCommand("GameTrack.CreateGameDeveloper", connection))
 					{
 						command.CommandType = CommandType.StoredProcedure;
 
-						command.Parameters.AddWithValue("Name", name);
-						command.Parameters.AddWithValue("ReleaseDate", releaseDate);
+						command.Parameters.AddWithValue("GameID", gameID);
 						command.Parameters.AddWithValue("DeveloperName", developerName);
-						command.Parameters.AddWithValue("PublisherName", publisherName);
-
-						var p = command.Parameters.Add("GameID", SqlDbType.Int);
-						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
+					}
+				}
+			}
+		}
 
-						command.ExecuteNonQuery();
+		public void AddGameGenre(int gameID, string genreName)
+		{
+			if (gameID == 0)
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(gameID));
 
-						transaction.Complete();
+			if (string.IsNullOrWhiteSpace(genreName))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(genreName));
 
-						int gameID = (int)command.Parameters["GameID"].Value;
+			using (var transaction = new TransactionScope())
+			{
+				using (var connection = new SqlConnection(connectionString))
+				{
+					using (var command = new SqlCommand("GameTrack.CreateGameGenre", connection))
+					{
+						command.CommandType = CommandType.StoredProcedure;
 
-						int publisherID = (int)command.Parameters["PublisherID"].Value;
+						command.Parameters.AddWithValue("GameID", gameID);
+						command.Parameters.AddWithValue("GenreName", genreName);
 
-						return new Game(gameID, publisherID, name, releaseDate);
+						connection.Open();
 					}
 				}
 			}
