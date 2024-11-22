@@ -15,6 +15,6 @@ namespace GameTracking
 
 		IReadOnlyList<Review> GetReview(int gameID);
 
-		Review GetGameByProfileAndGame(string username, int gameID);
+		Review GetReviewByProfileAndGame(string username, int gameID);
 	}
 }

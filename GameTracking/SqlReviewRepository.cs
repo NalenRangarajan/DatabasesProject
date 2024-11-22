@@ -77,7 +77,7 @@ namespace GameTracking
 			}
 		}
 
-		public Review GetGameByProfileAndGame(string username, int gameID)
+		public Review GetReviewByProfileAndGame(string username, int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
