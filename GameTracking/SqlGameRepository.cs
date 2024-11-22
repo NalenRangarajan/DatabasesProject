@@ -64,6 +64,52 @@ namespace GameTracking
 				}
 			}
 		}
+		 //STILL FIX
+		public Game CreateGameDeveloper(int gameID, string developerName)
+		{
+			if (gameID == 0)
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(name));
+
+			if (releaseDate == default)
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(releaseDate));
+
+			if (string.IsNullOrWhiteSpace(publisherName))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(publisherName));
+
+			if (string.IsNullOrWhiteSpace(developerName))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(developerName));
+
+			using (var transaction = new TransactionScope())
+			{
+				using (var connection = new SqlConnection(connectionString))
+				{
+					using (var command = new SqlCommand("GameTrack.CreateGame", connection))
+					{
+						command.CommandType = CommandType.StoredProcedure;
+
+						command.Parameters.AddWithValue("Name", name);
+						command.Parameters.AddWithValue("ReleaseDate", releaseDate);
+						command.Parameters.AddWithValue("DeveloperName", developerName);
+						command.Parameters.AddWithValue("PublisherName", publisherName);
+
+						var p = command.Parameters.Add("GameID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
+
+						connection.Open();
+
+						command.ExecuteNonQuery();
+
+						transaction.Complete();
+
+						int gameID = (int)command.Parameters["GameID"].Value;
+
+						int publisherID = (int)command.Parameters["PublisherID"].Value;
+
+						return new Game(gameID, publisherID, name, releaseDate);
+					}
+				}
+			}
+		}
 
 		public Game FetchGame(int gameID)
 		{

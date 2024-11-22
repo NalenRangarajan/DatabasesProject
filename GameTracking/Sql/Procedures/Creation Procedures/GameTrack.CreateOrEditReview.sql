@@ -5,31 +5,27 @@
 	@ReviewID INT OUTPUT
 AS
 
-WITH SourceCTE(GameID, Score, Body) AS
-	(
-		SELECT NLM.GameID, NLM.Score, NLM.Body
-		FROM
-			(
-				VALUES
-				(@GameID, @Score, @Body)
-			) NLM(GameID, Score, Body)
-	)
-MERGE GameTrack.Review R
-USING SourceCTE S ON R.GameID = S.GameID
-WHEN MATCHED
-	AND NOT EXISTS
-	(
-		SELECT R.Score, R.Body
-		INTERSECT
-		SELECT S.Score, S.Body
-	) THEN
-	UPDATE
-	SET
-		Score = S.Score,
-		Body = S.Body,
-		ReviewDate = SYSDATETIME()
-WHEN NOT MATCHED THEN
-	INSERT(GameID, Score, Body)
-	VALUES(S.GameID, S.Score, S.Body);
+DECLARE @ExistingReviewID INT;
+
+SELECT @ExistingReviewID = ReviewID
+FROM GameTrack.Review
+WHERE GameID = @GameID;
+
+IF @ExistingReviewID IS NOT NULL
+	BEGIN
+		UPDATE GameTrack.Review
+		SET
+			Score = @Score,
+			Body = @Body,
+			ReviewDate = SYSDATETIME()
+		WHERE ReviewID = @ExistingReviewID;
+		SET @ReviewID = @ExistingReviewID;
+	END
+ELSE
+	BEGIN
+		INSERT GameTrack.Review (GameID, Score, Body)
+		VALUES(@GameID, @Score, @Body)
+		SET @ReviewID = SCOPE_IDENTITY();
+	END;
 GO
 
