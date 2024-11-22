@@ -103,7 +103,7 @@ namespace GameApplication
                 if (wr.ShowDialog() == DialogResult.OK)
                 {
                     sgr.AddGameProfile(gameID, profile.Username);
-                    review = srr.CreateReview(gameID, wr.Score, wr.Body);
+                    //review = srr.CreateReview(gameID, wr.Score, wr.Body);
                     UpdateGUIGame();
                 }
             }
