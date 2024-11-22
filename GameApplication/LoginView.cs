@@ -48,11 +48,7 @@ namespace GameApplication
 
 
         private void LoginButton_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            UsernameTextBox.Text = "";
-            PasswordTextBox.Text = "";
-            
+        {   
             string user = UsernameTextBox.Text;
             string pass = PasswordTextBox.Text;
 
@@ -61,15 +57,11 @@ namespace GameApplication
             {
                 if (profile.HashedPassword == Rot13(pass))
                 {
-                    this.Hide();
-                    UsernameTextBox.Text = "";
-                    PasswordTextBox.Text = "";
-                }
-                else
-                {
-                    MessageBox.Show("Incorrect username or passowrd.");
+                    DialogResult = DialogResult.OK;
+                    this.Close();
                 }
             }
+            MessageBox.Show("Incorrect username or passowrd.");
             
         }
 

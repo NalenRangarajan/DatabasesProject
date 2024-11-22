@@ -2,7 +2,7 @@
 	@Username NVARCHAR(32)
 AS
 
-SELECT P.ProfileID, P.Username, P.HashedPassword
+SELECT G.GameID, P.ProfileID, P.Username, P.HashedPassword
 FROM GameTrack.[Profile] P
 	INNER JOIN GameTrack.GameProfile GP ON P.ProfileID = GP.ProfileID
 	INNER JOIN GameTrack.Game G ON GP.GameID = G.GameID
