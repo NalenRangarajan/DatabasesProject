@@ -2,7 +2,7 @@
 	@GenreID INT
 AS
 
-SELECT G.GenreID, P.[Name] 
+SELECT G.GenreID, G.[Name] 
 FROM GameTrack.Genre G
 WHERE G.GenreID = @GenreID;
 GO

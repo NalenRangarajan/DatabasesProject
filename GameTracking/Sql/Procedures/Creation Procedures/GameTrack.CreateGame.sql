@@ -8,7 +8,6 @@ AS
 
 EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;
 
-DECLARE @PublisherID INT;
 SELECT PublisherID = P.PublisherID
 FROM GameTrack.Publisher P
 WHERE P.[Name] = @PublisherName;

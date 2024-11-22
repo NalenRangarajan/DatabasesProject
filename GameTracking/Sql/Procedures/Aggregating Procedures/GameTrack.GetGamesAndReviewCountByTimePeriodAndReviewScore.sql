@@ -5,10 +5,10 @@ CREATE OR ALTER PROCEDURE GameTrack.GetGamesAndReviewCountByTimePeriodAndReviewS
 	@MaxScore INT
 AS
 
-SELECT G.GameID, G.Name, COUNT(DISTINCT R.ReviewID) AS ReviewCount
+SELECT G.GameID, G.[Name], COUNT(DISTINCT R.ReviewID) AS ReviewCount
 FROM GameTrack.Game G
 	INNER JOIN GameTrack.Review R ON R.GameID = G.GameID
 WHERE R.ReviewDate BETWEEN @FirstDate AND @LastDate AND R.Score BETWEEN @MinScore AND @MaxScore
-GROUP BY G.GameID, G.Name
+GROUP BY G.GameID, G.[Name]
 ORDER BY ReviewCount DESC, G.Name ASC;
 GO

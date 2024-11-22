@@ -1,6 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateOrEditReview
-	@GameID INT NOT NULL,
-	@Score INT NOT NULL,
+	@GameID INT,
+	@Score INT,
 	@Body NVARCHAR(512),
 	@ReviewID INT OUTPUT
 AS
