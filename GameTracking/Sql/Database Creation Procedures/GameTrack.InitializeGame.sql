@@ -710,7 +710,10 @@ VALUES
 (695,77, N'Need for Speed: Heat','2019-11-08'),
 (696,244, N'Skate 3','2010-05-11'),
 (697,245, N'Braid','2008-08-06'),
-(698,246, N'Metro 2033','2010-03-16'),
+(698,246, N'Metro 2033','2010-03-16');
+
+INSERT @GameStaging( GameID,PublisherID,[Name], ReleaseDate)
+VALUES
 (699,247, N'Another Pokémon Game','2023-02-15'),
 (700,3, N'Super Mario Party','2018-10-05'),
 (701,248, N'Kentucky Route Zero','2013-01-07'),

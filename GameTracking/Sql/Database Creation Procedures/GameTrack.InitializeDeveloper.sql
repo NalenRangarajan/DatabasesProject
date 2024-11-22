@@ -996,7 +996,11 @@ VALUES
 	(980,N'Private Division', N'2023-12-21',N'780-1922 Egestas St.',N'aenean@icloud.couk',95),
 	(981,N'Nintendo EAD Tokyo', N'2024-07-14',N'Ap #796-5837 Non St.',N'enim.commodo@protonmail.com',112),
 	(982,N'Striking Distance Studios', N'2024-06-04',N'P.O. Box 252, 2950 Molestie Road',N'sollicitudin@hotmail.org',140),
-	(983,N'Unknown Developer', N'2025-10-30',N'Ap #639-3961 Dolor. Avenue',N'vitae@google.net',99),
+	(983,N'Unknown Developer', N'2025-10-30',N'Ap #639-3961 Dolor. Avenue',N'vitae@google.net',99);
+
+	
+INSERT @GameStaging( GameID,PublisherID,[Name], ReleaseDate)
+VALUES
 	(984,N'Visceral Games', N'2024-10-01',N'643-7731 Id, St.',N'cubilia.curae@aol.edu',31),
 	(985,N'Nintendo EAD', N'2025-05-10',N'Ap #606-6056 Elit. Rd.',N'est.mauris@aol.com',89),
 	(986,N'Sony Computer Entertainment', N'2025-02-06',N'768-8636 Ut St.',N'mollis.vitae.posuere@hotmail.edu',37),
