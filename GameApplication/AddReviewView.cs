@@ -22,6 +22,10 @@ namespace GameApplication
 
         SqlGenreRepository sgrr = new SqlGenreRepository(connectionString);
 
+        SqlPublisherRepository spr = new SqlPublisherRepository(connectionString);
+
+        SqlDeveloperRepository sdr = new SqlDeveloperRepository(connectionString);
+
         private AddGameView agv = new AddGameView();
 
         public Game? game;
@@ -90,6 +94,29 @@ namespace GameApplication
             game = (Game)selectedItem.Tag;
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (ListViewItem lvi in GenreListView.CheckedItems)
+            {
+                //ListViewItem lvi = (ListViewItem)v;
+                sb.Append(((Genre)lvi.Tag).Name + ",");
+            }
+            sb.Remove(sb.Length - 1, 1);
+            if (TitleRadioButton.Checked)
+            {
+                sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+            }
+            else if (PublisherRadioButton.Checked)
+            {
+                sgr.SearchGamesByPublisher(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+            }
+            else
+            {
+                sgr.SearchGamesByDeveloper(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+            }
         }
     }
 }

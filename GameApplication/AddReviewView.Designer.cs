@@ -49,6 +49,7 @@
             GamesList = new ListView();
             GamesLabel = new Label();
             AddGameButton = new Button();
+            GoButton = new Button();
             ((System.ComponentModel.ISupportInitialize)MaxUpDown).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinUpDown).BeginInit();
             RadioButtonPanel.SuspendLayout();
@@ -59,7 +60,7 @@
             GenreListView.BackColor = SystemColors.Control;
             GenreListView.BorderStyle = BorderStyle.None;
             GenreListView.CheckBoxes = true;
-            GenreListView.Location = new Point(597, 52);
+            GenreListView.Location = new Point(658, 52);
             GenreListView.Margin = new Padding(4, 5, 4, 5);
             GenreListView.Name = "GenreListView";
             GenreListView.Size = new Size(230, 450);
@@ -71,7 +72,7 @@
             // 
             GenreLabel.AutoSize = true;
             GenreLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            GenreLabel.Location = new Point(597, 14);
+            GenreLabel.Location = new Point(658, 14);
             GenreLabel.Margin = new Padding(4, 0, 4, 0);
             GenreLabel.Name = "GenreLabel";
             GenreLabel.Size = new Size(85, 30);
@@ -282,11 +283,22 @@
             AddGameButton.UseVisualStyleBackColor = true;
             AddGameButton.Click += AddGameButton_Click;
             // 
+            // GoButton
+            // 
+            GoButton.Location = new Point(595, 52);
+            GoButton.Name = "GoButton";
+            GoButton.Size = new Size(54, 31);
+            GoButton.TabIndex = 21;
+            GoButton.Text = "Go";
+            GoButton.UseVisualStyleBackColor = true;
+            GoButton.Click += GoButton_Click;
+            // 
             // AddReviewView
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(841, 517);
+            ClientSize = new Size(903, 517);
+            Controls.Add(GoButton);
             Controls.Add(AddGameButton);
             Controls.Add(GamesLabel);
             Controls.Add(GamesList);
@@ -340,5 +352,6 @@
         private ListView GamesList;
         private Label GamesLabel;
         private Button AddGameButton;
+        private Button GoButton;
     }
 }

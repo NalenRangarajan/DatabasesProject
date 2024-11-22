@@ -102,6 +102,7 @@ namespace GameApplication
                 if (wr.ShowDialog() == DialogResult.OK)
                 {
                     review = srr.CreateReview(gameID, wr.Score, wr.Body);
+                    UpdateGUIGame();
                 }
             }
         }
