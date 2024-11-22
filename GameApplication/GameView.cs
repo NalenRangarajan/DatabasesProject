@@ -20,6 +20,8 @@ namespace GameApplication
 
         private IReadOnlyList<Game>? games;
 
+        private IReadOnlyList<Review>? reviews;
+
         private SqlGameRepository sgr = new SqlGameRepository(connectionString);
 
         private SqlGenreRepository sgrr = new SqlGenreRepository(connectionString);
@@ -170,8 +172,8 @@ namespace GameApplication
 
                 SetGame(game.Name, game.ReleaseDate, genreString.ToString(), platformString.ToString()); ;
                 review = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
-                YourReview.SetReview(review.Score, review.Body, review.ReviewDate);
-                SetOtherReviews();
+				SetOtherReviews();
+				YourReview.SetReview(reviews[reviews.Count - 1].Score, reviews[reviews.Count - 1].Body, reviews[reviews.Count - 1].ReviewDate);
             }
 
         }
@@ -195,7 +197,7 @@ namespace GameApplication
 
         private void SetOtherReviews()
         {
-            IReadOnlyList<Review> reviews = srr.GetReviews(game.GameID);
+            reviews = srr.GetReviews(game.GameID);
             OtherReviews.Controls.Clear();
             foreach (Review review in reviews)
             {
