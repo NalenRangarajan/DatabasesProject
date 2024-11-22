@@ -1,4 +1,6 @@
-﻿DECLARE @PlatformStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializePlatform
+AS
+DECLARE @PlatformStaging TABLE
 (
    PlatformID TINYINT NOT NULL PRIMARY KEY,
    [Name] VARCHAR(8) NOT NULL UNIQUE

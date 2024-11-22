@@ -1,4 +1,6 @@
-﻿DECLARE @ReviewStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializeReview
+AS
+DECLARE @ReviewStaging TABLE
 (
 	ReviewID INT NOT NULL IDENTITY(1,1),
 	GameID INT NOT NULL,

@@ -1,4 +1,6 @@
-﻿DECLARE @ProfileStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializeProfile
+AS
+DECLARE @ProfileStaging TABLE
 (
 	ProfileID INT NOT NULL IDENTITY(1,1),
 	Username NVARCHAR(32) NOT NULL,

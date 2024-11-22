@@ -1,4 +1,6 @@
-﻿DECLARE @GameStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializeGame
+AS
+DECLARE @GameStaging TABLE
 (
 	GameID INT NOT NULL IDENTITY(1,1),
 	PublisherID INT NOT NULL,

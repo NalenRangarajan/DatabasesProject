@@ -1,4 +1,6 @@
-﻿DECLARE @DeveloperStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializeDeveloper
+AS
+DECLARE @DeveloperStaging TABLE
 (
 	DeveloperID INT NOT NULL IDENTITY(1,1),
 	[Name] NVARCHAR(32) NOT NULL,

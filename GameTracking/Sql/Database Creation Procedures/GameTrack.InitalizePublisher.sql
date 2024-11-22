@@ -1,4 +1,6 @@
-﻿DECLARE @PublisherStaging TABLE
+﻿CREATE PROCEDURE GameTrack.InitializePublisher
+AS
+DECLARE @PublisherStaging TABLE
 (
 	PublisherID INT NOT NULL IDENTITY(1,1),
 	[Name] NVARCHAR(32) NOT NULL,
