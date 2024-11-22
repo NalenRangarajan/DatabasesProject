@@ -159,7 +159,8 @@ namespace GameTracking
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
-				using (var command = new SqlCommand("GameTrack.SearchingDeveloper", connection))
+				using (var command = new SqlCommand("GameTrack.SearchingDevelopers" +
+					"", connection))
 				{
 					command.CommandType = CommandType.StoredProcedure;
 
