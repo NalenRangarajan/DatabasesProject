@@ -7,7 +7,7 @@ BEGIN
 
       CONSTRAINT PK_GameTrack_Genre_GenreID PRIMARY KEY CLUSTERED
       (
-         AddressTypeId ASC
+         GenreID ASC
       )
    );
 END;

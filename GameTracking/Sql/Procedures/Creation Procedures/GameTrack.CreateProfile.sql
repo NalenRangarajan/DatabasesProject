@@ -1,6 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateProfile
-	@Username NVARCHAR(32) NOT NULL,
-	@HashedPassword NVARCHAR(32) NOT NULL,
+	@Username NVARCHAR(32),
+	@HashedPassword NVARCHAR(32),
     @ProfileID INT OUTPUT
 AS
 

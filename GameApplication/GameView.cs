@@ -1,10 +1,31 @@
+using GameTracking;
+using GameTracking.Models;
+using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.Pkcs;
 
 namespace GameApplication
 {
     public partial class GameView : Form
     {
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
+
+        private Profile? profile;
+
+        private Game? game;
+
+        private Review? review;
+
+        private IReadOnlyList<Game>? games;
+
+        private SqlGameRepository sgr = new SqlGameRepository(connectionString);
+
+        private SqlGenreRepository sgrr = new SqlGenreRepository(connectionString);
+
+        private SqlPlatformRepository spr = new SqlPlatformRepository(connectionString);
+
+        private SqlReviewRepository srr = new SqlReviewRepository(connectionString);
         public string GameTitle
         {
             get
@@ -56,10 +77,90 @@ namespace GameApplication
         public GameView()
         {
             InitializeComponent();
-            SetGame("Doom", new DateTime(2016, 5, 13), "First-person shooter", "PS4, Windows, Xbox One, Nintendo Switch");
-            YourReview.SetReview(5, "Great!", "Goob game but idaf about giving it a higher score. Tbh the game probably changed my life. Sucks I'll only give it a 5 tho.", DateTime.Now);
-            SetOtherReviews();
+            DeactivateControls();
+            LoginAttempt();
+        }
+
+        private void LoginAttempt()
+        {
+            using (LoginView lv = new LoginView())
+            {
+                if (lv.ShowDialog() == DialogResult.OK)
+                {
+                    profile = lv.profile;
+                    ActivateControls();
+                    EditButton.Enabled = false;
+                    UpdateGUIProfile();
+                }
+            }
+        }
+
+        private void WriteReviewAttempt(int gameID)
+        {
+            using (WriteReview wr = new WriteReview(gameID))
+            {
+                if (wr.ShowDialog() == DialogResult.OK)
+                {
+                    review = srr.CreateReview(gameID, wr.Score, wr.Body);
+                    UpdateGUIGame();
+                }
+            }
+        }
+
+        private void AddReviewAttempt()
+        {
+            using (AddReviewView arv = new AddReviewView())
+            {
+                if (arv.ShowDialog() == DialogResult.OK)
+                {
+                    WriteReviewAttempt(arv.game.GameID);
+                }
+            }
+        }
+
+        private void DeactivateControls()
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Enabled = false;
+            }
+            SignOutButton.Enabled = true;
+        }
+
+        private void ActivateControls()
+        {
+            foreach (Control c in this.Controls)
+            {
+                c.Enabled = true;
+            }
+        }
+
+        private void UpdateGUIProfile()
+        {
+            SetWelcome();
             SetGamesList();
+        }
+
+        private void UpdateGUIGame()
+        {
+            if (game != null)
+            {
+                EditButton.Enabled = true;
+                SetGame(game.Name, game.ReleaseDate, sgrr.GetGenresForGame(game.GameID).ToString(), spr.GetPlatformsForGame(game.GameID).ToString()); ;
+                Review r = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
+                SetReview(r.Score, r.Body, r.ReviewDate);
+                SetOtherReviews();
+            }
+
+        }
+
+        private void SetWelcome()
+        {
+            if (profile != null)
+            {
+                string username = profile.Username;
+                WelcomLabel.Text = $"Welcome {username}!";
+            }
         }
 
         private void SetGame(string t, DateTime rd, string g, string p)
@@ -72,90 +173,59 @@ namespace GameApplication
 
         private void SetOtherReviews()
         {
-            for (int i = 0; i < 10; i++)
+            IReadOnlyList<Review> reviews = srr.GetReview(game.GameID);
+            foreach (Review review in reviews)
             {
                 ReviewControl r = new ReviewControl();
                 r.Margin = new Padding(0, 0, 0, 5);
-                r.SetReview(i, "Fantastic!", "When id Software resurrected the DOOM franchise in 2016, it was clear they aimed to recapture the lightning-in-a-bottle that made the original 1993 game a cultural phenomenon. What emerged was a masterclass in modern game design that paid homage to its roots while blazing its own trail—a visceral, chaotic, and relentlessly fun shooter that sets the gold standard for reboots.", DateTime.Now);
+                r.SetReview(review.Score, review.Body, DateTime.Now);
                 OtherReviews.Controls.Add(r);
             }
         }
 
+        private void SetReview(int score, string? body, DateTime dt)
+        {
+            ReviewControl r = new ReviewControl();
+            r.Margin = new Padding(0, 0, 0, 5);
+            r.SetReview(score, body, dt);
+            //OtherReviews.Controls.Add(r);
+        }
+
         private void SetGamesList()
         {
-            string[] gameTitles = new string[50]
+            if (profile != null)
             {
-                "The Legend of Zelda: Breath of the Wild",
-                "Elden Ring",
-                "Red Dead Redemption 2",
-                "Cyberpunk 2077",
-                "God of War",
-                "The Witcher 3: Wild Hunt",
-                "Grand Theft Auto V",
-                "Hollow Knight",
-                "Minecraft",
-                "Dark Souls III",
-                "Sekiro: Shadows Die Twice",
-                "Resident Evil Village",
-                "Hades",
-                "Stardew Valley",
-                "Animal Crossing: New Horizons",
-                "Portal 2",
-                "Half-Life: Alyx",
-                "Bloodborne",
-                "Super Mario Odyssey",
-                "Celeste",
-                "Final Fantasy VII Remake",
-                "Mass Effect Legendary Edition",
-                "Disco Elysium",
-                "Outer Wilds",
-                "Death Stranding",
-                "Assassin's Creed Valhalla",
-                "Marvel's Spider-Man",
-                "DOOM Eternal",
-                "Control",
-                "Ori and the Will of the Wisps",
-                "A Plague Tale: Innocence",
-                "Horizon Zero Dawn",
-                "Forza Horizon 5",
-                "The Elder Scrolls V: Skyrim",
-                "Metal Gear Solid V: The Phantom Pain",
-                "Persona 5 Royal",
-                "Divinity: Original Sin 2",
-                "Dead Cells",
-                "Terraria",
-                "Cuphead",
-                "Fallout 4",
-                "Dragon Age: Inquisition",
-                "NieR: Automata",
-                "Firewatch",
-                "Inside",
-                "Limbo",
-                "Journey",
-                "Among Us",
-                "It Takes Two",
-                "Overwatch"
-            };
-            foreach (string title in gameTitles)
-            {
-                var item = new ListViewItem(title);
-                GamesList.Items.Add(item);
+                games = sgr.GetGamesForProfile(profile.Username);
+                foreach (Game game in games)
+                {
+                    var item = new ListViewItem();
+                    item.Tag = game;
+                    GamesList.Items.Add(item);
+                }
             }
         }
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            AddGameView agv = new AddGameView();
-            if (agv.ShowDialog() == DialogResult.OK)
-            {
-
-            }
+            AddReviewAttempt();
         }
 
         private void SignOutButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Retry;
-            Close();
+            DeactivateControls();
+            LoginAttempt();
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            WriteReviewAttempt(game.GameID);
+        }
+
+        private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListViewItem selectedItem = (ListViewItem)GamesList.SelectedItems[0];
+            game = (Game)selectedItem.Tag;
+            UpdateGUIGame();
         }
     }
 }

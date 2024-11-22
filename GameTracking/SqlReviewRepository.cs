@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace GameTracking
 {
-	internal class SqlReviewRepository : IReviewRepository
+	public class SqlReviewRepository : IReviewRepository
 	{
 		public readonly string connectionString;
 
@@ -34,6 +34,7 @@ namespace GameTracking
 						command.Parameters.AddWithValue("Body", body);
 
 						var p = command.Parameters.Add("ReviewID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
 
@@ -76,7 +77,35 @@ namespace GameTracking
 			}
 		}
 
-		public Review GetReview(int gameID)
+		public Review GetReviewByProfileAndGame(string username, int gameID)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetReviewByUsernameAndGameID", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("Username", username);
+					command.Parameters.AddWithValue("GameID", gameID);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						Review? review = TranslateReview(reader);
+
+						if (review == null)
+						{
+							throw new RecordNotFoundException(username.ToString() + gameID.ToString());
+						}
+
+						return review;
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Review> GetReview(int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
@@ -90,12 +119,30 @@ namespace GameTracking
 
 					using (SqlDataReader reader = command.ExecuteReader())
 					{
-						Review review = TranslateReview(reader)!;
-
-						return review;
+						return TranslateReviews(reader);
 					}
 				}
 			}
+		}
+
+
+		private IReadOnlyList<Review> TranslateReviews(SqlDataReader reader)
+		{
+			List<Review> review = new List<Review>();
+
+			int reviewIDOrdinal = reader.GetOrdinal("ReviewID");
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int scoreOrdinal = reader.GetOrdinal("Score");
+			int bodyOrdinal = reader.GetOrdinal("Body");
+			int reviewDateOrdinal = reader.GetOrdinal("ReviewDate");
+
+			while (reader.Read())
+			{
+				review.Add(new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetInt32(scoreOrdinal),
+				reader.GetString(bodyOrdinal), reader.GetDateTime(reviewDateOrdinal)));
+			}
+
+			return review;
 		}
 
 		private Review? TranslateReview(SqlDataReader reader)

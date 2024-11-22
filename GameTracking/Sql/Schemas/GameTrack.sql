@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameTracking.Sql.Schemas
-{
-    class GameTrack
-    {
-    }
-}
+﻿If NOT EXISTS
+	(
+		SELECT *
+		FROM sys.schemas s
+		WHERE s.[name] = N'GameTrack'
+	)
+BEGIN EXEC(N'CREATE SCHEMA [GameTrack] AUTHORIZATION [dbo]');
+END;

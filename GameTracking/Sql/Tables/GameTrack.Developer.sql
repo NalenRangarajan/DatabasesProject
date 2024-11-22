@@ -25,13 +25,13 @@ IF NOT EXISTS
       SELECT *
       FROM sys.key_constraints kc
       WHERE kc.parent_object_id = OBJECT_ID(N'GameTrack.Developer')
-         AND kc.[name] = N'UK_GameTrack_Developer_Name_Website'
+         AND kc.[name] = N'UK_GameTrack_Developer_Name_Email'
    )
 BEGIN
    ALTER TABLE GameTrack.Developer
-   ADD CONSTRAINT [UK_GameTrack_Developer_Website] UNIQUE NONCLUSTERED
+   ADD CONSTRAINT [UK_GameTrack_Developer_Email] UNIQUE NONCLUSTERED
    (
-      Website ASC
+      Email ASC
    )
    ALTER TABLE GameTrack.Developer
    ADD CONSTRAINT [UK_GameTrack_Developer_Name] UNIQUE NONCLUSTERED
@@ -49,12 +49,12 @@ IF NOT EXISTS
       SELECT *
       FROM sys.check_constraints cc
       WHERE cc.parent_object_id = OBJECT_ID(N'GameTrack.Developer')
-         AND cc.[name] = N'CK_GameTrack_Developer_Name_Website'
+         AND cc.[name] = N'CK_GameTrack_Developer_Name_Email'
    )
 BEGIN
    ALTER TABLE GameTrack.Developer
-   ADD CONSTRAINT [CK_GameTrack_Developer_Name_Website] CHECK
+   ADD CONSTRAINT [CK_GameTrack_Developer_Name_Email] CHECK
    (
-      [Name] > N'' AND Website > N''
+      [Name] > N'' AND Email > N''
    )
 END;

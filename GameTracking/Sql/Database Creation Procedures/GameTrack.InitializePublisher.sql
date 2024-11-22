@@ -1,6 +1,4 @@
 ﻿
-AS
-AS
 DECLARE @PublisherStaging TABLE
 (
 	PublisherID INT NOT NULL IDENTITY(1,1),

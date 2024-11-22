@@ -2,8 +2,8 @@
 BEGIN
 	CREATE TABLE GameTrack.GamePlatform
 	(
-		GameID INT NOT NULL IDENTITY(1,1),
-		PlatformID INT NOT NULL IDENTITY(1,1)
+		GameID INT NOT NULL,
+		PlatformID INT NOT NULL
 
 		CONSTRAINT [PK_GameTrack_GamePlatform_GameID_PlatformID] PRIMARY KEY CLUSTERED
 		(

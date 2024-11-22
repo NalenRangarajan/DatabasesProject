@@ -2,8 +2,8 @@
 BEGIN
 	CREATE TABLE GameTrack.GameDeveloper
 	(
-		GameID INT NOT NULL IDENTITY(1,1),
-		DeveloperID INT NOT NULL IDENTITY(1,1)
+		GameID INT NOT NULL,
+		DeveloperID INT NOT NULL
 
 		CONSTRAINT [PK_GameTrack_GameDeveloper_GameID_DeveloperID] PRIMARY KEY CLUSTERED
 		(
@@ -51,7 +51,7 @@ BEGIN
    (
       DeveloperID
    )
-   REFERENCES GameTrack.Game
+   REFERENCES GameTrack.Developer
    (
       DeveloperID
    );

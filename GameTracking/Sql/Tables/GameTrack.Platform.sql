@@ -2,7 +2,7 @@
 BEGIN
 	CREATE TABLE GameTrack.Platform
 	(
-		PlatformID TINYINT NOT NULL IDENTITY(1,1),
+		PlatformID INT NOT NULL IDENTITY(1,1),
 		[Name] NVARCHAR(32) NOT NULL,
 
 		CONSTRAINT [PK_GameTrack_Platform_PlatformID] PRIMARY KEY CLUSTERED
@@ -27,7 +27,7 @@ BEGIN
    ALTER TABLE GameTrack.[Platform]
    ADD CONSTRAINT [UK_GameTrack_Platform_Name] UNIQUE NONCLUSTERED
    (
-      [Platform] ASC
+      [Name] ASC
    )
 END;
 

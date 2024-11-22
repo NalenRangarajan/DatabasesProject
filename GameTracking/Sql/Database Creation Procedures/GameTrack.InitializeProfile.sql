@@ -1,5 +1,5 @@
 ﻿
-AS
+
 DECLARE @ProfileStaging TABLE
 (
 	ProfileID INT NOT NULL IDENTITY(1,1),
@@ -123,6 +123,7 @@ WHEN MATCHED AND S.Username <> T.Username THEN
    UPDATE
    SET Username = S.Username,
    HashedPassword = S.HashedPassword
+WHEN NOT MATCHED THEN
    INSERT(Username,HashedPassword)
    VALUES(S.Username,S.HashedPassword);
-   VALUES(S.Username,S.HashedPassword);
+  

@@ -19,7 +19,7 @@ namespace GameTracking
 			connectionString = c;
 		}
 
-		public Game CreateGame(string name, DateTime releaseDate, string publisherName)
+		public Game CreateGame(string name, DateTime releaseDate, string developerName, string publisherName)
 		{
 			if (string.IsNullOrWhiteSpace(name))
 				throw new ArgumentException("The parameter cannot be null or empty.", nameof(name));
@@ -29,6 +29,9 @@ namespace GameTracking
 
 			if (string.IsNullOrWhiteSpace(publisherName))
 				throw new ArgumentException("The parameter cannot be null or empty.", nameof(publisherName));
+
+			if (string.IsNullOrWhiteSpace(developerName))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(developerName));
 
 			using (var transaction = new TransactionScope())
 			{
@@ -40,9 +43,11 @@ namespace GameTracking
 
 						command.Parameters.AddWithValue("Name", name);
 						command.Parameters.AddWithValue("ReleaseDate", releaseDate);
+						command.Parameters.AddWithValue("DeveloperName", developerName);
 						command.Parameters.AddWithValue("PublisherName", publisherName);
 
 						var p = command.Parameters.Add("GameID", SqlDbType.Int);
+						p.Direction = ParameterDirection.Output;
 
 						connection.Open();
 
@@ -85,6 +90,138 @@ namespace GameTracking
 					}
 				}
 			}
+		}
+
+		public IReadOnlyList<Game> GetGamesForProfile(string username)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGamesForProfile", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("Username", username);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> GetAllGames()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetAllGames", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> SearchGamesByName(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingGames", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialGameName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> SearchGamesByDeveloper(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingDevelopers" +
+					"", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialDeveloperName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> SearchGamesByPublisher(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingPublishers", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialPublisherName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Game> TranslateGames(SqlDataReader reader)
+		{
+			List<Game> games = new List<Game>();
+
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int publisherIDOrdinal = reader.GetOrdinal("PublisherID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
+
+			while (reader.Read())
+			{
+				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
+				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)));
+			}
+
+			return games;
 		}
 
 		private Game? TranslateGame(SqlDataReader reader)

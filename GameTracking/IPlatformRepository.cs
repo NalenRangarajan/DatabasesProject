@@ -12,5 +12,7 @@ namespace GameTracking
 		Platform FetchPlatform(int platformID);
 
 		Platform GetPlatform(string name);
+
+		IReadOnlyList<Platform> GetPlatformsForGame(int gameID);
 	}
 }
