@@ -20,7 +20,7 @@ namespace GameApplication
 
         private AddGameView agv = new AddGameView();
 
-        public Game? game;
+        private Game? game;
 
         public Review? review;
 
@@ -132,7 +132,7 @@ namespace GameApplication
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            if (agv.ShowDialog() != DialogResult.Cancel)
+            if (agv.ShowDialog() == DialogResult.OK)
             {
                 
             }
@@ -141,6 +141,17 @@ namespace GameApplication
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+
+			ListViewItem selectedItem = (ListViewItem)GamesList.SelectedItems[0];
+			Game game = (Game)selectedItem.Tag;
+
+			using (WriteReview wr = new WriteReview(game.GameID))
+            {
+                if(wr.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
             Close();
         }
     }
