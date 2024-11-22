@@ -84,9 +84,9 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetPlatformForGame.sql"
 
 Write-Host "Stored searching procedures..."
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Searching Procedures\GameTrack.SearchingDevelopers.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Searching Procedures\GameTrack.SearchingGames.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Searching Procedures\GameTrack.SearchingPublishers.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Searching Procedures\GameTrack.SearchingDevelopers.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Searching Procedures\GameTrack.SearchingGames.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Searching Procedures\GameTrack.SearchingPublishers.sql"
 
 Write-Host "Inserting data..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeDeveloper.sql"
