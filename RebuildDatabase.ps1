@@ -94,11 +94,11 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 
 Write-Host "Inserting data..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeDeveloper.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializePublisher.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeGame.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeGenre.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializePlatform.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeProfile.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializePublisher.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeReview.sql"
 
 Write-Host "Rebuild completed."
