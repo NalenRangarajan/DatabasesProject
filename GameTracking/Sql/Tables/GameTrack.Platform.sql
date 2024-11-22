@@ -27,7 +27,7 @@ BEGIN
    ALTER TABLE GameTrack.[Platform]
    ADD CONSTRAINT [UK_GameTrack_Platform_Name] UNIQUE NONCLUSTERED
    (
-      [Platform] ASC
+      [Name] ASC
    )
 END;
 

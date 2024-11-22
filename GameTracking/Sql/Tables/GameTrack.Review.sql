@@ -48,14 +48,13 @@ IF NOT EXISTS
       SELECT *
       FROM sys.key_constraints kc
       WHERE kc.parent_object_id = OBJECT_ID(N'GameTrack.Review')
-         AND kc.[name] = N'UK_GameTrack_Review_GameID_CriticID'
+         AND kc.[name] = N'UK_GameTrack_Review_GameID'
    )
 BEGIN
    ALTER TABLE GameTrack.Developer
-   ADD CONSTRAINT [UK_GameTrack_Review_GameID_CriticID] UNIQUE NONCLUSTERED
+   ADD CONSTRAINT [UK_GameTrack_Review_GameID] UNIQUE NONCLUSTERED
    (
-      GameID ASC,
-      CriticID ASC
+      GameID ASC
    )
 END;
 
