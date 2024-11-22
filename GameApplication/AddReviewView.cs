@@ -71,6 +71,7 @@ namespace GameApplication
         {
 
             IReadOnlyList<Game> games = sgr.GetAllGames();
+            GamesList.Items.Clear();
             foreach (Game ggame in games)
             {
                 var item = new ListViewItem(ggame.Name);

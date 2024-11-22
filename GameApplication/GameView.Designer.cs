@@ -120,7 +120,7 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.Control;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(528, 332);
+            label1.Location = new Point(528, 376);
             label1.Name = "label1";
             label1.Size = new Size(162, 30);
             label1.TabIndex = 8;
@@ -130,7 +130,7 @@
             // 
             OtherReviews.AutoScroll = true;
             OtherReviews.BackColor = SystemColors.Control;
-            OtherReviews.Location = new Point(375, 370);
+            OtherReviews.Location = new Point(375, 414);
             OtherReviews.Margin = new Padding(0);
             OtherReviews.Name = "OtherReviews";
             OtherReviews.Size = new Size(429, 230);
@@ -143,7 +143,7 @@
             GamesList.Margin = new Padding(4, 5, 4, 5);
             GamesList.MultiSelect = false;
             GamesList.Name = "GamesList";
-            GamesList.Size = new Size(327, 502);
+            GamesList.Size = new Size(327, 546);
             GamesList.TabIndex = 11;
             GamesList.TileSize = new Size(500, 30);
             GamesList.UseCompatibleStateImageBehavior = false;
@@ -217,7 +217,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(817, 619);
+            ClientSize = new Size(817, 666);
             Controls.Add(EditButton);
             Controls.Add(WelcomLabel);
             Controls.Add(SignOutButton);

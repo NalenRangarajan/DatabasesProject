@@ -4,6 +4,7 @@ using System.Collections;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.Pkcs;
+using System.Text;
 
 namespace GameApplication
 {
@@ -148,9 +149,25 @@ namespace GameApplication
             if (game != null)
             {
                 EditButton.Enabled = true;
-                SetGame(game.Name, game.ReleaseDate, sgrr.GetGenresForGame(game.GameID).ToString(), spr.GetPlatformsForGame(game.GameID).ToString()); ;
-                Review r = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
-                SetReview(r.Score, r.Body, r.ReviewDate);
+
+                StringBuilder genreString = new StringBuilder();
+                IReadOnlyList<Genre> genres = sgrr.GetGenresForGame(game.GameID);
+                foreach (Genre genre in genres)
+                {
+                    genreString.Append(genre.Name + ", ");
+                }
+                genreString.Remove(genreString.Length - 1, 2);
+
+                StringBuilder platformString = new StringBuilder();
+                foreach (Platform platform in spr.GetPlatformsForGame(game.GameID))
+                {
+                    platformString.Append(platform.Name + ", ");
+                }
+                platformString.Remove(platformString.Length - 1, 2);
+
+                SetGame(game.Name, game.ReleaseDate, genreString.ToString(), platformString.ToString()); ;
+                review = srr.GetReviewByProfileAndGame(profile.Username, game.GameID);
+                YourReview.SetReview(review.Score, review.Body, review.ReviewDate);
                 SetOtherReviews();
             }
 
@@ -176,21 +193,20 @@ namespace GameApplication
         private void SetOtherReviews()
         {
             IReadOnlyList<Review> reviews = srr.GetReview(game.GameID);
+            OtherReviews.Controls.Clear();
             foreach (Review review in reviews)
             {
-                ReviewControl r = new ReviewControl();
-                r.Margin = new Padding(0, 0, 0, 5);
-                r.SetReview(review.Score, review.Body, DateTime.Now);
+                ReviewControl r = SetReview(review.Score, review.Body, DateTime.Now);
                 OtherReviews.Controls.Add(r);
             }
         }
 
-        private void SetReview(int score, string? body, DateTime dt)
+        private ReviewControl SetReview(int score, string? body, DateTime dt)
         {
             ReviewControl r = new ReviewControl();
             r.Margin = new Padding(0, 0, 0, 5);
             r.SetReview(score, body, dt);
-            //OtherReviews.Controls.Add(r);
+            return r;
         }
 
         private void SetGamesList()
@@ -198,6 +214,7 @@ namespace GameApplication
             if (profile != null)
             {
                 games = sgr.GetGamesForProfile(profile.Username);
+                GamesList.Items.Clear();
                 foreach (Game game in games)
                 {
                     var item = new ListViewItem();
