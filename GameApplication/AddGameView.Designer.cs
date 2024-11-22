@@ -34,11 +34,11 @@
             GenreLabel = new Label();
             DeveloperLabel = new Label();
             PublisherLabel = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            ReleaseDatePicker = new DateTimePicker();
+            PublisherTextBox = new TextBox();
+            DeveloperTextBox = new TextBox();
+            GenreTextBox = new TextBox();
+            TitleTextBox = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel2 = new FlowLayoutPanel();
             flowLayoutPanel4 = new FlowLayoutPanel();
@@ -108,41 +108,41 @@
             PublisherLabel.TabIndex = 5;
             PublisherLabel.Text = "Publisher:  ";
             // 
-            // dateTimePicker1
+            // ReleaseDatePicker
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(125, 3);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(130, 31);
-            dateTimePicker1.TabIndex = 6;
+            ReleaseDatePicker.Format = DateTimePickerFormat.Short;
+            ReleaseDatePicker.Location = new Point(125, 3);
+            ReleaseDatePicker.Name = "ReleaseDatePicker";
+            ReleaseDatePicker.Size = new Size(130, 31);
+            ReleaseDatePicker.TabIndex = 6;
             // 
-            // textBox1
+            // PublisherTextBox
             // 
-            textBox1.Location = new Point(107, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 7;
+            PublisherTextBox.Location = new Point(107, 3);
+            PublisherTextBox.Name = "PublisherTextBox";
+            PublisherTextBox.Size = new Size(150, 31);
+            PublisherTextBox.TabIndex = 7;
             // 
-            // textBox2
+            // DeveloperTextBox
             // 
-            textBox2.Location = new Point(106, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(150, 31);
-            textBox2.TabIndex = 8;
+            DeveloperTextBox.Location = new Point(106, 3);
+            DeveloperTextBox.Name = "DeveloperTextBox";
+            DeveloperTextBox.Size = new Size(150, 31);
+            DeveloperTextBox.TabIndex = 8;
             // 
-            // textBox3
+            // GenreTextBox
             // 
-            textBox3.Location = new Point(106, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(150, 31);
-            textBox3.TabIndex = 9;
+            GenreTextBox.Location = new Point(106, 3);
+            GenreTextBox.Name = "GenreTextBox";
+            GenreTextBox.Size = new Size(150, 31);
+            GenreTextBox.TabIndex = 9;
             // 
-            // textBox4
+            // TitleTextBox
             // 
-            textBox4.Location = new Point(107, 3);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(150, 31);
-            textBox4.TabIndex = 10;
+            TitleTextBox.Location = new Point(107, 3);
+            TitleTextBox.Name = "TitleTextBox";
+            TitleTextBox.Size = new Size(150, 31);
+            TitleTextBox.TabIndex = 10;
             // 
             // flowLayoutPanel1
             // 
@@ -164,7 +164,7 @@
             flowLayoutPanel2.AutoSize = true;
             flowLayoutPanel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel2.Controls.Add(TitleLabel);
-            flowLayoutPanel2.Controls.Add(textBox4);
+            flowLayoutPanel2.Controls.Add(TitleTextBox);
             flowLayoutPanel2.Location = new Point(3, 3);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Size = new Size(260, 37);
@@ -175,7 +175,7 @@
             flowLayoutPanel4.AutoSize = true;
             flowLayoutPanel4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel4.Controls.Add(GenreLabel);
-            flowLayoutPanel4.Controls.Add(textBox3);
+            flowLayoutPanel4.Controls.Add(GenreTextBox);
             flowLayoutPanel4.Location = new Point(3, 46);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new Size(259, 37);
@@ -186,7 +186,7 @@
             flowLayoutPanel5.AutoSize = true;
             flowLayoutPanel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel5.Controls.Add(PublisherLabel);
-            flowLayoutPanel5.Controls.Add(textBox1);
+            flowLayoutPanel5.Controls.Add(PublisherTextBox);
             flowLayoutPanel5.Location = new Point(3, 89);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Size = new Size(260, 37);
@@ -197,7 +197,7 @@
             flowLayoutPanel6.AutoSize = true;
             flowLayoutPanel6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel6.Controls.Add(DeveloperLabel);
-            flowLayoutPanel6.Controls.Add(textBox2);
+            flowLayoutPanel6.Controls.Add(DeveloperTextBox);
             flowLayoutPanel6.Location = new Point(3, 132);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new Size(259, 37);
@@ -208,7 +208,7 @@
             flowLayoutPanel3.AutoSize = true;
             flowLayoutPanel3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel3.Controls.Add(ReleaseDateLabel);
-            flowLayoutPanel3.Controls.Add(dateTimePicker1);
+            flowLayoutPanel3.Controls.Add(ReleaseDatePicker);
             flowLayoutPanel3.Location = new Point(3, 175);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new Size(258, 37);
@@ -222,7 +222,7 @@
             Controls.Add(flowLayoutPanel1);
             Controls.Add(SubmitButton);
             Name = "AddGameView";
-            Text = "AddGameView";
+            Text = "Add Game";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanel2.ResumeLayout(false);
@@ -247,11 +247,11 @@
         private Label GenreLabel;
         private Label DeveloperLabel;
         private Label PublisherLabel;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private DateTimePicker ReleaseDatePicker;
+        private TextBox PublisherTextBox;
+        private TextBox DeveloperTextBox;
+        private TextBox GenreTextBox;
+        private TextBox TitleTextBox;
         private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
         private FlowLayoutPanel flowLayoutPanel3;

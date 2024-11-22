@@ -148,6 +148,7 @@
             GamesList.TileSize = new Size(500, 30);
             GamesList.UseCompatibleStateImageBehavior = false;
             GamesList.View = View.Tile;
+            GamesList.SelectedIndexChanged += GamesList_SelectedIndexChanged;
             // 
             // PlayedGamesLabel
             // 

@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameTracking", "GameTracking.csproj", "{A3A519E3-99E0-4080-A1DD-366D4BD633A0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameApplication", "..\GameApplication\GameApplication.csproj", "{C803679A-BB5B-41D7-ADB6-65838624A77C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A3A519E3-99E0-4080-A1DD-366D4BD633A0} = {A3A519E3-99E0-4080-A1DD-366D4BD633A0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

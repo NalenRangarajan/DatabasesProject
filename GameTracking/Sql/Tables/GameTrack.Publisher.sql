@@ -6,7 +6,7 @@ BEGIN
 		[Name] NVARCHAR(32) NOT NULL,
 		FoundedDate DATETIME2 NOT NULL,
 		[Location] NVARCHAR(32) NOT NULL,
-		Website NVARCHAR(128) NOT NULL,
+		Email NVARCHAR(128) NOT NULL,
 		EmployeeCount INT NOT NULL
 
 		CONSTRAINT [PK_GameTrack_Publisher_PublisherID] PRIMARY KEY CLUSTERED

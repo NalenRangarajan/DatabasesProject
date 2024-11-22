@@ -10,7 +10,7 @@ using System.Transactions;
 
 namespace GameTracking
 {
-	internal class SqlReviewRepository : IReviewRepository
+	public class SqlReviewRepository : IReviewRepository
 	{
 		public readonly string connectionString;
 

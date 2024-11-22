@@ -4,10 +4,10 @@ BEGIN
 	(
 		DeveloperID INT NOT NULL IDENTITY(1,1),
 		[Name] NVARCHAR(32) NOT NULL,
-		Website NVARCHAR(128) NOT NULL,
-		FoundedDate DATETIME2 NOT NULL,
-		[Location] NVARCHAR(128) NOT NULL,
-		TeamCount INT NOT NULL
+		Email NVARCHAR(128),
+		FoundedDate DATETIME2,
+		[Location] NVARCHAR(128),
+		TeamCount INT
 
 		CONSTRAINT [PK_GameTrack_Developer_DeveloperID] PRIMARY KEY CLUSTERED
 		(
@@ -25,13 +25,13 @@ IF NOT EXISTS
       SELECT *
       FROM sys.key_constraints kc
       WHERE kc.parent_object_id = OBJECT_ID(N'GameTrack.Developer')
-         AND kc.[name] = N'UK_GameTrack_Developer_Name_Website'
+         AND kc.[name] = N'UK_GameTrack_Developer_Name_Email'
    )
 BEGIN
    ALTER TABLE GameTrack.Developer
-   ADD CONSTRAINT [UK_GameTrack_Developer_Website] UNIQUE NONCLUSTERED
+   ADD CONSTRAINT [UK_GameTrack_Developer_Email] UNIQUE NONCLUSTERED
    (
-      Website ASC
+      Email ASC
    )
    ALTER TABLE GameTrack.Developer
    ADD CONSTRAINT [UK_GameTrack_Developer_Name] UNIQUE NONCLUSTERED
@@ -49,12 +49,12 @@ IF NOT EXISTS
       SELECT *
       FROM sys.check_constraints cc
       WHERE cc.parent_object_id = OBJECT_ID(N'GameTrack.Developer')
-         AND cc.[name] = N'CK_GameTrack_Developer_Name_Website'
+         AND cc.[name] = N'CK_GameTrack_Developer_Name_Email'
    )
 BEGIN
    ALTER TABLE GameTrack.Developer
-   ADD CONSTRAINT [CK_GameTrack_Developer_Name_Website] CHECK
+   ADD CONSTRAINT [CK_GameTrack_Developer_Name_Email] CHECK
    (
-      [Name] > N'' AND Website > N''
+      [Name] > N'' AND Email > N''
    )
 END;

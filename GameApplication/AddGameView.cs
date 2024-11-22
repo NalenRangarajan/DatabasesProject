@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameTracking;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,10 @@ namespace GameApplication
 {
     public partial class AddGameView : Form
     {
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
+
+        private SqlGameRepository sgr = new SqlGameRepository(connectionString);
+
         public AddGameView()
         {
             InitializeComponent();
@@ -19,8 +24,25 @@ namespace GameApplication
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.OK;
-            Close();
+            string title = TitleTextBox.Text;
+            string genre = GenreTextBox.Text;
+            string publisher = PublisherTextBox.Text;
+            string developer = DeveloperTextBox.Text;
+            DateTime releaseDate = ReleaseDatePicker.Value;
+            if (title != ""  && genre != "" && developer != "" && publisher != "")
+            {
+                sgr.CreateGame(title, releaseDate, developer, publisher);
+                this.Hide();
+                TitleTextBox.Text = "";
+                GenreTextBox.Text = "";
+                PublisherTextBox.Text = "";
+                DeveloperTextBox.Text = "";
+                ReleaseDatePicker.Value = default;
+            }
+            else
+            {
+                MessageBox.Show("Error: Leave no boxes empty.");
+            }
         }
     }
 }

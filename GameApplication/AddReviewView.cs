@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GameTracking;
+using GameTracking.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,16 @@ namespace GameApplication
 {
     public partial class AddReviewView : Form
     {
+        private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
+
+        SqlReviewRepository srr = new SqlReviewRepository(connectionString);
+
+        private AddGameView agv = new AddGameView();
+
+        public Game? game;
+
+        public Review? review;
+
         public AddReviewView()
         {
             InitializeComponent();
@@ -120,14 +132,13 @@ namespace GameApplication
 
         private void AddGameButton_Click(object sender, EventArgs e)
         {
-            AddGameView agv = new AddGameView();
-            if (agv.ShowDialog() == DialogResult.OK)
+            if (agv.ShowDialog() != DialogResult.Cancel)
             {
-
+                
             }
         }
 
-        private void GamesList_Click(object sender, EventArgs e)
+        private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
             Close();

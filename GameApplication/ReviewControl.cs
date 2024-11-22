@@ -65,10 +65,9 @@ namespace GameApplication
             }
         }
 
-        public void SetReview(int s, string t, string b, DateTime rd)
+        public void SetReview(int s, string b, DateTime rd)
         {
             Score = $"Score: {s}/10";
-            Title = t;
             Body = b;
             ReviewDate = rd.ToString("MMM dd, yyyy");
         }
