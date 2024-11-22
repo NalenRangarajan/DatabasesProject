@@ -2,7 +2,7 @@
 BEGIN
    CREATE TABLE GameTrack.Genre
    (
-      GenreID TINYINT NOT NULL,
+      GenreID INT NOT NULL,
       [Name] VARCHAR(16) NOT NULL,
 
       CONSTRAINT PK_GameTrack_Genre_GenreID PRIMARY KEY CLUSTERED
