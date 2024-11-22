@@ -132,7 +132,10 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (47,5),
 (48,3),
 (48,10),
-(49,4),
+(49,4);
+
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (49,2),
 (49,7),
 (49,8),
@@ -1028,7 +1031,9 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (411,12),
 (411,6),
 (412,2),
-(412,10),
+(412,10);
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (413,1),
 (413,3),
 (414,1),
@@ -2018,7 +2023,9 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (814,14),
 (815,1),
 (815,2),
-(816,1),
+(816,1);
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (816,4),
 (817,1),
 (817,10),
@@ -2604,7 +2611,9 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (1063,14),
 (1064,1),
 (1064,4),
-(1064,2),
+(1064,2);
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (1064,8),
 (1064,5),
 (1065,1),
@@ -3119,7 +3128,9 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (1274,10),
 (1275,1),
 (1275,13),
-(1275,6),
+(1275,6);
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (1276,1),
 (1276,2),
 (1277,6),
@@ -3558,7 +3569,9 @@ INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEB
 (1470,12),
 (1471,1),
 (1471,14),
-(1472,1),
+(1472,1);
+INSERT @GameGenreStaging( GameID,GenreID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (1472,14),
 (1473,1),
 (1473,14),

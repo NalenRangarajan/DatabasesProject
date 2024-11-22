@@ -159,7 +159,9 @@
 (581,150),
 (582,151),
 (585,152),
-(586,153),
+(586,153);
+INSERT @GameDeveloperStaging( GameID,DeveloperID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (587,154),
 (588,155),
 (592,156),
@@ -377,7 +379,7 @@
 
 
 MERGE GameTrack.GameDeveloper T
-USING @GenreStaging S ON S.GameID = T.GameID
+USING @GameDeveloperStaging S ON S.GameID = T.GameID
 WHEN MATCHED AND S.DeveloperID <> T.DeveloperID THEN
    UPDATE
    SET DeveloperID = S.DeveloperID

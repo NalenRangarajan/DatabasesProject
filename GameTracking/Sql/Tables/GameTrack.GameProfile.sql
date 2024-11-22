@@ -6,11 +6,7 @@ BEGIN
 		GameID INT NOT NULL,
         ProfileID INT NOT NULL
 
-		CONSTRAINT [PK_GameTrack_GameProfile_GameID_ProfileID] PRIMARY KEY CLUSTERED
-		(
-            GameID ASC,
-			ProfileID ASC
-		)
+	
 	);
 END;
 

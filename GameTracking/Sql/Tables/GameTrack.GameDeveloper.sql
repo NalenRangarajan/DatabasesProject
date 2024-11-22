@@ -5,11 +5,7 @@ BEGIN
 		GameID INT NOT NULL,
 		DeveloperID INT NOT NULL
 
-		CONSTRAINT [PK_GameTrack_GameDeveloper_GameID_DeveloperID] PRIMARY KEY CLUSTERED
-		(
-			GameID ASC,
-            DeveloperID ASC
-		)
+		
 	);
 END;
 

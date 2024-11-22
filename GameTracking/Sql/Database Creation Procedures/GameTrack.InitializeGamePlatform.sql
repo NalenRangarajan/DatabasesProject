@@ -414,7 +414,9 @@ INSERT @GamePlatformStaging( GameID,PlatformID) /************************* CHANG
 (426,11),
 (426,18),
 (426,15),
-(427,11),
+(427,11);
+INSERT @GamePlatformStaging( GameID,PlatformID) /************************* CHANGED WEBSITE TO EMAIL */
+    VALUES
 (427,18),
 (427,15),
 (431,1),
