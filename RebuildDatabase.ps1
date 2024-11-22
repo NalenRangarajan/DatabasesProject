@@ -78,10 +78,10 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetPublisherByName.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetReviewByGameID.sql"
 
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetDeveloperForGame.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetDevelopersForGame.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetGamesForProfile.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetGenresForGame.sql"
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetPlatformForGame.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get Through Relationship Table\GameTrack.GetPlatformsForGame.sql"
 
 Write-Host "Stored searching procedures..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Searching Procedures\GameTrack.SearchingDevelopers.sql"
