@@ -118,11 +118,11 @@ VALUES
 /******************************************************************************/
 
 MERGE GameTrack.[Profile] T
-USING @ProfileStaging S ON S.ReviewID = T.ReviewID
+USING @ProfileStaging S ON S.ProfileID = T.ProfileID
 WHEN MATCHED AND S.Username <> T.Username THEN
    UPDATE
    SET Username = S.Username,
    HashedPassword = S.HashedPassword
 WHEN NOT MATCHED THEN
-   INSERT(ReviewID, Username,HashedPassword)
-   VALUES(S.ReviewID,S.Username,S.HashedPassword);
+   INSERT(ProfileID, Username,HashedPassword)
+   VALUES(S.ProfileID,S.Username,S.HashedPassword);

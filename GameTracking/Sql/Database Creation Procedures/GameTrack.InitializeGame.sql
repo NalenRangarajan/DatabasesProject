@@ -1536,7 +1536,7 @@ MERGE GameTrack.Game T
 USING @GameStaging S ON S.PublisherID = T.PublisherID
 WHEN MATCHED AND S.GameID <> T.GameID THEN
    UPDATE
-   SET GameID = S.GameID,
+   SET
    [Name] = S.[Name],
    ReleaseDate = S.ReleaseDate
 
