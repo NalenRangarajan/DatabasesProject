@@ -112,6 +112,24 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Game> GetAllGames()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetAllGames", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
 		private IReadOnlyList<Game> TranslateGames(SqlDataReader reader)
 		{
 			List<Game> games = new List<Game>();

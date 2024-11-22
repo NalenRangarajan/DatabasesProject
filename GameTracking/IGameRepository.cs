@@ -14,5 +14,7 @@ namespace GameTracking
 		Game FetchGame(int gameID);
 
 		IReadOnlyList<Game> GetGamesForProfile(string username);
+
+		IReadOnlyList<Game> GetAllGames();
 	}
 }

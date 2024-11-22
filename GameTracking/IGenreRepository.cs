@@ -14,5 +14,7 @@ namespace GameTracking
 		Genre GetGenre(string name);
 
 		IReadOnlyList<Genre> GetGenresForGame(int gameID);
+
+		IReadOnlyList<Genre> GetAllGenres();
 	}
 }
