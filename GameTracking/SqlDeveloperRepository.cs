@@ -147,5 +147,7 @@ namespace GameTracking
 			return new Developer(reader.GetInt32(developerIDOrdinal), reader.GetString(nameOrdinal), reader.GetString(emailOrdinal),
 				reader.GetDateTime(foundedDateOrdinal), reader.GetString(locationOrdinal), reader.GetInt32(teamCountOrdinal));
 		}
+
+
 	}
 }

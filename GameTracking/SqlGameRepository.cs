@@ -64,7 +64,7 @@ namespace GameTracking
 				}
 			}
 		}
-		
+
 		public void AddGameDeveloper(int gameID, string developerName)
 		{
 			if (gameID == 0)
@@ -314,8 +314,75 @@ namespace GameTracking
 				return null;
 			}
 
-			return new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal), 
+			return new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
 				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal));
 		}
-	}
+
+		public IReadOnlyList<(Game, decimal)> GetGamesAndAverageScore() ///////WIPPP
+		{
+            var results = new List<(Game, decimal)>();
+
+            using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGamesAndAverageScores", connection))
+				{
+					
+                    connection.Open();
+
+                    command.CommandType = CommandType.StoredProcedure;
+                    var p = command.Parameters.Add("AverageScore", SqlDbType.Decimal);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        List<(Game, decimal)> list = new();
+                        list.Add(TranslateGameDecimal(reader, command));
+
+                        return list;
+                    }
+					
+                }
+			}
+		}
+
+        public IReadOnlyList<(Game, decimal)> GetGamesAndReviewCount() ///////WIPPP
+        {
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                using (var command = new SqlCommand("GameTrack.GetGamesAndAverageScores", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+						List<(Game, decimal)> list = new();
+						list.Add(TranslateGameDecimal(reader, command));
+
+
+
+						return list;
+                    }
+                }
+            }
+        }
+
+        private (Game,decimal) TranslateGameDecimal(SqlDataReader reader, SqlCommand command)
+        {
+            int gameIDOrdinal = reader.GetOrdinal("GameID");
+            int publisherIDOrdinal = reader.GetOrdinal("PublisherID");
+            int nameOrdinal = reader.GetOrdinal("Name");
+            int releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
+
+            if (!reader.Read())
+            {
+				throw new EndOfStreamException(" AYE you at the end");
+            }
+
+            int score = (int)command.Parameters["AverageScore"].Value;
+            return (new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
+                reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)), score);
+        }
+    }
 }
