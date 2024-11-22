@@ -12,7 +12,7 @@ namespace GameTracking.Models
 
 		public string Name { get; set; }
 
-		public string Website { get; set; }
+		public string Email { get; set; }
 
 		public DateTime FoundedDate { get; set; }
 
@@ -20,11 +20,11 @@ namespace GameTracking.Models
 
 		public int TeamCount { get; set; }
 
-		public Developer(int dID, string n, string w, DateTime fd, string l, int tc)
+		public Developer(int dID, string n, string e, DateTime fd, string l, int tc)
 		{
 			DeveloperID = dID;
 			Name = n;
-			Website = w;
+			Email = e;
 			FoundedDate = fd;
 			Location = l;
 			TeamCount = tc;

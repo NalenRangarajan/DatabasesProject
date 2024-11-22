@@ -50,7 +50,7 @@ namespace GameTracking
 			}
 		}
 
-		public Review FetchGame(int reviewID)
+		public Review FetchReviews(int reviewID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
@@ -105,7 +105,7 @@ namespace GameTracking
 			}
 		}
 
-		public IReadOnlyList<Review> GetReview(int gameID)
+		public IReadOnlyList<Review> GetReviews(int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))
 			{
