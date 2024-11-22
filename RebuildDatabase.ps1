@@ -96,6 +96,9 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializePlatform.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeProfile.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeReview.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeGameDeveloper.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeGamePlatform.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Database Creation Procedures\GameTrack.InitializeGameGenre.sql"
 
 Write-Host "Rebuild completed."
 Write-Host ""
