@@ -41,7 +41,7 @@ namespace GameApplication
             MaxDatePicker.ValueChanged += UpdateDatePicker;
             MinDatePicker.ValueChanged += UpdateDatePicker;
             MinUpDown.ValueChanged += UpdateUpDown;
-            MaxUpDown.ValueChanged += UpdateUpDown; ;
+            MaxUpDown.ValueChanged += UpdateUpDown;
         }
 
         private void UpdateUpDown(object? sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace GameApplication
             if (agv.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Game Successfully Added.");
-            }
+			}
         }
 
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)

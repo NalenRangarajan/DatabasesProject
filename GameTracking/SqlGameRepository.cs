@@ -49,6 +49,9 @@ namespace GameTracking
 						var p = command.Parameters.Add("GameID", SqlDbType.Int);
 						p.Direction = ParameterDirection.Output;
 
+						var x = command.Parameters.Add("PublisherID", SqlDbType.Int);
+						x.Direction = ParameterDirection.Output;
+
 						connection.Open();
 
 						command.ExecuteNonQuery();

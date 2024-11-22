@@ -31,7 +31,8 @@ namespace GameApplication
             DateTime releaseDate = ReleaseDatePicker.Value;
             if (title != ""  && genre != "" && developer != "" && publisher != "")
             {
-                sgr.CreateGame(title, releaseDate, developer, publisher);
+                Game created = sgr.CreateGame(title, releaseDate, developer, publisher);
+
                 DialogResult = DialogResult.OK;
                 this.Close();
             }
