@@ -26,5 +26,7 @@ namespace GameTracking
 		void AddGameDeveloper(int gameID, string developerName);
 
 		void AddGameGenre(int gameID, string genreName);
+
+		void AddGameProfile(int gameID, string username);
 	}
 }

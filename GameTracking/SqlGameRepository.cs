@@ -115,6 +115,31 @@ namespace GameTracking
 			}
 		}
 
+		public void AddGameProfile(int gameID, string username)
+		{
+			if (gameID == 0)
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(gameID));
+
+			if (string.IsNullOrWhiteSpace(username))
+				throw new ArgumentException("The parameter cannot be null or empty.", nameof(username));
+
+			using (var transaction = new TransactionScope())
+			{
+				using (var connection = new SqlConnection(connectionString))
+				{
+					using (var command = new SqlCommand("GameTrack.CreateGameProfile", connection))
+					{
+						command.CommandType = CommandType.StoredProcedure;
+
+						command.Parameters.AddWithValue("GameID", gameID);
+						command.Parameters.AddWithValue("Username", username);
+
+						connection.Open();
+					}
+				}
+			}
+		}
+
 		public Game FetchGame(int gameID)
 		{
 			using (var connection = new SqlConnection(connectionString))

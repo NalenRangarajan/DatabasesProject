@@ -1,12 +1,12 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateGameProfile
 	@GameID INT,
-	@ProfileUsername NVARCHAR(32)
+	@Username NVARCHAR(32)
 AS
 
 DECLARE @ProfileID INT;
 SELECT @ProfileID = P.ProfileID
 FROM GameTrack.[Profile] P
-WHERE P.Username = @ProfileUsername;
+WHERE P.Username = @Username;
 
 IF NOT EXISTS (
 	SELECT *
