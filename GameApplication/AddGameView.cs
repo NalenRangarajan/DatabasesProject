@@ -42,7 +42,7 @@ namespace GameApplication
 			DateTime releaseDate = ReleaseDatePicker.Value;
 			if (title != "" && genre.Name != "" && developer != "" && publisher != "")
 			{
-				CreatedGame = sgr.CreateGame(title, releaseDate, developer, publisher);
+				CreatedGame = sgr.CreateGame(title, releaseDate, developer, publisher, genre.GenreID);
 				if (CreatedGame == null)
 				{
 					MessageBox.Show("Null game");

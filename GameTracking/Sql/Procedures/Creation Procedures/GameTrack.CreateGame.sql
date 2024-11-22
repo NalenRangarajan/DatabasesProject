@@ -3,6 +3,7 @@
    @ReleaseDate DATETIME2,
    @DeveloperName NVARCHAR(32),
    @PublisherName NVARCHAR(32),
+   @GenreID INT,
    @GameID INT OUTPUT,
    @PublisherID INT OUTPUT
 AS
@@ -20,6 +21,12 @@ SET @GameID = SCOPE_IDENTITY();
 
 INSERT GameTrack.GameDeveloper(GameID,DeveloperID)
 VALUES(@GameID, @DeveloperID);
+
+--add gamegenre
+
+INSERT GameTrack.GameGenre(GameID,GenreID)
+VALUES(@GameID, @GenreID);
+
 
 GO
 

@@ -1,9 +1,9 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateGameGenre
 	@GameID INT,
-	@GenreName NVARCHAR(16)
+	@GenreName NVARCHAR(32)
 AS
 
-DECLARE @GenreID TINYINT;
+DECLARE @GenreID INT;
 SELECT @GenreID = G.GenreID
 FROM GameTrack.Genre G
 WHERE G.[Name] = @GenreName;

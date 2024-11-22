@@ -78,6 +78,7 @@ namespace GameApplication
                 item.Tag = ggame;
                 GamesList.Items.Add(item);
             }
+            GamesList.Invalidate();
         }
 
         private void AddGameButton_Click(object sender, EventArgs e)
