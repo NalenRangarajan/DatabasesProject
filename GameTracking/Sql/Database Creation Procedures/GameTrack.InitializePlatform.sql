@@ -8,7 +8,7 @@ DECLARE @PlatformStaging TABLE
 
 /***************************** Modify values here *****************************/
 
-INSERT @PlatformStaging(PlatformID, [Name])
+INSERT @PlatformStaging([Name])
 VALUES
 	(N'Wii'),
 (N'NES'),

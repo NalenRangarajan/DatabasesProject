@@ -12,7 +12,7 @@ DECLARE @PublisherStaging TABLE
 
 /***************************** Modify values here *****************************/
 
-INSERT @PublisherStaging(PublisherID, [Name],FoundedDate, [Location],Email,EmployeeCount) /************************* CHANGED WEBSITE TO EMAIL */
+INSERT @PublisherStaging( [Name],FoundedDate, [Location],Email,EmployeeCount) /************************* CHANGED WEBSITE TO EMAIL */
 VALUES
 (N'Bandai Namco Entertainment', N'2024-11-10',N'911-7106 Eu Road',N'ut.sagittis@hotmail.ca',129),
 (N'Supergiant Games', N'2023-12-08',N'Ap #502-5241 Tempor, Av.',N'parturient.montes.nascetur@google.net',110),
