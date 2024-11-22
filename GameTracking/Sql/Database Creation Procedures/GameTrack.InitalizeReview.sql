@@ -807,7 +807,9 @@ VALUES
 	(794,133, 4,N'classic',N'2024-06-22'),
 	(795,133, 8,N'doom my beloved',N'2024-05-13'),
 	(796,133, 9,N'a first person shooter in purest form. decades ahead of its time on release and sometimes i think we still havent caught up with it',N'2023-12-28'),
-	(797,133, 9,N'(Played Before 2023)\n                     \n                     It is DOOM. It is fun and revolutionized the world, bringing FPSs to the forefront of our culture. But it hasnt aged that well. The level design is complicated, but horrible where everything is a maze. Half the time youll be running around an empty level looking for that one door that gives you a yellow keycard with nothing in it, and the music is more like butchered versions of famous metal songs. The guns are great and the enemy design is rich and unique, but I really felt like they werent used to their full capability. Monster closets come from this game and really just arent interesting way to introduce a majority of the enemies. Still pretty important to play and experience culture, but I definitely dont think it has aged well.',N'2025-08-30'),
+	(797,133, 9,N'(Played Before 2023)\n                     \n                     It is DOOM. It is fun and revolutionized the world, bringing FPSs to the forefront of our culture. But it hasnt aged that well. The level design is complicated, but horrible where everything is a maze. Half the time youll be running around an empty level looking for that one door that gives you a yellow keycard with nothing in it, and the music is more like butchered versions of famous metal songs. The guns are great and the enemy design is rich and unique, but I really felt like they werent used to their full capability. Monster closets come from this game and really just arent interesting way to introduce a majority of the enemies. Still pretty important to play and experience culture, but I definitely dont think it has aged well.',N'2025-08-30');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(798,133, 3,N'Esta god, es medio viejo pero se sigue jugando bastante bien y yo me lo termine, papito jugo al doom.',N'2025-11-08'),
 	(799,134, 2,N'A really solid anthology of mini gold era Square RPGs lost to time, now easily accessible via this HD2D remake. Live a Live is a must play for anyone who enjoys Squares Super Nintendo output or anyone who wants a JRPG that doesnt play by the book.',N'2024-08-15'),
 	(800,134, 0,N'This is a collection of a bunch of vignettes that all play with JRPG tropes in unique ways, and for the most part I found these stories really unique and entertaining. This feels like the predecessor to Chrono Trigger in many ways, so fans of that game will immediately see similarities. It’s mostly a very accessible game, but my one big fault is that the game lets you choose any of these chapters to start with. Certain chapters I enjoyed within the context of the rest of the game, but are particularly unconventional and could make for a very weak first impression. Aside from that tho, I honestly loved this. Combat is a big standout for me, each encounter was like a mini tactics battle with a really fun grid system. I had to thoughtfully consider how to dispatch enemies effectively, and while it’s far from a difficult game, each battle had me engaged. Presentation is gorgeous with the HD-2D Switch remake, it’s a total overhaul that still remains faithful to the original. While some chapters are definitely weaker than others, I thoroughly enjoyed the majority of my time with this game. And while I won’t spoil the final segments that come after you finish the seven main chapters, I found them to be so fun and satisfying that they elevate the entire experience. This definitely deserves to be considered a classic of the era right alongside FFVI and Chrono Trigger.',N'2025-07-29'),
@@ -1693,7 +1695,10 @@ VALUES
 	(1680,280, 4,N'i felt that',N'2025-05-07'),
 	(1681,281, 9,N'It is the best one... music, fights, story, pokemon... its a gg',N'2025-01-16'),
 	(1682,281, 5,N'This game taught me that I do not like Pokemon games.',N'2025-01-07'),
-	(1683,281, 5,N'RePlayed on Challenge Mode with Set Mode and no items in battle.',N'2024-03-18'),
+	(1683,281, 5,N'RePlayed on Challenge Mode with Set Mode and no items in battle.',N'2024-03-18');
+
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(1684,281, 8,N'What can I say, the best pokemon game and you get to play it a second time in the form of a sequel.',N'2025-07-17'),
 	(1685,281, 4,N'The most a single Pokemon game has ever had to offer.',N'2024-06-03'),
 	(1686,281, 0,N'Pokemon Black 2 (like White 2) is the only time in the entire franchise they made a sequel to a mainline game, and I would argue this is the best Pokemon has ever had to offer.',N'2025-08-26'),
@@ -2596,7 +2601,10 @@ VALUES
 	(2583,431, 7,N'I used to work in a nursing home that had a wii bowling league, and a team of 5 ladies who we actually recorded and submitted to a national tournament.\n                     \n                     So shout out to Dot and her perfect game,  and to the wonderful team in 2013, you all did great!',N'2025-01-20'),
 	(2584,431, 2,N'best game ever i really love it slay',N'2024-02-02'),
 	(2585,431, 10,N'if you have touched a controller you probably already know what this is and have already played it. I personally never got the hype and preferred wii play back in the day but maybe thats just me being a PLAYER and not a gross SPORTSER. the OST do be raw tho',N'2024-04-15'),
-	(2586,431, 2,N'One of the best party games, and a solid single player game',N'2024-05-11'),
+	(2586,431, 2,N'One of the best party games, and a solid single player game',N'2024-05-11');
+
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(2587,432, 9,N'Enjoyed this one a lot as a big Harry Potter fan. The developers have done an incredible job in making Hogwarts make sense and feel lived in at the same time. Love all the elements of lore hinting back to parts of the books, whilst still feeling new. Some of the characters were very likeable, and I liked the three main subplots. The main story was decent too, with some dramatic and emotional moments. Combat is a lot of fun too and flying is an awesome mechanic.',N'2024-04-27'),
 	(2588,432, 1,N'Had a lot of fun playing this ngl. Running around hogwarts was a dream come true, sadly has a pretty weak ending and some rough edges. But enjoyed almost the entire experience and will play again at some point',N'2023-11-20'),
 	(2589,432, 6,N'Weirdest game I’ve played in awhile, where at first I was thinking it was a possible GOTY. Then, actually digging into the game, you saw them just repeat everything a ton of times over and over.\n                     \n                     What a mindless slog',N'2025-04-07'),
@@ -3562,7 +3570,9 @@ VALUES
 	(3549,593, 3,N'Im not talking about the other one, Im talking about the one with the guy and his story, just going to preface with that.',N'2025-09-13'),
 	(3550,593, 7,N'final fantasy x is still probably my favorite ff aesthetically. going through and watching the fmv cutscenes was a treat, and i think they still look really good considering the original release date, though i dont know how much that can be attributed to the HD-ification. though i have a few problems with the game (the way xp is distributed and its upsetting linearity to name a few), i can still safely say its in my top 3 of mainline ff games.',N'2025-01-04'),
 	(3551,593, 0,N'Nota: 91',N'2024-03-28'),
-	(3552,593, 7,N'i cried',N'2025-07-03'),
+	(3552,593, 7,N'i cried',N'2025-07-03');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(3553,593, 0,N'joguei só o X e não o X-2',N'2025-05-05'),
 	(3554,594, 5,N'esse jogo é meio ambíguo, por um lado sua jogabilidade é incrível, por outro a história é desinteressante, vou dar uma nota alta pelo fato do meu foco principal ser os torneios e não o modo história e nessa proposta o jogo se sai muito bem, bons personagens (seja com ou sem dlc), combos incríveis, grande parte do fatalities são excelentes, salto de qualidade no x-ray em comparação com o jogo anterior, não podemos esquecer também da melhor coisa nesse jogo, a possibilidade de escolher entre três variações com diferentes habilidades.',N'2024-07-05'),
 	(3555,594, 6,N'doverim',N'2024-03-25'),
@@ -4483,7 +4493,10 @@ VALUES
 	(4470,750, 6,N'After hearing that Unwound Future was unanimously considered the best out of the series, I decided to give Professor Layton one last chance. But even still, I just really can not wrap my head around what is so enjoyable about these games. I want to like it so, so badly. I can see the good parts, like the art and the music and the atmosphere, but it\s almost like the game uses that to masquerade as a better experience than it is. I look at Professor Layton and I think, wow, what a charming little world! But playing through Unwound Future was one of the most miserable experiences I\ve ever had (with a game, of course).',N'2024-10-09'),
 	(4471,751, 6,N'my favourite DPA game',N'2025-10-28'),
 	(4472,751, 2,N'Some plot holes but does a phenomenal job of building atmosphere and I feel like it’s easily the most batshit terrifying of the series so far. Certain aspects of this really crawled under my skin. I definitely have high hopes for the space themed one that’s happening next.',N'2024-06-14'),
-	(4473,751, 8,N'america but scary',N'2024-03-16'),
+	(4473,751, 8,N'america but scary',N'2024-03-16');
+
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(4474,751, 9,N'Último título de la primera temporada de The Dark Pictures, nuevamente visionado a través de illoJuan y Masi. Sigue en la línea del resto. Tiene un comienzo algo más prometedor, pero como ocurre siempre, conforme pasan las horas los guionistas se quedan sin ideas y el juego se convierte en una huida infinita.',N'2025-04-26'),
 	(4475,751, 4,N'hamburger cheese burger big mac whopper',N'2024-04-02'),
 	(4476,751, 5,N'Think its got some of the best horror Supermassive have ever produced but the story leaves a bit to be desired. You know its poor when I literally have to use google to figure out the constant holes in its narrative, but once you piece it all together its actually quite clever if not a bit convoluted. Nevertheless its enjoyable but lacking that bit of extra quality to make it a serious contender.',N'2024-07-28'),
@@ -5402,7 +5415,9 @@ VALUES
 	(5389,904, 9,N'Ótima apresentação a um novo universo, no começo parece ser uma sequencia mas é revelado ser algo a mais.',N'2025-06-05'),
 	(5390,904, 0,N'Good but chapter 2 is bettar !!!!',N'2025-03-01'),
 	(5391,904, 9,N'lancer carried this',N'2024-01-17'),
-	(5392,904, 4,N'Pretty great',N'2025-03-10'),
+	(5392,904, 4,N'Pretty great',N'2025-03-10');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(5393,904, 0,N'uma otima introdução pra historia do que vai acontecer nos proximos capitulos mas o capitulo 2 é bem mais melhor',N'2024-03-17'),
 	(5394,904, 4,N'I went to play blind and surprised myself! Unique gameplay with striking and charismatic characters with great comedy scenes!',N'2024-06-25'),
 	(5395,905, 7,N'Pretty damn good\n                     \n                     Pretty damn scary\n                     \n                     I hope my wife is okay',N'2025-08-03'),
@@ -6322,7 +6337,9 @@ VALUES
 	(6309,1058, 9,N'Jet set radioa funky, rigid, pop style holds up to this day. Zany beats and roller-skating adventures fill this game with love. I was a bit frustrated with the controls on occasion, but when it works, skating is better than ever.',N'2025-08-30'),
 	(6310,1058, 3,N'gonna be honest i think its a bit too hard for me, but its still very enjoyable and i really love the unique art and character design',N'2025-11-08'),
 	(6311,1058, 2,N'greatest game on earth',N'2024-08-15'),
-	(6312,1058, 0,N'Pretty fun!',N'2025-07-29'),
+	(6312,1058, 0,N'Pretty fun!',N'2025-07-29');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(6313,1058, 10,N'fun but fuck the controls suck absolute weener',N'2023-12-17'),
 	(6314,1059, 1,N'One of the most innovative and unique games Ive played.',N'2025-05-13'),
 	(6315,1059, 6,N'a little bit better than the first one,good as fuck tho',N'2024-06-14'),
@@ -7202,7 +7219,9 @@ VALUES
 	(7189,1207, 3,N'victreebell > vileplume\n                     \n                     ninetales > arcanine\n                     \n                     slowbro > starmie',N'2024-02-16'),
 	(7190,1207, 6,N'Good as far as remakes go. Added some new content too',N'2025-07-05'),
 	(7191,1207, 5,N'If it wasnt for my nostalgia, I would consider this pretty much unplayable. Soundrack is great though. But the gameplay is so slow and repetitive. Cant enjoy this, as an adult, unfortunately.',N'2025-04-20'),
-	(7192,1207, 4,N'Não tem Arcanine.',N'2025-10-24'),
+	(7192,1207, 4,N'Não tem Arcanine.',N'2025-10-24');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(7193,1208, 4,N'This game does not have the heart and soul of a Mario game, but everything else is there',N'2024-03-17'),
 	(7194,1208, 8,N'its like if you took odyssey and 3D world and took out everything that made both of those games fun',N'2024-12-26'),
 	(7195,1208, 2,N'While it is a refreshing take on what a new 3d Mario adventure might look like, I think Bowsers Fury feels awkward in places. A lot of the islands levels that you can seemlessly travel to however you often need to leave and come back for some objectives. Fury Bowser was interesting at first, but he became an annoyance later on, often showing up at inconvenient times to prevent you from being able to complete an objective. I also dont think the 3D world control style and powerup system works too well for a more sandbox type of mario game. Your movement options dont feel as flexible as something like Super Mario Odyssey which feels uncomfortable at times for this game. This is likely a result of being a bonus mode for 3D World as opposed to being a standalone game. Overall its an interesting package, and I dont regret buying 3D World again just for this.',N'2024-04-04'),
@@ -8147,7 +8166,9 @@ VALUES
 	(8134,1368, 2,N'Eight Pages might getting longer and longer in the tooth as time goes on, but there remains something elegant about the original Guy No Follow Me When I Look At Him',N'2024-06-11'),
 	(8135,1368, 5,N'Might be the horror game with the most simple concept, but this doesnt stop it from being great. The jumpscares from Slender appearing are really hitting and the atmosphere in general is very creepy.',N'2024-05-04'),
 	(8136,1368, 2,N'Basic but nostalgic. Real ones remember the markiplier slenderman videos',N'2024-10-11'),
-	(8137,1368, 5,N'Pros\n                     \n                     - Concept is good and simple',N'2025-03-15'),
+	(8137,1368, 5,N'Pros\n                     \n                     - Concept is good and simple',N'2025-03-15');
+	INSERT @ReviewStaging(ReviewID,GameID,Score,Body,ReviewDate) 
+	VALUES
 	(8138,1369, 7,N'Boring game, dont bother. Had to force myself through this one, it just isnt unique or interesting in any way.',N'2025-07-24'),
 	(8139,1369, 5,N'Rating: 9.1/10 - Amazing',N'2025-10-11'),
 	(8140,1369, 9,N'Que obra espetacular meua migo.',N'2024-08-05'),
