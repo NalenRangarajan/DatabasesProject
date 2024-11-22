@@ -39,22 +39,3 @@ BEGIN
    );
 END;
 
-/****************************
- * Unique Constraints
- ****************************/
-
-IF NOT EXISTS
-   (
-      SELECT *
-      FROM sys.key_constraints kc
-      WHERE kc.parent_object_id = OBJECT_ID(N'GameTrack.Review')
-         AND kc.[name] = N'UK_GameTrack_Review_GameID'
-   )
-BEGIN
-   ALTER TABLE GameTrack.Review
-   ADD CONSTRAINT [UK_GameTrack_Review_GameID] UNIQUE NONCLUSTERED
-   (
-      GameID ASC
-   )
-END;
-
