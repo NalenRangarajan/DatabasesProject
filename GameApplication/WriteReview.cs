@@ -45,7 +45,6 @@ namespace GameApplication
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            reviewRepo.CreateReview(gameID, (int)ScoreUpDown.Value, BodyTextBox.Text);
             DialogResult = DialogResult.OK;
             Close();
         }

@@ -25,7 +25,7 @@ namespace GameTracking
 			{
 				using (var connection = new SqlConnection(connectionString))
 				{
-					using (var command = new SqlCommand("GameTrack.CreateReview", connection))
+					using (var command = new SqlCommand("GameTrack.CreateOrEditReview", connection))
 					{
 						command.CommandType = CommandType.StoredProcedure;
 
