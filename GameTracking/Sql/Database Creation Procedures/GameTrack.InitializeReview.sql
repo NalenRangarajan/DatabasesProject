@@ -1,10 +1,5 @@
-﻿
-AS
-AS
-AS
-AS
-AS
-DECLARE @ReviewStaging TABLE
+﻿DECLARE @ReviewStaging TABLE
+(
 	Body NVARCHAR(2048),
 	ReviewID INT NOT NULL IDENTITY(1,1),
 	GameID INT NOT NULL,

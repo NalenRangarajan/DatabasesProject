@@ -1,5 +1,5 @@
 ﻿
-AS
+
 DECLARE @ProfileStaging TABLE
 (
 	ProfileID INT NOT NULL IDENTITY(1,1),
