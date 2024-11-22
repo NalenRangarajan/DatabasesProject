@@ -88,12 +88,14 @@ namespace GameApplication
         private void LoginAttempt()
         {
             using (LoginView lv = new LoginView())
+            {
                 if (lv.ShowDialog() == DialogResult.OK)
                 {
                     profile = lv.profile;
                     ActivateControls();
                     UpdateGUIProfile();
                 }
+            }
         }
 
         private void WriteReviewAttempt()
@@ -186,7 +188,8 @@ namespace GameApplication
                 games = sgr.GetGamesForProfile(profile.Username);
                 foreach (Game game in games)
                 {
-                    var item = new ListViewItem(game.Name);
+                    var item = new ListViewItem();
+                    item.Tag = game;
                     GamesList.Items.Add(item);
                 }
             }
