@@ -130,6 +130,81 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Game> SearchGamesByName(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingGames", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialGameName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> SearchGamesByDeveloper(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingDeveloper", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialDeveloperName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> SearchGamesByPublisher(string partName, DateTime start, DateTime end, int min, int max, string genres)
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.SearchingPublishers", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					command.Parameters.AddWithValue("PartialPublisherName", partName);
+					command.Parameters.AddWithValue("StartDate", start);
+					command.Parameters.AddWithValue("EndDate", end);
+					command.Parameters.AddWithValue("MinScore", min);
+					command.Parameters.AddWithValue("MaxScore", max);
+					command.Parameters.AddWithValue("Genres", genres);
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGames(reader);
+					}
+				}
+			}
+		}
+
 		private IReadOnlyList<Game> TranslateGames(SqlDataReader reader)
 		{
 			List<Game> games = new List<Game>();
