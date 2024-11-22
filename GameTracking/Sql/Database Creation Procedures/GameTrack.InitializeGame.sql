@@ -1,10 +1,9 @@
-﻿CREATE PROCEDURE GameTrack.InitializeGame
-AS
+﻿
 DECLARE @GameStaging TABLE
 (
 	GameID INT NOT NULL IDENTITY(1,1),
 	PublisherID INT NOT NULL,
-	[Name] NVARCHAR(64) NOT NULL,
+	[Name] NVARCHAR(128) NOT NULL,
 	ReleaseDate DATETIME2 NOT NULL
 );
 
@@ -1533,13 +1532,13 @@ VALUES
 /******************************************************************************/
 
 MERGE GameTrack.Game T
-USING @GameStaging S ON S.PublisherID = T.PublisherID
-WHEN MATCHED AND S.GameID <> T.GameID THEN
+USING @GameStaging S ON S.GameID = T.GameID
+WHEN MATCHED AND S.[Name] <> T.[Name] OR T.PublisherID <> S.PublisherID THEN
    UPDATE
-   SET
+   SET PublisherID = S.PublisherID,
    [Name] = S.[Name],
    ReleaseDate = S.ReleaseDate
 
 WHEN NOT MATCHED THEN
-   INSERT(GameID,PublisherID, [Name], ReleaseDate)
-   VALUES( S.GameID,S.PublisherID,S.[Name], S.ReleaseDate);
+   INSERT(PublisherID, [Name], ReleaseDate)
+   VALUES(S.PublisherID,S.[Name], S.ReleaseDate);

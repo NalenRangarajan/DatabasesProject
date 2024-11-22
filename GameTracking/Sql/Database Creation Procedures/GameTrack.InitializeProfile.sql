@@ -1,9 +1,9 @@
-﻿CREATE PROCEDURE GameTrack.InitializeProfile
+﻿
 AS
 DECLARE @ProfileStaging TABLE
 (
 	ProfileID INT NOT NULL IDENTITY(1,1),
-	Username NVARCHAR(32) NOT NULL,
+	Username NVARCHAR(128) NOT NULL,
 	HashedPassword NVARCHAR(32) NOT NULL,
 	CreatedOn DATETIMEOFFSET NOT NULL DEFAULT(SYSDATETIMEOFFSET())
 );
@@ -123,6 +123,6 @@ WHEN MATCHED AND S.Username <> T.Username THEN
    UPDATE
    SET Username = S.Username,
    HashedPassword = S.HashedPassword
-WHEN NOT MATCHED THEN
-   INSERT(ProfileID, Username,HashedPassword)
-   VALUES(S.ProfileID,S.Username,S.HashedPassword);
+   INSERT(Username,HashedPassword)
+   VALUES(S.Username,S.HashedPassword);
+   VALUES(S.Username,S.HashedPassword);

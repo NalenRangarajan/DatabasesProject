@@ -3,9 +3,9 @@ BEGIN
 	CREATE TABLE GameTrack.Publisher
 	(
 		PublisherID INT NOT NULL IDENTITY(1,1),
-		[Name] NVARCHAR(32) NOT NULL,
+		[Name] NVARCHAR(64) NOT NULL,
 		FoundedDate DATETIME2 NOT NULL,
-		[Location] NVARCHAR(32) NOT NULL,
+		[Location] NVARCHAR(256) NOT NULL,
 		Email NVARCHAR(128) NOT NULL,
 		EmployeeCount INT NOT NULL
 

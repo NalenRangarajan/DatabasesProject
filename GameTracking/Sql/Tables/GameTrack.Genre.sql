@@ -1,9 +1,9 @@
 ﻿IF OBJECT_ID(N'GameTrack.Genre') IS NULL
 BEGIN
    CREATE TABLE GameTrack.Genre
-   (
-      GenreID INT NOT NULL,
-      [Name] VARCHAR(16) NOT NULL,
+   ( 
+      GenreID INT NOT NULL IDENTITY(1,1),
+      [Name] VARCHAR(32) NOT NULL,
 
       CONSTRAINT PK_GameTrack_Genre_GenreID PRIMARY KEY CLUSTERED
       (
