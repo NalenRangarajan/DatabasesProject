@@ -29,18 +29,6 @@ namespace GameApplication
             }
         }
 
-        public string Title
-        {
-            get
-            {
-                return TitleLabel.Text;
-            }
-            set
-            {
-                TitleLabel.Text = value;
-            }
-        }
-
         public string Body
         {
             get

@@ -36,7 +36,8 @@ namespace GameApplication
         {
             InitializeComponent();
             SetGenres();
-            SetGamesList();
+            IReadOnlyList<Game> games = sgr.GetAllGames();
+            SetGamesList(games);
             MaxDatePicker.ValueChanged += UpdateDatePicker;
             MinDatePicker.ValueChanged += UpdateDatePicker;
             MinUpDown.ValueChanged += UpdateUpDown;
@@ -67,10 +68,8 @@ namespace GameApplication
             }
         }
 
-        private void SetGamesList()
+        private void SetGamesList(IReadOnlyList<Game> games)
         {
-
-            IReadOnlyList<Game> games = sgr.GetAllGames();
             GamesList.Items.Clear();
             foreach (Game ggame in games)
             {
@@ -105,18 +104,24 @@ namespace GameApplication
                 //ListViewItem lvi = (ListViewItem)v;
                 sb.Append(((Genre)lvi.Tag).Name + ",");
             }
-            sb.Remove(sb.Length - 1, 1);
+            if (sb.Length > 0)
+            {
+                sb.Remove(sb.Length - 1, 1);
+            }
             if (TitleRadioButton.Checked)
             {
-                sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
             else if (PublisherRadioButton.Checked)
             {
-                sgr.SearchGamesByPublisher(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByPublisher(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
             else
             {
-                sgr.SearchGamesByDeveloper(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByDeveloper(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
         }
     }

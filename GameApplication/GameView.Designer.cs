@@ -113,7 +113,6 @@
             YourReview.Score = "#/10";
             YourReview.Size = new Size(429, 117);
             YourReview.TabIndex = 7;
-            YourReview.Title = "TItle";
             // 
             // label1
             // 
