@@ -60,8 +60,15 @@ namespace GameApplication
                     DialogResult = DialogResult.OK;
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Incorrect username or passowrd.");
+                }
             }
-            MessageBox.Show("Incorrect username or passowrd.");
+            else
+            {
+                MessageBox.Show("Incorrect username or passowrd.");
+            }
             
         }
 

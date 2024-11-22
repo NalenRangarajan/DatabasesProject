@@ -11,9 +11,6 @@ namespace GameApplication
     {
         private const string connectionString = @"Server=(localdb)\MSSQLLocalDb;Database=CIS560;Integrated Security=SSPI;";
 
-        private LoginView lv = new LoginView();
-
-        private WriteReview wr = new WriteReview();
 
         AddReviewView agv = new AddReviewView();
 
@@ -90,16 +87,18 @@ namespace GameApplication
 
         private void LoginAttempt()
         {
-            if (lv.ShowDialog() == DialogResult.OK)
-            {
-                profile = lv.profile;
-                ActivateControls();
-                UpdateGUIProfile();
-            }
+            using (LoginView lv = new LoginView())
+                if (lv.ShowDialog() == DialogResult.OK)
+                {
+                    profile = lv.profile;
+                    ActivateControls();
+                    UpdateGUIProfile();
+                }
         }
 
         private void WriteReviewAttempt()
         {
+            using (WriteReview wr = new WriteReview())
             if (wr.ShowDialog() != DialogResult.Cancel)
             {
 
