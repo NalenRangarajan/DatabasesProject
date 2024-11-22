@@ -11,7 +11,7 @@ EXEC GameTrack.CreateDeveloper @DeveloperName = @DeveloperName;
 
 EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;
 
-SELECT PublisherID = P.PublisherID
+SELECT INTO PublisherID = P.PublisherID
 FROM GameTrack.Publisher P
 WHERE P.[Name] = @PublisherName;
 

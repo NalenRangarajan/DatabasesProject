@@ -135,8 +135,11 @@ namespace GameTracking
 						command.Parameters.AddWithValue("Username", username);
 
 						connection.Open();
+						command.ExecuteNonQuery();
 					}
 				}
+
+				transaction.Complete();
 			}
 		}
 
