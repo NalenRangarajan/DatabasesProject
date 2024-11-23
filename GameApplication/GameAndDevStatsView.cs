@@ -23,11 +23,7 @@ namespace GameApplication
 		{
 			InitializeComponent();
 			DisplayGameStatistics();
-		}
-
-		private void DisplayDevStatistics()
-		{
-
+			DisplayDeveloperStatistics();
 		}
 
 		private void DisplayGameStatistics()
@@ -55,6 +51,34 @@ namespace GameApplication
 				item.Text = game.Name + " | Review Count: " + game.ReviewCount + " | Average Score: " + game.AverageScore;
 				item.Tag = game;
 				GamesList.Items.Add(item);
+			}
+		}
+
+		private void DisplayDeveloperStatistics()
+		{
+			IReadOnlyList<Developer> devsWithNumGames = sdr.GetAllDevelopersWithNumGames();
+			IReadOnlyList<Developer> devsWithAverageScore = sdr.GetAllDevelopersWithAverageScore();
+
+			List<Developer> devsToDisplay = new List<Developer>();
+
+			foreach (Developer d1 in devsWithNumGames)
+			{
+				foreach (Developer d2 in devsWithAverageScore)
+				{
+					if (d1.Equals(d2))
+					{
+						devsToDisplay.Add(new Developer(d1.DeveloperID, d1.Name, d1.Email, d1.FoundedDate, d1.Location, d1.TeamCount) { AverageReviewScore = d2.AverageReviewScore, NumGames = d1.NumGames });
+						break;
+					}
+				}
+			}
+
+			foreach (Developer dev in devsToDisplay)
+			{
+				var item = new ListViewItem();
+				item.Text = dev.Name + " | Games Developed: " + dev.NumGames + " | Average Review Score: " + dev.AverageReviewScore;
+				item.Tag = dev;
+				DevelopersList.Items.Add(item);
 			}
 		}
 	}

@@ -20,6 +20,10 @@ namespace GameTracking.Models
 
 		public int TeamCount { get; set; }
 
+		public double AverageReviewScore { get; init; }
+
+		public int NumGames { get; init; }
+
 		public Developer(int dID, string n, string e, DateTime fd, string l, int tc)
 		{
 			DeveloperID = dID;
@@ -28,6 +32,17 @@ namespace GameTracking.Models
 			FoundedDate = fd;
 			Location = l;
 			TeamCount = tc;
+		}
+
+		public override bool Equals(object? obj)
+		{
+			Developer other = (Developer)obj!;
+			return this.Name.Equals(other.Name);
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 	}
 }
