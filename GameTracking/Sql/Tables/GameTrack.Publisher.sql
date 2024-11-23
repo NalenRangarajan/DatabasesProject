@@ -4,10 +4,10 @@ BEGIN
 	(
 		PublisherID INT NOT NULL IDENTITY(1,1),
 		[Name] NVARCHAR(64) NOT NULL,
-		FoundedDate DATETIME2 NOT NULL,
-		[Location] NVARCHAR(256) NOT NULL,
-		Email NVARCHAR(128) NOT NULL,
-		EmployeeCount INT NOT NULL
+		FoundedDate DATETIME2,
+		[Location] NVARCHAR(256),
+		Email NVARCHAR(128),
+		EmployeeCount INT 
 
 		CONSTRAINT [PK_GameTrack_Publisher_PublisherID] PRIMARY KEY CLUSTERED
 		(

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             ScoreLabel = new Label();
-            TitleLabel = new Label();
             BodyLabel = new Label();
             ReviewDateLabel = new Label();
             ReviewStack = new FlowLayoutPanel();
@@ -43,40 +42,30 @@
             ScoreLabel.AutoSize = true;
             ScoreLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ScoreLabel.Location = new Point(0, 0);
-            ScoreLabel.Margin = new Padding(0, 0, 2, 0);
+            ScoreLabel.Margin = new Padding(0, 0, 3, 0);
             ScoreLabel.Name = "ScoreLabel";
-            ScoreLabel.Size = new Size(33, 15);
+            ScoreLabel.Size = new Size(51, 25);
             ScoreLabel.TabIndex = 1;
             ScoreLabel.Text = "#/10";
-            // 
-            // TitleLabel
-            // 
-            TitleLabel.AutoSize = true;
-            TitleLabel.Location = new Point(35, 0);
-            TitleLabel.Margin = new Padding(0);
-            TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(29, 15);
-            TitleLabel.TabIndex = 2;
-            TitleLabel.Text = "TItle";
             // 
             // BodyLabel
             // 
             BodyLabel.AutoSize = true;
-            BodyLabel.Location = new Point(0, 30);
+            BodyLabel.Location = new Point(0, 50);
             BodyLabel.Margin = new Padding(0);
-            BodyLabel.MaximumSize = new Size(295, 0);
+            BodyLabel.MaximumSize = new Size(421, 0);
             BodyLabel.Name = "BodyLabel";
-            BodyLabel.Size = new Size(34, 15);
+            BodyLabel.Size = new Size(53, 25);
             BodyLabel.TabIndex = 3;
             BodyLabel.Text = "Body";
             // 
             // ReviewDateLabel
             // 
             ReviewDateLabel.AutoSize = true;
-            ReviewDateLabel.Location = new Point(0, 15);
+            ReviewDateLabel.Location = new Point(0, 25);
             ReviewDateLabel.Margin = new Padding(0);
             ReviewDateLabel.Name = "ReviewDateLabel";
-            ReviewDateLabel.Size = new Size(31, 15);
+            ReviewDateLabel.Size = new Size(49, 25);
             ReviewDateLabel.TabIndex = 4;
             ReviewDateLabel.Text = "Date";
             // 
@@ -90,7 +79,7 @@
             ReviewStack.Location = new Point(0, 0);
             ReviewStack.Margin = new Padding(0);
             ReviewStack.Name = "ReviewStack";
-            ReviewStack.Size = new Size(300, 70);
+            ReviewStack.Size = new Size(429, 117);
             ReviewStack.TabIndex = 5;
             // 
             // ScoreAndTitle
@@ -98,23 +87,22 @@
             ScoreAndTitle.AutoSize = true;
             ScoreAndTitle.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ScoreAndTitle.Controls.Add(ScoreLabel);
-            ScoreAndTitle.Controls.Add(TitleLabel);
             ScoreAndTitle.Location = new Point(0, 0);
             ScoreAndTitle.Margin = new Padding(0);
             ScoreAndTitle.Name = "ScoreAndTitle";
-            ScoreAndTitle.Size = new Size(64, 15);
+            ScoreAndTitle.Size = new Size(54, 25);
             ScoreAndTitle.TabIndex = 6;
             // 
             // ReviewControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
             Controls.Add(ReviewStack);
             Margin = new Padding(0);
             Name = "ReviewControl";
-            Size = new Size(300, 70);
+            Size = new Size(429, 125);
             ReviewStack.ResumeLayout(false);
             ReviewStack.PerformLayout();
             ScoreAndTitle.ResumeLayout(false);
@@ -126,7 +114,6 @@
         #endregion
 
         private Label ScoreLabel;
-        private Label TitleLabel;
         private Label BodyLabel;
         private Label ReviewDateLabel;
         private FlowLayoutPanel ReviewStack;

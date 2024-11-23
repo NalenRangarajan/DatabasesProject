@@ -78,9 +78,16 @@ namespace GameApplication
             string pass = PasswordTextBox.Text;
             if (user != "" && pass != "")
             {
-                profile = spr.CreateProfile(user, Rot13(pass));
-                DialogResult = DialogResult.OK;
-                this.Close();
+                if(spr.GetProfile(user) == null)
+                {
+					profile = spr.CreateProfile(user, Rot13(pass));
+					DialogResult = DialogResult.OK;
+					this.Close();
+				}
+                else
+                {
+                    MessageBox.Show("You have already registered, please sign in!");
+                }
             }
             else
             {

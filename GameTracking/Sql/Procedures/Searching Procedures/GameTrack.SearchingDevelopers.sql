@@ -17,7 +17,7 @@ FROM GameTrack.Game G
 WHERE (@PartialDeveloperName IS NULL OR D.[Name] LIKE @PartialDeveloperName + N'%')
 	AND (@StartDate IS NULL OR @StartDate <= G.ReleaseDate)
 	AND (@EndDate IS NULL OR @EndDate >= G.ReleaseDate)
-	AND (@Genres IS NULL OR EXISTS (
+	AND (@Genres IS NULL OR @Genres = '' OR EXISTS (
 		SELECT *
 		FROM STRING_SPLIT(@Genres, ',') AS genre
 		WHERE genre.value = Ge.[Name]

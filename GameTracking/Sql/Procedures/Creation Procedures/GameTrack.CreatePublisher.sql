@@ -1,5 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreatePublisher
-	@PublisherName NVARCHAR(32)
+	@PublisherName NVARCHAR(32),
+	@PublisherID INT OUTPUT
 AS
 
 IF NOT EXISTS(
@@ -7,8 +8,15 @@ IF NOT EXISTS(
 	FROM GameTrack.Publisher P 
 	WHERE P.[Name] = @PublisherName
 	)
-BEGIN
-	INSERT GameTrack.Publisher([Name])
-	VALUES (@PublisherName)
-END;
+	BEGIN
+		INSERT GameTrack.Publisher([Name])
+		VALUES (@PublisherName)
+		SET @PublisherID = SCOPE_IDENTITY();
+	END;
+ELSE
+	BEGIN
+		SELECT @PublisherID = P.PublisherID
+		FROM GameTrack.Publisher P
+		WHERE P.[Name] = @PublisherName
+	END;
 GO

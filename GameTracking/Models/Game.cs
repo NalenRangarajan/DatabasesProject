@@ -16,12 +16,27 @@ namespace GameTracking.Models
 
 		public DateTime ReleaseDate { get; set; }
 
+		public double AverageScore { get; init; }
+
+		public int ReviewCount { get; init; }
+
 		public Game(int gID, int pID, string n, DateTime rd)
 		{
 			GameID = gID;
 			PublisherID = pID;
 			Name = n;
 			ReleaseDate = rd;
+		}
+
+		public override bool Equals(object? obj)
+		{
+			Game other = (Game)obj!;
+			return this.GameID == other.GameID;
+		}
+
+		public override int GetHashCode()
+		{
+			return base.GetHashCode();
 		}
 	}
 }

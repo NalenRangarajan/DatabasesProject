@@ -4,8 +4,6 @@ BEGIN
 	(
 		GameID INT NOT NULL,
 		GenreID INT NOT NULL
-
-	
 	);
 END;
 

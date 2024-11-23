@@ -3,22 +3,30 @@
    @ReleaseDate DATETIME2,
    @DeveloperName NVARCHAR(32),
    @PublisherName NVARCHAR(32),
+   @GenreID INT,
    @GameID INT OUTPUT,
    @PublisherID INT OUTPUT
 AS
 
-EXEC GameTrack.CreateDeveloper @DeveloperName = @DeveloperName;
+DECLARE @DeveloperID INT;
 
-EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName;
+EXEC GameTrack.CreateDeveloper @DeveloperName = @DeveloperName, @DeveloperID = @DeveloperID OUTPUT;
 
-SELECT PublisherID = P.PublisherID
-FROM GameTrack.Publisher P
-WHERE P.[Name] = @PublisherName;
+EXEC GameTrack.CreatePublisher @PublisherName = @PublisherName, @PublisherID = @PublisherID OUTPUT;
 
 INSERT GameTrack.Game(PublisherID, [Name], ReleaseDate)
 VALUES (@PublisherID, @Name, @ReleaseDate);
 
 SET @GameID = SCOPE_IDENTITY();
+
+INSERT GameTrack.GameDeveloper(GameID,DeveloperID)
+VALUES(@GameID, @DeveloperID);
+
+--add gamegenre
+
+INSERT GameTrack.GameGenre(GameID,GenreID)
+VALUES(@GameID, @GenreID);
+
 
 GO
 

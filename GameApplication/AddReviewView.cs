@@ -36,11 +36,12 @@ namespace GameApplication
         {
             InitializeComponent();
             SetGenres();
-            SetGamesList();
+            IReadOnlyList<Game> games = sgr.GetAllGames();
+            SetGamesList(games);
             MaxDatePicker.ValueChanged += UpdateDatePicker;
             MinDatePicker.ValueChanged += UpdateDatePicker;
             MinUpDown.ValueChanged += UpdateUpDown;
-            MaxUpDown.ValueChanged += UpdateUpDown; ;
+            MaxUpDown.ValueChanged += UpdateUpDown;
         }
 
         private void UpdateUpDown(object? sender, EventArgs e)
@@ -67,10 +68,9 @@ namespace GameApplication
             }
         }
 
-        private void SetGamesList()
+        private void SetGamesList(IReadOnlyList<Game> games)
         {
-
-            IReadOnlyList<Game> games = sgr.GetAllGames();
+            GamesList.Items.Clear();
             foreach (Game ggame in games)
             {
                 var item = new ListViewItem(ggame.Name);
@@ -78,6 +78,7 @@ namespace GameApplication
                 item.Tag = ggame;
                 GamesList.Items.Add(item);
             }
+            GamesList.Invalidate();
         }
 
         private void AddGameButton_Click(object sender, EventArgs e)
@@ -85,7 +86,10 @@ namespace GameApplication
             if (agv.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Game Successfully Added.");
-            }
+
+				IReadOnlyList<Game> games = sgr.GetAllGames();
+				SetGamesList(games);
+			}
         }
 
         private void GamesList_SelectedIndexChanged(object sender, EventArgs e)
@@ -104,18 +108,24 @@ namespace GameApplication
                 //ListViewItem lvi = (ListViewItem)v;
                 sb.Append(((Genre)lvi.Tag).Name + ",");
             }
-            sb.Remove(sb.Length - 1, 1);
+            if (sb.Length > 0)
+            {
+                sb.Remove(sb.Length - 1, 1);
+            }
             if (TitleRadioButton.Checked)
             {
-                sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
             else if (PublisherRadioButton.Checked)
             {
-                sgr.SearchGamesByPublisher(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByPublisher(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
             else
             {
-                sgr.SearchGamesByDeveloper(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                IReadOnlyList<Game> g = sgr.SearchGamesByDeveloper(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());
+                SetGamesList(g);
             }
         }
     }
