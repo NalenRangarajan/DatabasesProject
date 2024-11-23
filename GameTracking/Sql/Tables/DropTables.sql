@@ -1,11 +1,9 @@
-﻿DROP TABLE IF EXISTS GameTrack.ProfileGame;
+﻿DROP TABLE IF EXISTS GameTrack.GameProfile;
 DROP TABLE IF EXISTS GameTrack.GameDeveloper;
 DROP TABLE IF EXISTS GameTrack.GamePlatform;
 DROP TABLE IF EXISTS GameTrack.Review;
 DROP TABLE IF EXISTS GameTrack.[Profile];
-DROP TABLE IF EXISTS GameTrack.Person;
 DROP TABLE IF EXISTS GameTrack.Developer;
 DROP TABLE IF EXISTS GameTrack.[Platform];
-DROP TABLE IF EXISTS GameTrack.Critic;
 DROP TABLE IF EXISTS GameTrack.Game;
 DROP TABLE IF EXISTS GameTrack.Publisher;

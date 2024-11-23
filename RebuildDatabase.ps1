@@ -28,7 +28,7 @@ Write-Host "Rebuilding database $Database on $Server..."
    In this case, maintain a script to drop all tables.
 #>
 #Write-Host "Dropping tables..."
-#Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Tables\DropTables.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Tables\DropTables.sql"
 
 Write-Host "Creating schema..."
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Schemas\GameTrack.sql"
@@ -73,7 +73,6 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Fetch Procedures\GameTrack.FetchPublisher.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Fetch Procedures\GameTrack.FetchReview.sql"
 
-Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetCriticByWebsite.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetDeveloperByEmail.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetDeveloperByName.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Get By Unique Procedures\GameTrack.GetGenreByName.sql"

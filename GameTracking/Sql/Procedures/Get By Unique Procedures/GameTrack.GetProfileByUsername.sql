@@ -3,6 +3,6 @@ CREATE OR ALTER PROCEDURE GameTrack.GetProfileByUsername
 AS
 
 SELECT P.ProfileID, P.Username, P.HashedPassword
-FROM GameTrack.Profile P
+FROM GameTrack.[Profile] P
 WHERE P.Username = @Username;
 GO

@@ -4,5 +4,5 @@ AS
 
 SELECT P.PublisherID, P.[Name], P.FoundedDate, P.[Location], P.Email, P.EmployeeCount
 FROM GameTrack.Publisher P
-WHERE P.Name = @Name;
+WHERE P.[Name] = @Name;
 GO
