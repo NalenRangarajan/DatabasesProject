@@ -291,6 +291,42 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Game> GetAllGamesWithAverageScore()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGamesAndAverageScore", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGamesWithAverageScore(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Game> GetAllGamesWithReviewCount()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetGamesAndReviewCount", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateGamesWithReviewCount(reader);
+					}
+				}
+			}
+		}
+
 		private IReadOnlyList<Game> TranslateGames(SqlDataReader reader)
 		{
 			List<Game> games = new List<Game>();
@@ -304,6 +340,44 @@ namespace GameTracking
 			{
 				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
 				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)));
+			}
+
+			return games;
+		}
+
+		private IReadOnlyList<Game> TranslateGamesWithAverageScore(SqlDataReader reader)
+		{
+			List<Game> games = new List<Game>();
+
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int publisherIDOrdinal = reader.GetOrdinal("PublisherID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
+			int averageScoreOrdinal = reader.GetOrdinal("AverageReviewScore");
+
+			while (reader.Read())
+			{
+				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
+				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)) { AverageScore = reader.GetDecimal(averageScoreOrdinal) });
+			}
+
+			return games;
+		}
+
+		private IReadOnlyList<Game> TranslateGamesWithReviewCount(SqlDataReader reader)
+		{
+			List<Game> games = new List<Game>();
+
+			int gameIDOrdinal = reader.GetOrdinal("GameID");
+			int publisherIDOrdinal = reader.GetOrdinal("PublisherID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int releaseDateOrdinal = reader.GetOrdinal("ReleaseDate");
+			int reviewCountOrdinal = reader.GetOrdinal("ReviewCount");
+
+			while (reader.Read())
+			{
+				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
+				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)) { ReviewCount = reader.GetInt32(reviewCountOrdinal) });
 			}
 
 			return games;

@@ -48,6 +48,11 @@ Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracki
 
 Write-Host "Stored procedures..."
 
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Aggregating Procedures\GameTrack.GetGamesAndAverageScore.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Aggregating Procedures\GameTrack.GetGamesAndReviewCount.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Aggregating Procedures\GameTrack.GetDevelopersAndAverageScore.sql"
+Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Aggregating Procedures\GameTrack.GetDevelopersAndNumGamesDeveloped.sql"
+
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Creation Procedures\GameTrack.CreateDeveloper.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Creation Procedures\GameTrack.CreateGame.sql"
 Invoke-SqlCmd -ServerInstance $Server -Database $Database -InputFile "GameTracking\Sql\Procedures\Creation Procedures\GameTrack.CreateGameDeveloper.sql"

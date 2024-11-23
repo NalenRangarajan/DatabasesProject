@@ -1,5 +1,4 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.GetGamesAndAverageScore
-	@AverageScore Decimal(2,1) OUTPUT
 AS
 SELECT G.GameID, G.PublisherID, G.[Name], G.ReleaseDate, AVG(R.Score) AS AverageReviewScore
 FROM GameTrack.Game G
