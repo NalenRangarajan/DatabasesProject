@@ -52,7 +52,7 @@ namespace GameApplication
 			foreach (Game game in gamesToDisplay)
 			{
 				var item = new ListViewItem();
-				item.Text = game.Name + "     " + game.ReviewCount + "     " + game.AverageScore;
+				item.Text = game.Name + " | Review Count: " + game.ReviewCount + " | Average Score: " + game.AverageScore;
 				item.Tag = game;
 				GamesList.Items.Add(item);
 			}

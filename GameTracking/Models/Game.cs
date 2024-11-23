@@ -16,7 +16,7 @@ namespace GameTracking.Models
 
 		public DateTime ReleaseDate { get; set; }
 
-		public decimal AverageScore { get; init; }
+		public double AverageScore { get; init; }
 
 		public int ReviewCount { get; init; }
 

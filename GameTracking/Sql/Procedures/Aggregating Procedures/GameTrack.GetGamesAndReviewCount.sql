@@ -1,5 +1,4 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.GetGamesAndReviewCount
-	@NumReviews INT OUTPUT
 AS
 SELECT G.GameID, G.PublisherID, G.[Name], G.ReleaseDate, COUNT(DISTINCT R.ReviewID) AS ReviewCount
 FROM GameTrack.Game G

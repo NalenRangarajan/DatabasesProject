@@ -54,6 +54,7 @@
 			GamesList.Margin = new Padding(4, 5, 4, 5);
 			GamesList.MultiSelect = false;
 			GamesList.Name = "GamesList";
+			GamesList.RightToLeft = RightToLeft.Yes;
 			GamesList.Size = new Size(599, 629);
 			GamesList.TabIndex = 13;
 			GamesList.TileSize = new Size(500, 30);
