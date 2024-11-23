@@ -110,6 +110,84 @@ namespace GameTracking
 			}
 		}
 
+		public IReadOnlyList<Developer> GetAllDevelopersWithAverageScore()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetDevelopersAndAverageScore", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateDevelopersWithAverageScore(reader);
+					}
+				}
+			}
+		}
+
+		public IReadOnlyList<Developer> GetAllDevelopersWithNumGames()
+		{
+			using (var connection = new SqlConnection(connectionString))
+			{
+				using (var command = new SqlCommand("GameTrack.GetDevelopersAndNumGamesDeveloped", connection))
+				{
+					command.CommandType = CommandType.StoredProcedure;
+
+					connection.Open();
+
+					using (SqlDataReader reader = command.ExecuteReader())
+					{
+						return TranslateDevelopersWithNumGames(reader);
+					}
+				}
+			}
+		}
+
+		private IReadOnlyList<Developer> TranslateDevelopersWithAverageScore(SqlDataReader reader)
+		{
+			List<Developer> developers = new List<Developer>();
+
+			int developerIDOrdinal = reader.GetOrdinal("DeveloperID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int emailOrdinal = reader.GetOrdinal("Email");
+			int foundedDateOrdinal = reader.GetOrdinal("FoundedDate");
+			int locationOrdinal = reader.GetOrdinal("Location");
+			int teamCountOrdinal = reader.GetOrdinal("TeamCount");
+			int averageReviewScoreOrdinal = reader.GetOrdinal("AverageReviewScore");
+
+			while (reader.Read())
+			{
+				developers.Add(new Developer(reader.GetInt32(developerIDOrdinal), reader.GetString(nameOrdinal), reader.GetString(emailOrdinal),
+				reader.GetDateTime(foundedDateOrdinal), reader.GetString(locationOrdinal), reader.GetInt32(teamCountOrdinal)) { AverageReviewScore = reader.GetDouble(averageReviewScoreOrdinal)});
+			}
+
+			return developers;
+		}
+
+		private IReadOnlyList<Developer> TranslateDevelopersWithNumGames(SqlDataReader reader)
+		{
+			List<Developer> developers = new List<Developer>();
+
+			int developerIDOrdinal = reader.GetOrdinal("DeveloperID");
+			int nameOrdinal = reader.GetOrdinal("Name");
+			int emailOrdinal = reader.GetOrdinal("Email");
+			int foundedDateOrdinal = reader.GetOrdinal("FoundedDate");
+			int locationOrdinal = reader.GetOrdinal("Location");
+			int teamCountOrdinal = reader.GetOrdinal("TeamCount");
+			int gamesDevelopedOrdinal = reader.GetOrdinal("GamesDeveloped");
+
+			while (reader.Read())
+			{
+				developers.Add(new Developer(reader.GetInt32(developerIDOrdinal), reader.GetString(nameOrdinal), reader.GetString(emailOrdinal),
+				reader.GetDateTime(foundedDateOrdinal), reader.GetString(locationOrdinal), reader.GetInt32(teamCountOrdinal)) { NumGames = reader.GetInt32(gamesDevelopedOrdinal) });
+			}
+
+			return developers;
+		}
+
 		private IReadOnlyList<Developer> TranslateDevelopers(SqlDataReader reader)
 		{
 			List<Developer> developers = new List<Developer>();

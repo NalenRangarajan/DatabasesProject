@@ -23,6 +23,10 @@ namespace GameTracking
 
 		IReadOnlyList<Game> SearchGamesByDeveloper(string partName, DateTime start, DateTime end, int min, int max, string genres);
 
+		IReadOnlyList<Game> GetAllGamesWithAverageScore();
+
+		IReadOnlyList<Game> GetAllGamesWithReviewCount();
+
 		void AddGameDeveloper(int gameID, string developerName);
 
 		void AddGameGenre(int gameID, string genreName);

@@ -41,25 +41,25 @@
 			DevelopersList.Margin = new Padding(4, 5, 4, 5);
 			DevelopersList.MultiSelect = false;
 			DevelopersList.Name = "DevelopersList";
-			DevelopersList.Size = new Size(599, 629);
+			DevelopersList.Size = new Size(673, 834);
 			DevelopersList.TabIndex = 12;
 			DevelopersList.TileSize = new Size(500, 30);
 			DevelopersList.UseCompatibleStateImageBehavior = false;
-			DevelopersList.View = View.Tile;
+			DevelopersList.View = View.List;
 			// 
 			// GamesList
 			// 
 			GamesList.Activation = ItemActivation.OneClick;
-			GamesList.Location = new Point(616, 61);
+			GamesList.Location = new Point(690, 61);
 			GamesList.Margin = new Padding(4, 5, 4, 5);
 			GamesList.MultiSelect = false;
 			GamesList.Name = "GamesList";
 			GamesList.RightToLeft = RightToLeft.Yes;
-			GamesList.Size = new Size(599, 629);
+			GamesList.Size = new Size(718, 834);
 			GamesList.TabIndex = 13;
 			GamesList.TileSize = new Size(500, 30);
 			GamesList.UseCompatibleStateImageBehavior = false;
-			GamesList.View = View.Tile;
+			GamesList.View = View.List;
 			// 
 			// DevStatsLabel
 			// 
@@ -73,7 +73,7 @@
 			// GameStatsLabel
 			// 
 			GameStatsLabel.AutoSize = true;
-			GameStatsLabel.Location = new Point(620, 31);
+			GameStatsLabel.Location = new Point(690, 31);
 			GameStatsLabel.Name = "GameStatsLabel";
 			GameStatsLabel.Size = new Size(131, 25);
 			GameStatsLabel.TabIndex = 15;
@@ -83,7 +83,7 @@
 			// 
 			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(1220, 704);
+			ClientSize = new Size(1421, 909);
 			Controls.Add(GameStatsLabel);
 			Controls.Add(DevStatsLabel);
 			Controls.Add(GamesList);
