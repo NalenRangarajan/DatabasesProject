@@ -77,12 +77,18 @@ namespace GameApplication
             }
         }
 
+        private bool flag;
+
         public GameView()
         {
             InitializeComponent();
             DeactivateControls();
             LoginAttempt();
-        }
+            if (flag)
+			{
+				this.ShowDialog();
+			}
+		}
 
         private void LoginAttempt()
         {
@@ -90,12 +96,20 @@ namespace GameApplication
             {
                 if (lv.ShowDialog() == DialogResult.OK)
                 {
-                    profile = lv.profile;
-                    ActivateControls();
-                    EditButton.Enabled = false;
-                    UpdateGUIProfile();
+					profile = lv.profile;
+					ActivateControls();
+					EditButton.Enabled = false;
+					UpdateGUIProfile();
+                    flag = true;
+                    
+                   
                 }
-            }
+				else
+				{
+                    flag = false;
+					this.Close();
+				}
+			}
         }
 
         private void WriteReviewAttempt(int gameID)

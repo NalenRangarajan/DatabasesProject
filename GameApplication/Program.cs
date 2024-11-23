@@ -14,7 +14,6 @@ namespace GameApplication
 			// see https://aka.ms/applicationconfiguration.
 			ApplicationConfiguration.Initialize();
 			GameView gv = new GameView();
-			gv.ShowDialog();
 		}
 	}
 }
