@@ -172,7 +172,7 @@ namespace GameApplication
 				{
 					genreString.Append(genre.Name + ", ");
 				}
-				genreString.Remove(genreString.Length - 2, 2); //crash if only 1 genre
+				genreString.Remove(genreString.Length - 2, 2);
 
 				StringBuilder platformString = new StringBuilder();
 				foreach (Platform platform in spr.GetPlatformsForGame(game.GameID))
@@ -220,7 +220,7 @@ namespace GameApplication
 			}
 		}
 
-		private ReviewControl SetReview(int score, string? body, DateTime dt)
+		private ReviewControl SetReview(decimal score, string? body, DateTime dt)
 		{
 			ReviewControl r = new ReviewControl();
 			r.Margin = new Padding(0, 0, 0, 5);

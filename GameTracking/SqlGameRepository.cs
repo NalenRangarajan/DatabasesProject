@@ -358,7 +358,7 @@ namespace GameTracking
 			while (reader.Read())
 			{
 				games.Add(new Game(reader.GetInt32(gameIDOrdinal), reader.GetInt32(publisherIDOrdinal),
-				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)) { AverageScore = reader.GetDouble(averageScoreOrdinal) });
+				reader.GetString(nameOrdinal), reader.GetDateTime(releaseDateOrdinal)) { AverageScore = reader.GetDecimal(averageScoreOrdinal) });
 			}
 
 			return games;

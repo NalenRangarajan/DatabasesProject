@@ -53,7 +53,7 @@ namespace GameApplication
             }
         }
 
-        public void SetReview(int s, string? b, DateTime rd)
+        public void SetReview(decimal s, string? b, DateTime rd)
         {
             Score = $"Score: {s}/10";
             Body = b;

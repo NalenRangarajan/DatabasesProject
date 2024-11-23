@@ -9,7 +9,7 @@ namespace GameTracking
 {
 	public interface IReviewRepository
 	{
-		Review CreateReview(int gameID, int score, string? body);
+		Review CreateReview(int gameID, decimal score, string? body);
 
 		Review FetchReview(int reviewID);
 

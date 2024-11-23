@@ -112,6 +112,15 @@ namespace GameApplication
             {
                 sb.Remove(sb.Length - 1, 1);
             }
+            else //if no genre selected
+            {
+				foreach (ListViewItem lvis in GenreListView.Items)
+				{
+					//ListViewItem lvi = (ListViewItem)v;
+					sb.Append(((Genre)lvis.Tag).Name + ",");
+				}
+				sb.Remove(sb.Length - 1, 1);
+			}
             if (TitleRadioButton.Checked)
             {
                 IReadOnlyList<Game> g = sgr.SearchGamesByName(SearchBox.Text, MinDatePicker.Value, MaxDatePicker.Value, (int)MinUpDown.Value, (int)MaxUpDown.Value, sb.ToString());

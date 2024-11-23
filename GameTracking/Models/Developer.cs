@@ -20,7 +20,7 @@ namespace GameTracking.Models
 
 		public int TeamCount { get; set; }
 
-		public double AverageReviewScore { get; init; }
+		public decimal AverageReviewScore { get; init; }
 
 		public int NumGames { get; init; }
 

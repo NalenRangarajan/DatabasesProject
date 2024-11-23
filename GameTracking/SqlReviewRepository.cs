@@ -19,7 +19,7 @@ namespace GameTracking
 			connectionString = c;
 		}
 
-		public Review CreateReview(int gameID, int score, string? body)
+		public Review CreateReview(int gameID, decimal score, string? body)
 		{
 			using (var transaction = new TransactionScope())
 			{
@@ -138,7 +138,7 @@ namespace GameTracking
 
 			while (reader.Read())
 			{
-				review.Add(new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetInt32(scoreOrdinal),
+				review.Add(new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetDecimal(scoreOrdinal),
 				reader.GetString(bodyOrdinal), reader.GetDateTime(reviewDateOrdinal)));
 			}
 
@@ -158,7 +158,7 @@ namespace GameTracking
 				return null;
 			}
 
-			return new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetInt32(scoreOrdinal), 
+			return new Review(reader.GetInt32(reviewIDOrdinal), reader.GetInt32(gameIDOrdinal), reader.GetDecimal(scoreOrdinal), 
 				reader.GetString(bodyOrdinal), reader.GetDateTime(reviewDateOrdinal));
 		}
 	}

@@ -1,6 +1,6 @@
 ﻿CREATE OR ALTER PROCEDURE GameTrack.CreateOrEditReview
 	@GameID INT,
-	@Score INT,
+	@Score DECIMAL(10,2),
 	@Body NVARCHAR(512),
 	@ReviewID INT OUTPUT
 AS

@@ -12,13 +12,13 @@ namespace GameTracking.Models
 
 		public int GameID { get; set; }
 
-		public int Score { get; set; }
+		public decimal Score { get; set; }
 
 		public string? Body { get; set; }
 
 		public DateTime ReviewDate { get; set; }
 
-		public Review(int rID, int gID, int s, string? b, DateTime rd)
+		public Review(int rID, int gID, decimal s, string? b, DateTime rd)
 		{
 			ReviewID = rID;
 			GameID = gID;
